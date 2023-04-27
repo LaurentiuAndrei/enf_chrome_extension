@@ -1,0 +1,25 @@
+{
+    "name": "ENF Freshness 0.2",
+    "description": "Adding new features to the website. V2 test text here.",
+    "version": "0.2",
+    "manifest_version": 3,
+    "author": "Laurentiu Andrei",
+    "update_url": "http://laurentiuandrei.com/enf/extension/manifest.xml",
+    "action": {
+        "default_popup": "main.html",
+        "default_title": "ENF Freshness"
+    },
+    "content_scripts": [
+        {
+          "js": [
+            "main.js"
+          ],
+          "css": [
+            "main.css"
+          ],
+          "matches": [
+            "https://admin.enf.me/solar/ID/*"
+          ]
+        }
+      ]
+}

@@ -1,0 +1,12 @@
+#copyButtonID {
+	width: 20px;
+	height: 20px;
+	display:inline;
+	position: absolute;
+	right: -30px;
+	margin-top: 5px;
+}
+
+#copyButtonID:hover {
+	cursor: pointer;
+}
