@@ -9,6 +9,8 @@ myCopyButton.addEventListener("click", copyEmailToClipboard);
 // Add button to DOM
 myEmailField.parentNode.insertBefore(myCopyButton, myEmailField.nextSibling);
 
+//This is a new feature, kappers
+
 // Copy to clipboard function
 function copyEmailToClipboard() {
 	navigator.clipboard.writeText(myEmailField.value);
