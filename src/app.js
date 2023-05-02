@@ -1,17 +1,21 @@
-const myEmailField = document.querySelector("#email");
-const myCopyButton = document.createElement("img");
+const noteSection = document.querySelector("#basicNote");
+const saveForm = document.querySelector("#saveForm");
 
-//Set copy button info
-myCopyButton.src = "https://laurentiuandrei.com/images/copy.png";
-myCopyButton.setAttribute("id","copyButtonID");
-myCopyButton.addEventListener("click", copyEmailToClipboard);
+// Add Copy to clipboard buttons
+const companyInputs = document.querySelectorAll("input");
 
-// Add button to DOM
-myEmailField.parentNode.insertBefore(myCopyButton, myEmailField.nextSibling);
-
-// Copy to clipboard function
-function copyEmailToClipboard() {
-	navigator.clipboard.writeText(myEmailField.value);
+for(let i = 0; i < companyInputs.length; i++) {
+	if(companyInputs[i].getAttribute('type') == 'text') {
+		let copyButton = document.createElement("img");
+		
+		copyButton.src = "https://laurentiuandrei.com/images/copy.png";
+		copyButton.setAttribute("id","copyButtonID");
+		copyButton.addEventListener("click", function() {
+			navigator.clipboard.writeText(companyInputs[i].value);
+		});
+		
+		companyInputs[i].parentNode.insertBefore(copyButton, companyInputs[i].nextSibling);
+	}
 }
 
 // An array with elements to be removed
@@ -19,41 +23,99 @@ const elementsToRemove = [
 	"body > div > div.top_line",
 	"#navbar-container > div",
 	"#navbar-content-title",
-	"#basicPage > h2 > span:nth-child(2)"
+	"#basicPage > h2 > span:nth-child(2)",
+	"#basicNote > a"
 ];
 
-// Removes elements from an array
 function enf_RemoveElements() {
-	for(i = 0; i < elementsToRemove.length; i++) {
-		document.querySelector(elementsToRemove[i]).remove();
+	for(let i = 0; i < elementsToRemove.length; i++) {
+		if(elementsToRemove[i]) {
+			document.querySelector(elementsToRemove[i]).remove();
+		}
 	}
 }
+
+enf_RemoveElements();
 
 // Remove Inline style
 document.querySelector("#mainview").removeAttribute("style");
 document.querySelector("#basicPage > h2 > span").removeAttribute("style");
 document.querySelector("#basicNote").removeAttribute("style");
+document.querySelector("#basicNote > div").removeAttribute("style");
 
-// Select and remove the notification section
-function removeNotificationSection() {
-	const notificationSection = document.querySelector("#saveForm > section:nth-child(10)");
-	// Check if it has 6 children and remove it only if it has 6
-	if (notificationSection.children.length == 6) {
-		notificationSection.remove();
+// Remove inline style for the notes
+// const theNotes = noteSection.querySelectorAll("fieldset > ul > li");
+
+// for (let i = 0; i < theNotes.length; i++) {
+// 	if(theNotes[i]) {
+// 		theNotes[i].removeAttribute("style");
+// 	}
+// }
+
+// Remove ALL inline styles from the page
+// const allElements = document.querySelectorAll("*");
+
+// for (let i = 0; i < allElements.length; i++) {
+//     allElements[i].removeAttribute("style");
+// }
+
+// Select and remove the notification section. Needs to happen before moving the notes
+document.querySelector("#saveForm").lastElementChild.remove();
+
+// Ad Plan
+const adPlan = document.querySelector("#basicNote > div");
+adPlan.classList.add("ad-plan");
+document.querySelector("div.displaytable").before(adPlan);
+
+// Notes Section
+// Move the notes as the last child of the main form
+saveForm.append(noteSection);
+
+// Remove fields based on label names
+const companyFieldsToRemove = [
+	"Enquiry Suspension：",
+	"E-mail (Solar System Enquiries)：",
+	"E-mail (Panel Enquiries)：",
+	"E-mail (Inverter Enquiries)：",
+	"E-mail (Mounting System Enquiries)：",
+	"E-mail (Cell Enquiries)：",
+	"E-mail (EVA Enquiries)：",
+	"E-mail (Backsheet Enquiries)：",
+	"E-mail (Charge Controller Enquiries)：",
+	"E-mail (Storage System Enquiries)：",
+	"Regional Address",
+	"Area1",
+	"Area2",
+	"Area3"
+];
+
+const companyLabels = document.querySelectorAll("label");
+
+for(let i = 0; i < companyLabels.length; i++) {
+	if(companyFieldsToRemove.includes(companyLabels[i].textContent)) {
+		companyLabels[i].parentNode.remove();
 	}
 }
 
-// Function to remove the parent of a node based on the header text
-function removeParent(header, el) {
-	const element = document.querySelector(el);
-	
-	if(element.textContent == header) {
-		element.parentNode.remove();
+// Move Address to the bottom of contact
+document.querySelector("#email").parentNode.parentNode.append(document.querySelector("#address").parentNode);
+
+// Remove adjust location button
+document.querySelector("#adjust_location").remove();
+
+// Remove enquiry email to special
+document.querySelector("#address").parentNode.previousElementSibling.remove();
+
+// Remove sections based on h3 names
+const headers = document.querySelectorAll("h3");
+const headersToRemove = [
+	"URIs",
+	"Social Icon",
+	"Location"
+]
+
+for(let i = 0; i < headers.length; i++) {
+	if(headersToRemove.includes(headers[i].textContent)) {
+		headers[i].parentNode.remove();
 	}
 }
-
-// Calling functions
-enf_RemoveElements();
-removeNotificationSection();
-removeParent("Social Icon", "#saveForm > section:nth-child(9) > h3");
-removeParent("URIs", "#saveForm > section:nth-child(6) > h3");

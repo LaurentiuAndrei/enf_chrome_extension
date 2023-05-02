@@ -2,10 +2,10 @@
 #copyButtonID {
 	width: 20px;
 	height: 20px;
-	display:inline;
 	position: absolute;
-	right: -30px;
+	right: 7px;
 	margin-top: 5px;
+	z-index: 10;
 }
 
 #copyButtonID:hover {
@@ -92,12 +92,12 @@
     
     margin-top: initial;
     
-    
-    
     padding: 20px;
     
     height: initial;
     text-shadow: white 0 1px -2px;
+    
+    border-bottom: 1px solid #eee;
 }
 
 .page_title button {
@@ -129,6 +129,54 @@
 /* End page content */
 
 
-/* Start FORM area */
+/* Start notes content */
+.notes li {
+	float: none;
+	margin: 20px;
+	display: inline-block;
+}
 
-/* End form area */
+.stick {
+	width: 300px;
+}
+
+.stick textarea {
+	height: 200px;
+	width: 280px;
+	overflow-x: hidden;
+}
+
+/* End notes content */
+
+
+/* Start section content */
+.settingform h3 {
+	position: relative;
+}
+.displaytable section {
+	margin-right: 0;
+	padding: 20px;
+}
+
+.mid_sec {
+	display: block;
+	margin: 0;
+	width: initial;
+}
+
+.mid_sec .row {
+	width: 500px;
+	margin: auto;
+}
+.con_right {
+	display: llock;
+	float: none;
+	margin: 0;
+}
+
+/* End section content */
+
+
+/* Start template content */
+
+/* End template content */
