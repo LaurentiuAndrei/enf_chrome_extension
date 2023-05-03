@@ -169,13 +169,16 @@
 	margin: auto;
 }
 .con_right {
-	display: llock;
 	float: none;
 	margin: 0;
 }
 
 /* End section content */
 
+#newAddress {
+	height: 50px;
+	background: #ffffff;
+}
 
 /* Start template content */
 

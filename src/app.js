@@ -2,21 +2,28 @@ const noteSection = document.querySelector("#basicNote");
 const saveForm = document.querySelector("#saveForm");
 
 // Add Copy to clipboard buttons
-const companyInputs = document.querySelectorAll("input");
+const companyInputs = saveForm.querySelectorAll("input");
 
 for(let i = 0; i < companyInputs.length; i++) {
-	if(companyInputs[i].getAttribute('type') == 'text') {
+	if(companyInputs[i].classList.contains('input-text')) {
 		let copyButton = document.createElement("img");
 		
 		copyButton.src = "https://laurentiuandrei.com/images/copy.png";
 		copyButton.setAttribute("id","copyButtonID");
-		copyButton.addEventListener("click", function() {
-			navigator.clipboard.writeText(companyInputs[i].value);
-		});
+		// copyButton.addEventListener("click", function() {
+		// 	navigator.clipboard.writeText(companyInputs[i].value);
+		// });
 		
 		companyInputs[i].parentNode.insertBefore(copyButton, companyInputs[i].nextSibling);
 	}
 }
+
+// Add click events only to the copy buttons
+saveForm.addEventListener("click", function(e) {
+	if(e.target.getAttribute("id") == "copyButtonID") {
+		navigator.clipboard.writeText(e.target.previousElementSibling.value);
+	}
+});
 
 // An array with elements to be removed
 const elementsToRemove = [
@@ -42,6 +49,7 @@ document.querySelector("#mainview").removeAttribute("style");
 document.querySelector("#basicPage > h2 > span").removeAttribute("style");
 document.querySelector("#basicNote").removeAttribute("style");
 document.querySelector("#basicNote > div").removeAttribute("style");
+document.querySelector("#address").parentNode.removeAttribute("style");
 
 // Remove inline style for the notes
 // const theNotes = noteSection.querySelectorAll("fieldset > ul > li");
@@ -60,7 +68,7 @@ document.querySelector("#basicNote > div").removeAttribute("style");
 // }
 
 // Select and remove the notification section. Needs to happen before moving the notes
-document.querySelector("#saveForm").lastElementChild.remove();
+saveForm.lastElementChild.remove();
 
 // Ad Plan
 const adPlan = document.querySelector("#basicNote > div");
@@ -118,4 +126,25 @@ for(let i = 0; i < headers.length; i++) {
 	if(headersToRemove.includes(headers[i].textContent)) {
 		headers[i].parentNode.remove();
 	}
+}
+
+// Add textarea of address without removing the original one
+var address = document.querySelector("#address");
+var newAddress = document.createElement("textarea");
+
+newAddress.setAttribute("id","newAddress");
+newAddress.textContent = address.value;
+
+address.after(newAddress);
+address.style.display = "none";
+
+newAddress.addEventListener("blur", function(e) {
+	address.value = newAddress.value;
+})
+
+// Move the postcode under the address
+insertAfter(document.querySelector("#postcode").parentNode, newAddress.parentNode);
+
+function insertAfter(newNode, existingNode) {
+    existingNode.parentNode.insertBefore(newNode, existingNode.nextSibling);
 }
