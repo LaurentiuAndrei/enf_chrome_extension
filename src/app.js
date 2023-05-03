@@ -159,3 +159,10 @@ insertAfter(document.querySelector("#postcode").parentNode, newAddress.parentNod
 function insertAfter(newNode, existingNode) {
     existingNode.parentNode.insertBefore(newNode, existingNode.nextSibling);
 }
+
+// Rename name label to legal name
+const legalName = document.querySelector("#name");
+
+if(legalName.previousElementSibling.textContent == "Name") {
+	legalName.previousElementSibling.textContent = "Legal Name";
+}
