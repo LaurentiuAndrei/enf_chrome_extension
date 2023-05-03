@@ -44,12 +44,23 @@ function enf_RemoveElements() {
 
 enf_RemoveElements();
 
-// Remove Inline style
-document.querySelector("#mainview").removeAttribute("style");
-document.querySelector("#basicPage > h2 > span").removeAttribute("style");
-document.querySelector("#basicNote").removeAttribute("style");
-document.querySelector("#basicNote > div").removeAttribute("style");
+// Temporarely remove Inline style
 document.querySelector("#address").parentNode.removeAttribute("style");
+
+const elementsToRemoveStyleFrom = [
+	"#mainview",
+	"#basicPage > h2 > span",
+	"#basicNote",
+	"#basicNote > div"
+];
+
+for(let i = 0; i < elementsToRemoveStyleFrom.length; i++) {
+	let target = document.querySelector(elementsToRemoveStyleFrom[i]);
+	
+	if(target) {
+		target.removeAttribute("style");
+	}
+}
 
 // Remove inline style for the notes
 // const theNotes = noteSection.querySelectorAll("fieldset > ul > li");
