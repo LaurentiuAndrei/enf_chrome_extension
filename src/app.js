@@ -34,15 +34,12 @@ const elementsToRemove = [
 	"#basicNote > a"
 ];
 
-function enf_RemoveElements() {
-	for(let i = 0; i < elementsToRemove.length; i++) {
-		if(elementsToRemove[i]) {
-			document.querySelector(elementsToRemove[i]).remove();
-		}
+
+for(let i = 0; i < elementsToRemove.length; i++) {
+	if(elementsToRemove[i]) {
+		document.querySelector(elementsToRemove[i]).remove();
 	}
 }
-
-enf_RemoveElements();
 
 // Temporarely remove Inline style
 document.querySelector("#address").parentNode.removeAttribute("style");
@@ -131,7 +128,7 @@ const headersToRemove = [
 	"URIs",
 	"Social Icon",
 	"Location"
-]
+];
 
 for(let i = 0; i < headers.length; i++) {
 	if(headersToRemove.includes(headers[i].textContent)) {
@@ -165,4 +162,33 @@ const legalName = document.querySelector("#name");
 
 if(legalName.previousElementSibling.textContent == "Name") {
 	legalName.previousElementSibling.textContent = "Legal Name";
+}
+
+// Create "Other" section 
+noteSection.insertAdjacentHTML("afterend", "<section id='others'><h3>Others</h3><span class='mid_sec'><fieldset></fieldset></span></section>");
+
+// Add IDs to sections
+const sectionIDs = [
+	"Basic",
+	"Contact",
+	"Location"
+];
+
+for(let i = 0; i < headers.length; i++) {
+	if(sectionIDs.includes(headers[i].textContent)) {
+		headers[i].parentNode.setAttribute("id", headers[i].textContent.toLowerCase());
+	}
+}
+
+// Move fields to the other section
+const basicFields = document.querySelectorAll("#basic span.mid_sec > fieldset > div");
+const staffField = document.querySelector("#staff");
+
+for(let i = 0; i < basicFields.length; i++) {
+	if(basicFields[i] == staffField.parentNode) {
+		for(i++; i < basicFields.length; i++){
+			document.querySelector("#others > span.mid_sec > fieldset").append(basicFields[i]);
+		}
+		break;
+	}
 }
