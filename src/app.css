@@ -1,152 +1,152 @@
 /* Start COPY-BTT */
 #copyButtonID {
-	width: 20px;
-	height: 20px;
-	position: absolute;
-	right: -50px;
-	margin-top: 5px;
-	z-index: 10;
+	width: 20px !important;
+	height: 20px !important;
+	position: absolute !important;
+	right: -50px !important;
+	margin-top: 5px !important;
+	z-index: 10 !important;
 }
 
 #copyButtonID:hover {
-	cursor: pointer;
+	cursor: pointer !important;
 }
 
 /* End COPY-BTT */
 
 .enf_hideElement {
-	display: none;
+	display: none !important;
 }
 
 #mainview {
-	margin-left: initial;
+	margin-left: initial !important;
 }
 
 #main-content {
-	margin-top: initial;
+	margin-top: initial !important;
 }
 
 /* Start NAV-BAR */
 #navbar-container {
-	position: relative;
-	height: 40px;
-	width: initial;
-	background: none;
-	background-color: #313131;
-	display: block;
+	position: relative !important;
+	height: 40px !important;
+	width: initial !important;
+	background: none !important;
+	background-color: #313131 !important;
+	display: block !important;
 }
 
 #nav {
-	display: flex;
-	height: inherit;
+	display: flex !important;
+	height: inherit !important;
 }
 
 #nav li {
-    text-align: center;
-    display: inline-block;
-    height: initial;
-    width: 50%;
+    text-align: center !important;
+    display: inline-block !important;
+    height: initial !important;
+    width: 50% !important;
 }
 
 #nav .select {
-  background: none;
-  background-color: white;
-  text-shadow: none;
-  font-weight: bold;
+  background: none !important;
+  background-color: white !important;
+  text-shadow: none !important;
+  font-weight: bold !important;
 }
 
 #nav li a {
-	padding-top: initial;
-	padding-right: initial;
-	height: initial;
-	line-height: 40px;
-	color: #d7d7d7;
+	padding-top: initial !important;
+	padding-right: initial !important;
+	height: initial !important;
+	line-height: 40px !important;
+	color: #d7d7d7 !important;
 }
 /* End NAV-BAR */
 
 
 /* Start Main page*/
 .page_container {
-    width: initial;
-    padding-bottom: initial;
-    min-height: 100%;
-    padding-right: initial;
-    padding-top: initial;
-    margin-left: initial;
-    padding-left: initial;
-    background: white;
+    width: initial !important;
+    padding-bottom: initial !important;
+    min-height: 100% !important;
+    padding-right: initial !important;
+    padding-top: initial !important;
+    margin-left: initial !important;
+    padding-left: initial !important;
+    background: white !important;
 }
 /* End Main page*/
 
 
 /* Start Page Title */
 .page_title {
-    font-size: 20px;
-    color: #000;
+    font-size: 20px !important;
+    color: #000 !important;
     
-    width: initial;
-    background: white;
+    width: initial !important;
+    background: white !important;
     
-    position: relative;
-    top: initial;
+    position: relative !important;
+    top: initial !important;
     
-    margin-top: initial;
+    margin-top: initial !important;
     
-    padding: 20px;
+    padding: 20px !important;
     
-    height: initial;
-    text-shadow: white 0 1px -2px;
+    height: initial !important;
+    text-shadow: white 0 1px -2px !important;
     
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #eee !important;
 }
 
 .page_title button {
-    float: right;
-    margin-left: initial;
-    padding: 0;
+    float: right !important;
+    margin-left: initial !important;
+    padding: 0 !important;
 }
 
 .page_title .green_btn {
-	display: inline;
-	margin: 0px 0px 0px 20px;
+	display: inline !important;
+	margin: 0px 0px 0px 20px !important;
 }
 
 .page_title .bmenu {
-	display: inline-block;
-	float:right;
+	display: inline-block !important;
+	float:right !important;
 }
 
 .page_title .blue_btn {
-	margin: 0;
+	margin: 0 !important;
 }
 /* End Page Title */
 
 
 /* Start Page content */
 .displaytable {
-    margin-top: initial;
+    margin-top: initial !important;
 }
 /* End page content */
 
 
 /* Start notes content */
 #basicNote {
-	border-bottom: 1px solid #eee;
+	border-bottom: 1px solid #eee !important;
 }
 .notes li {
-	float: none;
-	margin: 20px;
-	display: inline-block;
+	float: none !important;
+	margin: 20px !important;
+	display: inline-block !important;
 }
 
 .stick {
-	width: 300px;
+	width: 300px !important;
 }
 
 .stick textarea {
-	height: 200px;
-	width: 280px;
-	overflow-x: hidden;
+	height: 200px !important;
+	width: 280px !important;
+	overflow-x: hidden !important;
 }
 
 /* End notes content */
@@ -154,38 +154,38 @@
 
 /* Start section content */
 .settingform h3 {
-	position: relative;
+	position: relative !important;
 }
 .displaytable section {
-	margin-right: 0;
-	padding: 20px;
+	margin-right: 0 !important;
+	padding: 20px !important;
 }
 
 .mid_sec {
-	display: block;
-	margin: 0;
-	width: initial;
+	display: block !important;
+	margin: 0 !important;
+	width: initial !important;
 }
 
 .mid_sec .row {
-	width: 500px;
-	margin: auto;
+	width: 500px !important;
+	margin: auto !important;
 }
 
 /* End section content */
 
 #newAddress {
-	height: 50px;
-	background: #ffffff;
+	height: 50px !important;
+	background: #ffffff !important;
 }
 
 
 /* Start logo content */
 .con_right {
-	float: none;
-	display: block;
-	width: 500px;
-	margin: auto;
+	float: none !important;
+	display: block !important;
+	width: 500px !important;
+	margin: auto !important;
 }
 
 /* End logo content */
