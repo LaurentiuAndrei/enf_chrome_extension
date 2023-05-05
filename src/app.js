@@ -208,7 +208,7 @@ for(let i = 0; i < statusElements.length; i++) {
 	}
 }
 
-
+// comment test
 // Find the element with type="hidden" then remove element from next position until the array shortens to the position of the next element
 for(let i = 0; i < statusElements.length; i++) {
 	if(statusElements[i].type == "hidden") {
