@@ -192,3 +192,30 @@ for(let i = 0; i < basicFields.length; i++) {
 		break;
 	}
 }
+
+// Move the Logo section to the top of Basic
+const logoSection = document.querySelector("#basic > span.con_right");
+
+document.querySelector("#basic > span.mid_sec").before(logoSection);
+
+
+// Remove the QC area
+const statusElements = document.querySelector("#contact > span.con_right").childNodes;
+
+for(let i = 0; i < statusElements.length; i++) {
+	if(statusElements[i].nodeName == "#text" || statusElements[i].nodeName == "BR") {
+		statusElements[i].remove();
+	}
+}
+
+
+// Find the element with type="hidden" then remove element from next position until the array shortens to the position of the next element
+for(let i = 0; i < statusElements.length; i++) {
+	if(statusElements[i].type == "hidden") {
+		for(i++; i < statusElements.length;) {
+			statusElements[i].remove();
+		}
+			
+		break;
+	}	
+}

@@ -13,7 +13,7 @@
             "src/app.css"
           ],
           "matches": [
-            "https://admin.enf.me/solar/ID/*"
+            "https://admin.enf.me/solar/ID/edit*"
           ]
         }
       ]
