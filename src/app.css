@@ -130,6 +130,9 @@
 
 
 /* Start notes content */
+#basicNote {
+	border-bottom: 1px solid #eee;
+}
 .notes li {
 	float: none;
 	margin: 20px;
@@ -168,10 +171,6 @@
 	width: 500px;
 	margin: auto;
 }
-.con_right {
-	float: none;
-	margin: 0;
-}
 
 /* End section content */
 
@@ -179,6 +178,18 @@
 	height: 50px;
 	background: #ffffff;
 }
+
+
+/* Start logo content */
+.con_right {
+	float: none;
+	display: block;
+	width: 500px;
+	margin: auto;
+}
+
+/* End logo content */
+
 
 /* Start template content */
 
