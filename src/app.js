@@ -2,7 +2,10 @@ const noteSection = document.querySelector("#basicNote");
 const saveForm = document.querySelector("#saveForm");
 
 // Remove "Clear coordinate" before adding copy buttons
-document.querySelector("#address").nextElementSibling.remove();
+const clearCoordinate = document.querySelector("#address").nextElementSibling;
+if(clearCoordinate) {
+	clearCoordinate.remove();
+}
 
 // Add Copy to clipboard buttons
 const companyInputs = saveForm.querySelectorAll("input");
@@ -120,7 +123,10 @@ for(let i = 0; i < companyLabels.length; i++) {
 document.querySelector("#email").parentNode.parentNode.append(document.querySelector("#address").parentNode);
 
 // Remove adjust location button
-document.querySelector("#adjust_location").remove();
+const adjustLocation = document.querySelector("#adjust_location");
+if(adjustLocation) {
+	adjustLocation.remove();
+}
 
 // Remove enquiry email to special
 document.querySelector("#address").parentNode.previousElementSibling.remove();
