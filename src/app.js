@@ -1,6 +1,9 @@
 const noteSection = document.querySelector("#basicNote");
 const saveForm = document.querySelector("#saveForm");
 
+// Remove "Clear coordinate" before adding copy buttons
+document.querySelector("#address").nextElementSibling.remove();
+
 // Add Copy to clipboard buttons
 const companyInputs = saveForm.querySelectorAll("input");
 
