@@ -3,7 +3,8 @@ const saveForm = document.querySelector("#saveForm");
 
 // Remove "Clear coordinate" before adding copy buttons
 const clearCoordinate = document.querySelector("#address").nextElementSibling;
-if(clearCoordinate) {
+if(clearCoordinate.nodeName == "A") {
+	console.log("removed: " + clearCoordinate.nodeName);
 	clearCoordinate.remove();
 }
 
