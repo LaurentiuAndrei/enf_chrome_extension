@@ -171,7 +171,7 @@ function insertAfter(newNode, existingNode) {
 const legalName = document.querySelector("#name");
 
 if(legalName.previousElementSibling.textContent == "Name") {
-	legalName.previousElementSibling.textContent = "Legal Name";
+	legalName.previousElementSibling.textContent = "Legal Name test";
 }
 
 // Create "Other" section 
@@ -229,3 +229,6 @@ for(let i = 0; i < statusElements.length; i++) {
 		break;
 	}	
 }
+
+// Add center class to #basicNote
+noteSection.classList.add("center-element");

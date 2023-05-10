@@ -191,6 +191,12 @@
 /* End logo content */
 
 
+.center-element {
+	display:flex;
+	justify-content: center;
+}
+
+
 /* Start template content */
 
 /* End template content */
