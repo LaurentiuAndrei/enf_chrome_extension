@@ -230,5 +230,5 @@ for(let i = 0; i < statusElements.length; i++) {
 	}	
 }
 
-// Add center class to #basicNote
+// Add center class to #basicNote test
 noteSection.classList.add("center-element");

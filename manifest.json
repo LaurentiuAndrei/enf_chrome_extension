@@ -4,17 +4,16 @@
     "version": "0.1.2",
     "manifest_version": 3,
     "author": "Laurentiu Andrei",
-    "content_scripts": [
-        {
-          "js": [
-            "src/app.js"
-          ],
-          "css": [
-            "src/app.css"
-          ],
-          "matches": [
-            "https://admin.enf.me/solar/ID/edit*"
-          ]
-        }
-      ]
+
+    "background": {
+      "service_worker": "src/service-worker.js"
+    },
+
+    "permissions": [
+      "scripting",
+      "activeTab"
+    ],
+    "host_permissions": [
+        "https://admin.enf.me/*"
+    ]
 }
