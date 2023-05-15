@@ -1,5 +1,6 @@
 const noteSection = document.querySelector("#basicNote");
 const saveForm = document.querySelector("#saveForm");
+const postCode = document.querySelector("#postcode");
 
 // Remove "Clear coordinate" before adding copy buttons
 const clearCoordinate = document.querySelector("#address").nextElementSibling;
@@ -83,7 +84,10 @@ for(let i = 0; i < elementsToRemoveStyleFrom.length; i++) {
 // }
 
 // Select and remove the notification section. Needs to happen before moving the notes
-saveForm.lastElementChild.remove();
+const notificationSection = saveForm.lastElementChild;
+if(notificationSection) {
+    notificationSection.remove();
+}
 
 // Ad Plan
 const adPlan = document.querySelector("#basicNote > div");
@@ -158,10 +162,14 @@ address.style.display = "none";
 
 newAddress.addEventListener("blur", function(e) {
 	address.value = newAddress.value;
-})
+    findPostCodeFromAddress(newAddress.value);
+});
 
 // Move the postcode under the address
-insertAfter(document.querySelector("#postcode").parentNode, newAddress.parentNode);
+insertAfter(postCode.parentNode, newAddress.parentNode);
+
+// Check if the post code can be found in the address
+findPostCodeFromAddress(newAddress.value);
 
 function insertAfter(newNode, existingNode) {
     existingNode.parentNode.insertBefore(newNode, existingNode.nextSibling);
@@ -230,5 +238,72 @@ for(let i = 0; i < statusElements.length; i++) {
 	}	
 }
 
-// Add center class to #basicNote test
+// Add center class to #basicNote
 noteSection.classList.add("center-element");
+
+// Finds the post code based on the address
+function findPostCodeFromAddress(str) {
+    const addressElements = str.split(",");
+    let countOfOnlyDigits = 0;
+
+    // Loop through the address to find the post code
+    for(let i = 0; i < addressElements.length; i++) {
+        let trimmed = addressElements[i].trim();
+
+        // Post code is valid if it contains only 4 digits or more
+        if(matchesPattern(trimmed) && trimmed.length >= 4) {
+            postCode.value = trimmed;
+            countOfOnlyDigits++;
+        }
+        // else {
+        //     if(!countOfOnlyDigits) {
+        //         postCode.value = "";
+        //     }
+        // }
+    }
+
+    if(countOfOnlyDigits == 0) styleInputText(postCode, 'missing');
+    else if(countOfOnlyDigits == 1) styleInputText(postCode, 'success');
+    else styleInputText(postCode, 'conflict');
+}
+
+function styleInputText(element, status) {
+    switch(status) {
+        case 'conflict':
+            element.style.border = '1px solid #ff8600';
+            element.style.background = '#ffe9da';
+            break;
+        case 'success':
+            element.style.border = '1px solid #008805';
+            element.style.background = '#e2ffda';
+            break;
+        case 'missing':
+            element.style.border = '1px solid #b70000';
+            element.style.background = '#ffdada';
+            break;
+    }
+}
+
+// Checks if a string contains only digits
+function containsOnlyDigits(str) {
+    for (let i = 0; i < str.length; i++) {
+		if (isNaN(parseInt(str[i]))) {
+			return false; // If a non-digit character is found, return false
+		}
+	}
+	return true; // If all characters are digits, return true
+}
+
+/* Explanation
+^ asserts the start of the string.
+[] denotes a character class, which allows any character within it to match.
+\d matches any digit character (0-9).
+\s matches any whitespace character, including spaces, tabs, and line breaks.
+- matches a literal hyphen.
++ specifies that the character class should match one or more times.
+$ asserts the end of the string. */
+
+function matchesPattern(str) {
+    const pattern = /^[\d\s-]+$/;
+    return pattern.test(str);
+}

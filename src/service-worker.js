@@ -3,6 +3,8 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
 
     let url = tab.url;
 
+    if(!url) return;
+
     console.log("current tab URL is: " + url);
 
 	if (url.includes("admin.enf.me/solar/ID/edit")) {
