@@ -1,24 +1,22 @@
-chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
-    if(changeInfo.status != "complete") return;
+var urlFilter = {
+	url: [{ hostEquals: "admin.enf.me" }]
+};
 
-    let url = tab.url;
+chrome.webNavigation.onDOMContentLoaded.addListener(function (tab) {
+	var tabId = tab.tabId;
+	var url = tab.url;
 
-    if(!url) return;
-
-    console.log("current tab URL is: " + url);
-
-	if (url.includes("admin.enf.me/solar/ID/edit")) {
+    if (url.includes("admin.enf.me/solar/ID/edit")) {
+        console.log("on basic page");
 		chrome.scripting.executeScript({
 			target: { tabId: tabId },
-			files: ["src/company/company.js"]
+			files: ["src/company/company.js"],
 		});
-        chrome.scripting.insertCSS({
-            target: {tabId: tabId},
-            files: ["src/company/company.css"]
-        });
-        console.log("on company basic page");
-	}
-    else if(url.includes("admin.enf.me/solar/ID/classification")) {
+		chrome.scripting.insertCSS({
+			target: { tabId: tabId },
+			files: ["src/company/company.css"],
+		});
+	} else if (url.includes("admin.enf.me/solar/ID/classification")) {
 		console.log("on classification page");
-	}
-});
+	} else { console.log("we are on: " + url)}
+}, urlFilter);
