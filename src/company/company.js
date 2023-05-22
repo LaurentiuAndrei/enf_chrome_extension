@@ -10,47 +10,26 @@ if (clearCoordinate.nodeName == "A") {
 	clearCoordinate.remove();
 }
 
-// Add Copy to clipboard buttons
-const companyInputs = saveForm.querySelectorAll("input");
-
-for (let i = 0; i < companyInputs.length; i++) {
-	if (companyInputs[i].classList.contains("input-text")) {
-		let copyButton = document.createElement("img");
-
-		copyButton.src = "https://laurentiuandrei.com/images/copy.png";
-		copyButton.setAttribute("id", "copyButtonID");
-		// copyButton.addEventListener("click", function() {
-		// 	navigator.clipboard.writeText(companyInputs[i].value);
-		// });
-
-		companyInputs[i].parentNode.insertBefore(
-			copyButton,
-			companyInputs[i].nextSibling
-		);
-	}
-}
+addCopyToClipboardButtons();
 
 // Add click events only to the copy buttons
 saveForm.addEventListener("click", function (e) {
 	if (e.target.getAttribute("id") == "copyButtonID") {
 		navigator.clipboard.writeText(e.target.previousElementSibling.value);
+        e.target.firstElementChild.innerHTML = "Copied";
+	}
+});
+
+// Restore the contents of tooltip after exitig the copy button area
+saveForm.addEventListener("mouseout", function (e) {
+	if (e.target.getAttribute("id") == "copyButtonID") {
+		navigator.clipboard.writeText(e.target.previousElementSibling.value);
+        e.target.firstElementChild.innerHTML = "Copy to clipboard";
 	}
 });
 
 // An array with elements to be removed
-const elementsToRemove = [
-	"body > div > div.top_line",
-	"#navbar-container > div",
-	"#navbar-content-title",
-	"#basicPage > h2 > span:nth-child(2)",
-	"#basicNote > a",
-];
-
-for (let i = 0; i < elementsToRemove.length; i++) {
-	if (elementsToRemove[i]) {
-		document.querySelector(elementsToRemove[i]).remove();
-	}
-}
+removeUnusedFields();
 
 // Temporarely remove Inline style
 document.querySelector("#address").parentNode.removeAttribute("style");
@@ -171,6 +150,43 @@ insertAfter(postCode.parentNode, newAddress.parentNode);
 
 // Check if the post code can be found in the address
 findPostCodeFromAddress(newAddress.value);
+
+function removeUnusedFields() {
+    const elementsToRemove = [
+        "body > div > div.top_line",
+        "#navbar-container > div",
+        "#navbar-content-title",
+        "#basicPage > h2 > span:nth-child(2)",
+        "#basicNote > a",
+    ];
+
+    for (let i = 0; i < elementsToRemove.length; i++) {
+        if (elementsToRemove[i]) {
+            document.querySelector(elementsToRemove[i]).remove();
+        }
+    }
+}
+
+function addCopyToClipboardButtons() {
+    const companyInputs = saveForm.querySelectorAll("input.input-text");
+    const imageURL = chrome.runtime.getURL('resources/images/copy-icon.png');
+    const copyButton = document.createElement("div");
+    const toolTip = document.createElement("span");
+    
+    copyButton.style.backgroundImage = `url(${imageURL})`;
+    copyButton.setAttribute("id", "copyButtonID");
+    
+    toolTip.classList.add("tooltiptext");
+    toolTip.setAttribute("id", "myTooltip");
+    toolTip.innerHTML = "Copy to clipboard";
+
+    copyButton.appendChild(toolTip.cloneNode(true));
+
+    for(inputField of companyInputs) {
+        // Add a copy button for every input text field
+        inputField.insertAdjacentElement('afterend', copyButton.cloneNode(true));
+    }
+}
 
 function insertAfter(newNode, existingNode) {
 	existingNode.parentNode.insertBefore(newNode, existingNode.nextSibling);

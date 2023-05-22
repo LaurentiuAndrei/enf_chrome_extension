@@ -21,6 +21,10 @@
         {
           "resources": [ "resources/countries.json" ],
           "matches": [ "https://admin.enf.me/*" ]
-        }
+        },
+        {
+            "resources": [ "resources/images/copy-icon.png" ],
+            "matches": [ "https://admin.enf.me/*" ]
+          }
       ]
 }
