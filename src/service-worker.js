@@ -18,5 +18,5 @@ chrome.webNavigation.onDOMContentLoaded.addListener(function (tab) {
 		});
 	} else if (url.includes("admin.enf.me/solar/ID/classification")) {
 		console.log("on classification page");
-	} else { console.log("we are on: " + url)}
+    }
 }, urlFilter);

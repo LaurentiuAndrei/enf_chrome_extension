@@ -1,10 +1,11 @@
 const noteSection = document.querySelector("#basicNote");
 const saveForm = document.querySelector("#saveForm");
 const postCode = document.querySelector("#postcode");
+const phoneNumber = document.querySelector("#phone");
 
 // Remove "Clear coordinate" before adding copy buttons
 const clearCoordinate = document.querySelector("#address").nextElementSibling;
-if(clearCoordinate.nodeName == "A") {
+if (clearCoordinate.nodeName == "A") {
 	console.log("removed: " + clearCoordinate.nodeName);
 	clearCoordinate.remove();
 }
@@ -12,23 +13,26 @@ if(clearCoordinate.nodeName == "A") {
 // Add Copy to clipboard buttons
 const companyInputs = saveForm.querySelectorAll("input");
 
-for(let i = 0; i < companyInputs.length; i++) {
-	if(companyInputs[i].classList.contains('input-text')) {
+for (let i = 0; i < companyInputs.length; i++) {
+	if (companyInputs[i].classList.contains("input-text")) {
 		let copyButton = document.createElement("img");
-		
+
 		copyButton.src = "https://laurentiuandrei.com/images/copy.png";
-		copyButton.setAttribute("id","copyButtonID");
+		copyButton.setAttribute("id", "copyButtonID");
 		// copyButton.addEventListener("click", function() {
 		// 	navigator.clipboard.writeText(companyInputs[i].value);
 		// });
-		
-		companyInputs[i].parentNode.insertBefore(copyButton, companyInputs[i].nextSibling);
+
+		companyInputs[i].parentNode.insertBefore(
+			copyButton,
+			companyInputs[i].nextSibling
+		);
 	}
 }
 
 // Add click events only to the copy buttons
-saveForm.addEventListener("click", function(e) {
-	if(e.target.getAttribute("id") == "copyButtonID") {
+saveForm.addEventListener("click", function (e) {
+	if (e.target.getAttribute("id") == "copyButtonID") {
 		navigator.clipboard.writeText(e.target.previousElementSibling.value);
 	}
 });
@@ -39,12 +43,11 @@ const elementsToRemove = [
 	"#navbar-container > div",
 	"#navbar-content-title",
 	"#basicPage > h2 > span:nth-child(2)",
-	"#basicNote > a"
+	"#basicNote > a",
 ];
 
-
-for(let i = 0; i < elementsToRemove.length; i++) {
-	if(elementsToRemove[i]) {
+for (let i = 0; i < elementsToRemove.length; i++) {
+	if (elementsToRemove[i]) {
 		document.querySelector(elementsToRemove[i]).remove();
 	}
 }
@@ -56,13 +59,13 @@ const elementsToRemoveStyleFrom = [
 	"#mainview",
 	"#basicPage > h2 > span",
 	"#basicNote",
-	"#basicNote > div"
+	"#basicNote > div",
 ];
 
-for(let i = 0; i < elementsToRemoveStyleFrom.length; i++) {
+for (let i = 0; i < elementsToRemoveStyleFrom.length; i++) {
 	let target = document.querySelector(elementsToRemoveStyleFrom[i]);
-	
-	if(target) {
+
+	if (target) {
 		target.removeAttribute("style");
 	}
 }
@@ -85,8 +88,8 @@ for(let i = 0; i < elementsToRemoveStyleFrom.length; i++) {
 
 // Select and remove the notification section. Needs to happen before moving the notes
 const notificationSection = saveForm.lastElementChild;
-if(notificationSection) {
-    notificationSection.remove();
+if (notificationSection) {
+	notificationSection.remove();
 }
 
 // Ad Plan
@@ -113,23 +116,25 @@ const companyFieldsToRemove = [
 	"Regional Address",
 	"Area1",
 	"Area2",
-	"Area3"
+	"Area3",
 ];
 
 const companyLabels = document.querySelectorAll("label");
 
-for(let i = 0; i < companyLabels.length; i++) {
-	if(companyFieldsToRemove.includes(companyLabels[i].textContent)) {
+for (let i = 0; i < companyLabels.length; i++) {
+	if (companyFieldsToRemove.includes(companyLabels[i].textContent)) {
 		companyLabels[i].parentNode.remove();
 	}
 }
 
 // Move Address to the bottom of contact
-document.querySelector("#email").parentNode.parentNode.append(document.querySelector("#address").parentNode);
+document
+	.querySelector("#email")
+	.parentNode.parentNode.append(document.querySelector("#address").parentNode);
 
 // Remove adjust location button
 const adjustLocation = document.querySelector("#adjust_location");
-if(adjustLocation) {
+if (adjustLocation) {
 	adjustLocation.remove();
 }
 
@@ -138,14 +143,10 @@ document.querySelector("#address").parentNode.previousElementSibling.remove();
 
 // Remove sections based on h3 names
 const headers = document.querySelectorAll("h3");
-const headersToRemove = [
-	"URIs",
-	"Social Icon",
-	"Location"
-];
+const headersToRemove = ["URIs", "Social Icon", "Location"];
 
-for(let i = 0; i < headers.length; i++) {
-	if(headersToRemove.includes(headers[i].textContent)) {
+for (let i = 0; i < headers.length; i++) {
+	if (headersToRemove.includes(headers[i].textContent)) {
 		headers[i].parentNode.remove();
 	}
 }
@@ -154,15 +155,15 @@ for(let i = 0; i < headers.length; i++) {
 var address = document.querySelector("#address");
 var newAddress = document.createElement("textarea");
 
-newAddress.setAttribute("id","newAddress");
+newAddress.setAttribute("id", "newAddress");
 newAddress.textContent = address.value;
 
 address.after(newAddress);
 address.style.display = "none";
 
-newAddress.addEventListener("blur", function(e) {
+newAddress.addEventListener("blur", function (e) {
 	address.value = newAddress.value;
-    findPostCodeFromAddress(newAddress.value);
+	findPostCodeFromAddress(newAddress.value);
 });
 
 // Move the postcode under the address
@@ -172,40 +173,46 @@ insertAfter(postCode.parentNode, newAddress.parentNode);
 findPostCodeFromAddress(newAddress.value);
 
 function insertAfter(newNode, existingNode) {
-    existingNode.parentNode.insertBefore(newNode, existingNode.nextSibling);
+	existingNode.parentNode.insertBefore(newNode, existingNode.nextSibling);
 }
 
 // Rename name label to legal name
 const legalName = document.querySelector("#name");
 
-if(legalName.previousElementSibling.textContent == "Name") {
+if (legalName.previousElementSibling.textContent == "Name") {
 	legalName.previousElementSibling.textContent = "Legal Name test";
 }
 
-// Create "Other" section 
-noteSection.insertAdjacentHTML("afterend", "<section id='others'><h3>Others</h3><span class='mid_sec'><fieldset></fieldset></span></section>");
+// Create "Other" section
+noteSection.insertAdjacentHTML(
+	"afterend",
+	"<section id='others'><h3>Others</h3><span class='mid_sec'><fieldset></fieldset></span></section>"
+);
 
 // Add IDs to sections
-const sectionIDs = [
-	"Basic",
-	"Contact",
-	"Location"
-];
+const sectionIDs = ["Basic", "Contact", "Location"];
 
-for(let i = 0; i < headers.length; i++) {
-	if(sectionIDs.includes(headers[i].textContent)) {
-		headers[i].parentNode.setAttribute("id", headers[i].textContent.toLowerCase());
+for (let i = 0; i < headers.length; i++) {
+	if (sectionIDs.includes(headers[i].textContent)) {
+		headers[i].parentNode.setAttribute(
+			"id",
+			headers[i].textContent.toLowerCase()
+		);
 	}
 }
 
 // Move fields to the other section
-const basicFields = document.querySelectorAll("#basic span.mid_sec > fieldset > div");
+const basicFields = document.querySelectorAll(
+	"#basic span.mid_sec > fieldset > div"
+);
 const staffField = document.querySelector("#staff");
 
-for(let i = 0; i < basicFields.length; i++) {
-	if(basicFields[i] == staffField.parentNode) {
-		for(i++; i < basicFields.length; i++){
-			document.querySelector("#others > span.mid_sec > fieldset").append(basicFields[i]);
+for (let i = 0; i < basicFields.length; i++) {
+	if (basicFields[i] == staffField.parentNode) {
+		for (i++; i < basicFields.length; i++) {
+			document
+				.querySelector("#others > span.mid_sec > fieldset")
+				.append(basicFields[i]);
 		}
 		break;
 	}
@@ -216,26 +223,29 @@ const logoSection = document.querySelector("#basic > span.con_right");
 
 document.querySelector("#basic > span.mid_sec").before(logoSection);
 
-
 // Remove the QC area
-const statusElements = document.querySelector("#contact > span.con_right").childNodes;
+const statusElements = document.querySelector(
+	"#contact > span.con_right"
+).childNodes;
 
-for(let i = 0; i < statusElements.length; i++) {
-	if(statusElements[i].nodeName == "#text" || statusElements[i].nodeName == "BR") {
+for (let i = 0; i < statusElements.length; i++) {
+	if (
+		statusElements[i].nodeName == "#text" ||
+		statusElements[i].nodeName == "BR"
+	) {
 		statusElements[i].remove();
 	}
 }
 
-
 // Find the element with type="hidden" then remove element from next position until the array shortens to the position of the next element
-for(let i = 0; i < statusElements.length; i++) {
-	if(statusElements[i].type == "hidden") {
-		for(i++; i < statusElements.length;) {
+for (let i = 0; i < statusElements.length; i++) {
+	if (statusElements[i].type == "hidden") {
+		for (i++; i < statusElements.length; ) {
 			statusElements[i].remove();
 		}
-			
+
 		break;
-	}	
+	}
 }
 
 // Add center class to #basicNote
@@ -243,50 +253,50 @@ noteSection.classList.add("center-element");
 
 // Finds the post code based on the address
 function findPostCodeFromAddress(str) {
-    const addressElements = str.split(",");
-    let countOfOnlyDigits = 0;
+	const addressElements = str.split(",");
+	let countOfOnlyDigits = 0;
 
-    // Loop through the address to find the post code
-    for(let i = 0; i < addressElements.length; i++) {
-        let trimmed = addressElements[i].trim();
+	// Loop through the address to find the post code
+	for (let i = 0; i < addressElements.length; i++) {
+		let trimmed = addressElements[i].trim();
 
-        // Post code is valid if it contains only 4 digits or more
-        if(matchesPattern(trimmed) && trimmed.length >= 4) {
-            postCode.value = trimmed;
-            countOfOnlyDigits++;
-        }
-        // else {
-        //     if(!countOfOnlyDigits) {
-        //         postCode.value = "";
-        //     }
-        // }
-    }
+		// Post code is valid if it contains only 4 digits or more
+		if (matchesPattern(trimmed) && trimmed.length >= 4) {
+			postCode.value = trimmed;
+			countOfOnlyDigits++;
+		}
+		// else {
+		//     if(!countOfOnlyDigits) {
+		//         postCode.value = "";
+		//     }
+		// }
+	}
 
-    if(countOfOnlyDigits == 0) styleInputText(postCode, 'missing');
-    else if(countOfOnlyDigits == 1) styleInputText(postCode, 'success');
-    else styleInputText(postCode, 'conflict');
+	if (countOfOnlyDigits == 0) styleInputText(postCode, "missing");
+	else if (countOfOnlyDigits == 1) styleInputText(postCode, "success");
+	else styleInputText(postCode, "conflict");
 }
 
 function styleInputText(element, status) {
-    switch(status) {
-        case 'conflict':
-            element.style.border = '1px solid #ff8600';
-            element.style.background = '#ffe9da';
-            break;
-        case 'success':
-            element.style.border = '1px solid #008805';
-            element.style.background = '#e2ffda';
-            break;
-        case 'missing':
-            element.style.border = '1px solid #b70000';
-            element.style.background = '#ffdada';
-            break;
-    }
+	switch (status) {
+		case "conflict":
+			element.style.border = "1px solid #ff8600";
+			element.style.background = "#ffe9da";
+			break;
+		case "success":
+			element.style.border = "1px solid #008805";
+			element.style.background = "#e2ffda";
+			break;
+		case "missing":
+			element.style.border = "1px solid #b70000";
+			element.style.background = "#ffdada";
+			break;
+	}
 }
 
 // Checks if a string contains only digits
 function containsOnlyDigits(str) {
-    for (let i = 0; i < str.length; i++) {
+	for (let i = 0; i < str.length; i++) {
 		if (isNaN(parseInt(str[i]))) {
 			return false; // If a non-digit character is found, return false
 		}
@@ -304,6 +314,75 @@ function containsOnlyDigits(str) {
 $ asserts the end of the string. */
 
 function matchesPattern(str) {
-    const pattern = /^[\d\s-]+$/;
-    return pattern.test(str);
+	const pattern = /^[\d\s-]+$/;
+	return pattern.test(str);
+}
+
+// Phone formatting
+var countries;
+
+fetch(chrome.runtime.getURL("resources/countries.json"))
+	.then((response) => response.json())
+	.then((data) => {
+		countries = data;
+		formatPhoneNumber();
+	});
+
+// Format the phone number every time we click out of the phone num field
+phoneNumber.addEventListener("blur", function () {
+	formatPhoneNumber();
+});
+
+const phoneFormats = [
+	{ digits: 12, format: /(\d{4})(\d{4})(\d{4})/g },
+	{ digits: 11, format: /(\d{4})(\d{4})(\d{3})/g },
+	{ digits: 10, format: /(\d{4})(\d{3})(\d{3})/g },
+	{ digits: 9, format: /(\d{3})(\d{3})(\d{3})/g },
+	{ digits: 8, format: /(\d{4})(\d{4})/g },
+	{ digits: 7, format: /(\d{4})(\d{3})/g },
+	{ digits: 6, format: /(\d{3})(\d{3})/g },
+];
+
+function formatPhoneNumber() {
+    var phone = phoneNumber.value;
+
+    // if phone field is empty, don't go any further
+    if(!phone) return;
+
+	const countryName = getCountryName();
+	const countryCode = countries[countryName];
+	
+	// remove all non numerical characters
+	phone = phone.replace(/\D/g, "");
+
+	// remove the country code if found
+	if (phone.startsWith(countryCode)) {
+		phone = phone.replace(new RegExp(countryCode), "");
+	}
+
+	// deconstruct the digits/format based on phone.length
+	const { digits, format } =
+		phoneFormats.find((phoneA) => phoneA.digits === phone.length) || {};
+    
+    // check if the digits/format were found, if not, return
+	if (!digits || !format) {
+        return;
+	}
+
+	// apply the correct format based on the amount of digit pairs
+	if (isBetween(digits, 9, 12)) phone = phone.replace(format, "$1 $2 $3");
+	else if (isBetween(digits, 6, 8)) phone = phone.replace(format, "$1 $2");
+
+	// Add + before country code and an empty space after, lastly add the formatted phone number
+	phone = `+${countryCode} ${phone}`;
+	phoneNumber.value = phone;
+}
+
+function getCountryName() {
+	// Returns country name as a string
+	return document.querySelector("a.chosen-single span").textContent;
+}
+
+function isBetween(number, lowerBound, upperBound) {
+	return number >= lowerBound && number <= upperBound;
 }

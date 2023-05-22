@@ -16,5 +16,11 @@
     ],
     "host_permissions": [
         "https://admin.enf.me/*"
-    ]
+    ],
+    "web_accessible_resources": [
+        {
+          "resources": [ "resources/countries.json" ],
+          "matches": [ "https://admin.enf.me/*" ]
+        }
+      ]
 }
