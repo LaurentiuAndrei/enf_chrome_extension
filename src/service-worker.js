@@ -1,13 +1,12 @@
 var urlFilter = {
-	url: [{ hostEquals: "admin.enf.me" }]
+	url: [{ hostEquals: "admin.enf.me" }],
 };
 
 chrome.webNavigation.onDOMContentLoaded.addListener(function (tab) {
 	var tabId = tab.tabId;
 	var url = tab.url;
 
-    if (url.includes("admin.enf.me/solar/ID/edit")) {
-        console.log("on basic page");
+	if (url.includes("admin.enf.me/solar/ID/edit")) {
 		chrome.scripting.executeScript({
 			target: { tabId: tabId },
 			files: ["src/company/company.js"],
@@ -17,6 +16,13 @@ chrome.webNavigation.onDOMContentLoaded.addListener(function (tab) {
 			files: ["src/company/company.css"],
 		});
 	} else if (url.includes("admin.enf.me/solar/ID/classification")) {
-		console.log("on classification page");
-    }
+        // classification page
+	}
 }, urlFilter);
+
+chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+	if (request.type === "strings") {
+		var searchInfo = request.data;
+        chrome.tabs.create({ url: `https://www.google.com/search?q=site:${searchInfo[0]} ${searchInfo[1]}`});
+	}
+});

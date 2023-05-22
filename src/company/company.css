@@ -226,4 +226,23 @@
 	opacity: 1;
 }
 
+.img_holder {
+    max-height: 100px;
+}
+
+#googleSearch {
+	width: 20px !important;
+	height: 20px !important;
+	position: absolute !important;
+	right: 5px !important;
+	margin-top: 5px !important;
+	z-index: 2 !important;
+    background-repeat: no-repeat;
+    background-size: 20px;
+}
+
+#googleSearch:hover {
+    cursor:pointer;
+}
+
 /* End TOOLTIP */

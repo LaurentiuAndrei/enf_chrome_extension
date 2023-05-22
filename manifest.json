@@ -1,30 +1,28 @@
 {
-    "name": "ENF Backend Improvements DEVELOPMENT BUILD",
-    "description": "Adding new features to the website.",
-    "version": "0.1.2",
-    "manifest_version": 3,
-    "author": "Laurentiu Andrei",
+	"name": "ENF Backend Improvements DEVELOPMENT BUILD",
+	"description": "Adding new features to the website.",
+	"version": "0.1.2",
+	"manifest_version": 3,
+	"author": "Laurentiu Andrei",
 
-    "background": {
-      "service_worker": "src/service-worker.js"
-    },
+	"background": {
+		"service_worker": "src/service-worker.js"
+	},
 
-    "permissions": [
-      "scripting",
-      "activeTab",
-      "webNavigation"
-    ],
-    "host_permissions": [
-        "https://admin.enf.me/*"
-    ],
-    "web_accessible_resources": [
-        {
-          "resources": [ "resources/countries.json" ],
-          "matches": [ "https://admin.enf.me/*" ]
-        },
-        {
-            "resources": [ "resources/images/copy-icon.png" ],
-            "matches": [ "https://admin.enf.me/*" ]
-          }
-      ]
+	"permissions": ["scripting", "activeTab", "webNavigation", "tabs"],
+	"host_permissions": ["https://admin.enf.me/*"],
+	"web_accessible_resources": [
+		{
+			"resources": ["resources/countries.json"],
+			"matches": ["https://admin.enf.me/*"]
+		},
+		{
+			"resources": ["resources/images/copy-icon.png"],
+			"matches": ["https://admin.enf.me/*"]
+		},
+		{
+			"resources": ["resources/images/google-search-icon.png"],
+			"matches": ["https://admin.enf.me/*"]
+		}
+	]
 }

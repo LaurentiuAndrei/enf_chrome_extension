@@ -6,25 +6,33 @@ const phoneNumber = document.querySelector("#phone");
 // Remove "Clear coordinate" before adding copy buttons
 const clearCoordinate = document.querySelector("#address").nextElementSibling;
 if (clearCoordinate.nodeName == "A") {
-	console.log("removed: " + clearCoordinate.nodeName);
 	clearCoordinate.remove();
 }
 
+// Adding the copy to clipboard buttons and their tooltips
 addCopyToClipboardButtons();
 
 // Add click events only to the copy buttons
 saveForm.addEventListener("click", function (e) {
-	if (e.target.getAttribute("id") == "copyButtonID") {
+	let elementID = e.target.getAttribute("id");
+
+	if (elementID == "copyButtonID") {
 		navigator.clipboard.writeText(e.target.previousElementSibling.value);
-        e.target.firstElementChild.innerHTML = "Copied";
+		e.target.firstElementChild.innerHTML = "Copied";
+	}
+    else if (elementID == "googleSearch") {
+        const companyName = e.target.previousElementSibling.value;
+        const website = document.querySelector("#website").value;
+		const searchInfo = [website, companyName];
+
+		chrome.runtime.sendMessage({ type: "strings", data: searchInfo });
 	}
 });
 
 // Restore the contents of tooltip after exitig the copy button area
 saveForm.addEventListener("mouseout", function (e) {
 	if (e.target.getAttribute("id") == "copyButtonID") {
-		navigator.clipboard.writeText(e.target.previousElementSibling.value);
-        e.target.firstElementChild.innerHTML = "Copy to clipboard";
+		e.target.firstElementChild.innerHTML = "Copy to clipboard";
 	}
 });
 
@@ -32,44 +40,10 @@ saveForm.addEventListener("mouseout", function (e) {
 removeUnusedFields();
 
 // Temporarely remove Inline style
-document.querySelector("#address").parentNode.removeAttribute("style");
-
-const elementsToRemoveStyleFrom = [
-	"#mainview",
-	"#basicPage > h2 > span",
-	"#basicNote",
-	"#basicNote > div",
-];
-
-for (let i = 0; i < elementsToRemoveStyleFrom.length; i++) {
-	let target = document.querySelector(elementsToRemoveStyleFrom[i]);
-
-	if (target) {
-		target.removeAttribute("style");
-	}
-}
-
-// Remove inline style for the notes
-// const theNotes = noteSection.querySelectorAll("fieldset > ul > li");
-
-// for (let i = 0; i < theNotes.length; i++) {
-// 	if(theNotes[i]) {
-// 		theNotes[i].removeAttribute("style");
-// 	}
-// }
-
-// Remove ALL inline styles from the page
-// const allElements = document.querySelectorAll("*");
-
-// for (let i = 0; i < allElements.length; i++) {
-//     allElements[i].removeAttribute("style");
-// }
+tempRemoveInlineStyles();
 
 // Select and remove the notification section. Needs to happen before moving the notes
-const notificationSection = saveForm.lastElementChild;
-if (notificationSection) {
-	notificationSection.remove();
-}
+removeNotificationSection();
 
 // Ad Plan
 const adPlan = document.querySelector("#basicNote > div");
@@ -81,30 +55,7 @@ document.querySelector("div.displaytable").before(adPlan);
 saveForm.append(noteSection);
 
 // Remove fields based on label names
-const companyFieldsToRemove = [
-	"Enquiry Suspension：",
-	"E-mail (Solar System Enquiries)：",
-	"E-mail (Panel Enquiries)：",
-	"E-mail (Inverter Enquiries)：",
-	"E-mail (Mounting System Enquiries)：",
-	"E-mail (Cell Enquiries)：",
-	"E-mail (EVA Enquiries)：",
-	"E-mail (Backsheet Enquiries)：",
-	"E-mail (Charge Controller Enquiries)：",
-	"E-mail (Storage System Enquiries)：",
-	"Regional Address",
-	"Area1",
-	"Area2",
-	"Area3",
-];
-
-const companyLabels = document.querySelectorAll("label");
-
-for (let i = 0; i < companyLabels.length; i++) {
-	if (companyFieldsToRemove.includes(companyLabels[i].textContent)) {
-		companyLabels[i].parentNode.remove();
-	}
-}
+removeCompanyFields();
 
 // Move Address to the bottom of contact
 document
@@ -146,50 +97,130 @@ newAddress.addEventListener("blur", function (e) {
 });
 
 // Move the postcode under the address
-insertAfter(postCode.parentNode, newAddress.parentNode);
+newAddress.parentNode.insertAdjacentElement("afterend", postcode.parentNode);
 
 // Check if the post code can be found in the address
 findPostCodeFromAddress(newAddress.value);
 
-function removeUnusedFields() {
-    const elementsToRemove = [
-        "body > div > div.top_line",
-        "#navbar-container > div",
-        "#navbar-content-title",
-        "#basicPage > h2 > span:nth-child(2)",
-        "#basicNote > a",
-    ];
+function removeCompanyFields() {
+	const companyFieldsToRemove = [
+		"Enquiry Suspension：",
+		"E-mail (Solar System Enquiries)：",
+		"E-mail (Panel Enquiries)：",
+		"E-mail (Inverter Enquiries)：",
+		"E-mail (Mounting System Enquiries)：",
+		"E-mail (Cell Enquiries)：",
+		"E-mail (EVA Enquiries)：",
+		"E-mail (Backsheet Enquiries)：",
+		"E-mail (Charge Controller Enquiries)：",
+		"E-mail (Storage System Enquiries)：",
+		"Regional Address",
+		"Area1",
+		"Area2",
+		"Area3",
+	];
 
-    for (let i = 0; i < elementsToRemove.length; i++) {
-        if (elementsToRemove[i]) {
-            document.querySelector(elementsToRemove[i]).remove();
-        }
-    }
+	const companyLabels = document.querySelectorAll("label");
+
+	for (let i = 0; i < companyLabels.length; i++) {
+		if (companyFieldsToRemove.includes(companyLabels[i].textContent)) {
+			companyLabels[i].parentNode.remove();
+		}
+	}
+}
+
+function removeNotificationSection() {
+	const notificationSection = saveForm.lastElementChild;
+	if (notificationSection) {
+		notificationSection.remove();
+	}
+}
+
+function tempRemoveInlineStyles() {
+	document.querySelector("#address").parentNode.removeAttribute("style");
+
+	const elementsToRemoveStyleFrom = [
+		"#mainview",
+		"#basicPage > h2 > span",
+		"#basicNote",
+		"#basicNote > div",
+	];
+
+	for (let i = 0; i < elementsToRemoveStyleFrom.length; i++) {
+		let target = document.querySelector(elementsToRemoveStyleFrom[i]);
+
+		if (target) {
+			target.removeAttribute("style");
+		}
+	}
+
+	// Remove inline style for the notes
+	// const theNotes = noteSection.querySelectorAll("fieldset > ul > li");
+
+	// for (let i = 0; i < theNotes.length; i++) {
+	// 	if(theNotes[i]) {
+	// 		theNotes[i].removeAttribute("style");
+	// 	}
+	// }
+
+	// Remove ALL inline styles from the page
+	// const allElements = document.querySelectorAll("*");
+
+	// for (let i = 0; i < allElements.length; i++) {
+	//     allElements[i].removeAttribute("style");
+	// }
+}
+
+function removeUnusedFields() {
+	const elementsToRemove = [
+		"body > div > div.top_line",
+		"#navbar-container > div",
+		"#navbar-content-title",
+		"#basicPage > h2 > span:nth-child(2)",
+		"#basicNote > a",
+	];
+
+	for (let i = 0; i < elementsToRemove.length; i++) {
+		if (elementsToRemove[i]) {
+			document.querySelector(elementsToRemove[i]).remove();
+		}
+	}
 }
 
 function addCopyToClipboardButtons() {
-    const companyInputs = saveForm.querySelectorAll("input.input-text");
-    const imageURL = chrome.runtime.getURL('resources/images/copy-icon.png');
-    const copyButton = document.createElement("div");
-    const toolTip = document.createElement("span");
-    
-    copyButton.style.backgroundImage = `url(${imageURL})`;
-    copyButton.setAttribute("id", "copyButtonID");
-    
-    toolTip.classList.add("tooltiptext");
-    toolTip.setAttribute("id", "myTooltip");
-    toolTip.innerHTML = "Copy to clipboard";
+	const companyInputs = saveForm.querySelectorAll("input.input-text");
+	const imageURL = chrome.runtime.getURL("resources/images/copy-icon.png");
+	const copyButton = document.createElement("div");
+	const toolTip = document.createElement("span");
 
-    copyButton.appendChild(toolTip.cloneNode(true));
+	copyButton.style.backgroundImage = `url(${imageURL})`;
+	copyButton.setAttribute("id", "copyButtonID");
 
-    for(inputField of companyInputs) {
-        // Add a copy button for every input text field
-        inputField.insertAdjacentElement('afterend', copyButton.cloneNode(true));
-    }
+	toolTip.classList.add("tooltiptext");
+	toolTip.setAttribute("id", "myTooltip");
+	toolTip.innerHTML = "Copy to clipboard";
+
+	copyButton.appendChild(toolTip.cloneNode(true));
+
+	for (inputField of companyInputs) {
+		// Add a copy button for every input text field
+		inputField.insertAdjacentElement("afterend", copyButton.cloneNode(true));
+	}
 }
 
-function insertAfter(newNode, existingNode) {
-	existingNode.parentNode.insertBefore(newNode, existingNode.nextSibling);
+addGoogleSearchButton();
+
+function addGoogleSearchButton() {
+	const googleSearch = document.createElement("img");
+
+	googleSearch.setAttribute("id", "googleSearch");
+	googleSearch.setAttribute(
+		"src",
+		chrome.runtime.getURL("resources/images/google-search-icon.png")
+	);
+
+	document.querySelector("#name").insertAdjacentElement("afterend", googleSearch);
+	document.querySelector("#shortName").insertAdjacentElement("afterend", googleSearch.cloneNode());
 }
 
 // Rename name label to legal name
@@ -360,14 +391,14 @@ const phoneFormats = [
 ];
 
 function formatPhoneNumber() {
-    var phone = phoneNumber.value;
+	var phone = phoneNumber.value;
 
-    // if phone field is empty, don't go any further
-    if(!phone) return;
+	// if phone field is empty, don't go any further
+	if (!phone) return;
 
 	const countryName = getCountryName();
 	const countryCode = countries[countryName];
-	
+
 	// remove all non numerical characters
 	phone = phone.replace(/\D/g, "");
 
@@ -379,10 +410,10 @@ function formatPhoneNumber() {
 	// deconstruct the digits/format based on phone.length
 	const { digits, format } =
 		phoneFormats.find((phoneA) => phoneA.digits === phone.length) || {};
-    
-    // check if the digits/format were found, if not, return
+
+	// check if the digits/format were found, if not, return
 	if (!digits || !format) {
-        return;
+		return;
 	}
 
 	// apply the correct format based on the amount of digit pairs
