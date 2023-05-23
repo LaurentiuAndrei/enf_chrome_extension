@@ -6,8 +6,8 @@
 	right: -50px !important;
 	margin-top: 5px !important;
 	z-index: 2 !important;
-    background-repeat: no-repeat;
-    background-size: 20px;
+	background-repeat: no-repeat;
+	background-size: 20px;
 }
 
 #copyButtonID:hover {
@@ -145,6 +145,7 @@
 	height: 200px !important;
 	width: 280px !important;
 	overflow-x: hidden !important;
+    resize: vertical !important;
 }
 
 /* End notes content */
@@ -227,7 +228,7 @@
 }
 
 .img_holder {
-    max-height: 100px;
+	max-height: 100px;
 }
 
 #googleSearch {
@@ -237,12 +238,105 @@
 	right: 5px !important;
 	margin-top: 5px !important;
 	z-index: 2 !important;
-    background-repeat: no-repeat;
-    background-size: 20px;
+	background-repeat: no-repeat;
+	background-size: 20px;
 }
 
 #googleSearch:hover {
-    cursor:pointer;
+	cursor: pointer;
 }
 
 /* End TOOLTIP */
+
+/* Using Flex Box for the inputs*/
+/* fieldset {
+	display: flex !important;
+	flex-direction: column !important;
+	align-items: center !important;
+}
+
+fieldset label {
+	display: block !important;
+	color: rgb(101, 104, 111) !important;
+
+	font-family: Inter, sans-serif !important;
+	font-size: 14px !important;
+	font-weight: 450 !important;
+	line-height: 21px !important;
+
+	float: none !important;
+	right: initial !important;
+	position: relative !important;
+}
+
+input[type="text"],
+input[type="number"] {
+	width: 300px !important;
+	height: 32px !important;
+
+	border: 1px solid rgba(33, 35, 44, 0.24) !important;
+	border-radius: 4px !important;
+	box-shadow: rgba(33, 35, 44, 0.08) 0px 1px 2px 0px inset !important;
+
+	box-sizing: border-box !important;
+
+	margin: 0px 0px 5px 0px !important;
+
+	padding-bottom: 4px !important;
+	padding-left: 8px !important;
+	padding-right: 8px !important;
+	padding-top: 4px !important;
+
+	font-family: Inter, sans-serif !important;
+	font-size: 14px !important;
+	font-weight: 450 !important;
+
+	float: none !important;
+}
+
+input[type="text"]:focus {
+	border: 1px solid #2b74da !important;
+	outline: none !important;
+}
+
+input.input-text {
+	background: white !important;
+} */
+
+/* No-flexbox for inputs*/
+fieldset label {
+	color: rgb(101, 104, 111) !important;
+
+	font-family: Inter, sans-serif !important;
+	font-size: 12px !important;
+	font-weight: 450 !important;
+	line-height: 21px !important;
+}
+
+input[type="text"],
+input[type="number"],textarea {
+	/* height: 32px !important; */
+
+	border: 1px solid rgba(33, 35, 44, 0.24) !important;
+	border-radius: 4px !important;
+	box-shadow: rgba(33, 35, 44, 0.08) 0px 1px 2px 0px inset !important;
+
+	box-sizing: content-box !important;
+
+    padding: 4px 8px !important;
+
+	font-family: Inter, sans-serif !important;
+	font-size: 14px !important;
+	font-weight: 450 !important;
+}
+
+form fieldset input[type="text"]:focus,
+form fieldset textarea:focus {
+	border: 1px solid #2b74da !important;
+	outline: none !important;
+    padding: 4px 8px !important;
+}
+
+form fieldset input.input-text {
+	background: white !important;
+}
