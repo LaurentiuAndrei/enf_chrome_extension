@@ -195,11 +195,9 @@ function removeUnusedFields() {
 
 function addCopyToClipboardButtons() {
 	const companyInputs = saveForm.querySelectorAll("input.input-text");
-	const imageURL = chrome.runtime.getURL("resources/images/copy-icon.png");
 	const copyButton = document.createElement("div");
 	const toolTip = document.createElement("span");
 
-	copyButton.style.backgroundImage = `url(${imageURL})`;
 	copyButton.setAttribute("id", "copyButtonID");
 
 	toolTip.classList.add("tooltiptext");
@@ -217,14 +215,11 @@ function addCopyToClipboardButtons() {
 
 addGoogleSearchButton();
 
+// Add the google search button
 function addGoogleSearchButton() {
-	const googleSearch = document.createElement("img");
+	const googleSearch = document.createElement("div");
 
 	googleSearch.setAttribute("id", "googleSearch");
-	googleSearch.setAttribute(
-		"src",
-		chrome.runtime.getURL("resources/images/google-search-icon.png")
-	);
 
 	document.querySelector("#name").insertAdjacentElement("afterend", googleSearch);
 	document.querySelector("#shortName").insertAdjacentElement("afterend", googleSearch.cloneNode());

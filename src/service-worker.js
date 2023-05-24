@@ -22,7 +22,9 @@ chrome.webNavigation.onDOMContentLoaded.addListener(function (tab) {
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 	if (request.type === "strings") {
-		var searchInfo = request.data;
-        chrome.tabs.create({ url: `https://www.google.com/search?q=site:${searchInfo[0]} ${searchInfo[1]}`});
+        const [website, companyName] = request.data;
+        const encodedSearchInfo = encodeURIComponent(companyName);
+
+        chrome.tabs.create({ url: `https://www.google.com/search?q=site:${website} ${encodedSearchInfo}`});
 	}
 });
