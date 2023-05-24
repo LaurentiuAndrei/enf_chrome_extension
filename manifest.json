@@ -13,7 +13,11 @@
 	"host_permissions": ["https://admin.enf.me/*"],
 	"web_accessible_resources": [
 		{
-			"resources": ["resources/countries.json"],
+			"resources": ["data/phone_formats.json"],
+			"matches": ["https://admin.enf.me/*"]
+        },
+        {
+			"resources": ["data/post_code_formats.json"],
 			"matches": ["https://admin.enf.me/*"]
 		}
 	]

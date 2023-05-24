@@ -1,6 +1,6 @@
 :root {
-    --icon-top: 25px;
-    --icon-size: 20px;
+    --icon-top: 27px;
+    --icon-size: 15px;
 }
 
 #mainview {
@@ -186,24 +186,29 @@
 }
 
 /* Start Tooltip */
-#copyButtonID .tooltiptext {
+.tooltiptext {
 	visibility: hidden;
-	width: 140px;
+	/* width: 140px; */
 	background-color: #555;
 	color: #fff;
 	text-align: center;
 	border-radius: 6px;
-	padding: 10px;
+	padding: 10px 20px;
 	position: absolute;
 	z-index: 1;
 	bottom: 150%;
 	left: 50%;
-	margin-left: -80px;
+    transform: translateX(-50%);
 	opacity: 0;
 	transition: opacity 0.3s;
+    white-space: nowrap;
 }
 
-#copyButtonID .tooltiptext::after {
+.tooltiptext strong {
+    font-weight: bold;
+}
+
+.tooltiptext::after {
 	content: "";
 	position: absolute;
 	top: 100%;
@@ -214,7 +219,8 @@
 	border-color: #555 transparent transparent transparent;
 }
 
-#copyButtonID:hover .tooltiptext {
+#copyButtonID:hover .tooltiptext,
+.helpButton:hover .tooltiptext {
 	visibility: visible;
 	opacity: 1;
 }
@@ -229,9 +235,10 @@
 }
 
 /* START of ICONS */
-#googleSearch, #copyButtonID {
-    width: 20px;
-	height: 20px;
+#googleSearch, #copyButtonID, .helpButton {
+    /* width: var(--icon-size); */
+    width: var(--icon-size);
+    height: var(--icon-size);
 
 	position: absolute;
     top: var(--icon-top);
@@ -239,12 +246,22 @@
 }
 
 #googleSearch:hover,
-#copyButtonID:hover {
+#copyButtonID:hover,
+.helpButton:hover {
 	cursor: pointer;
 }
 
+.helpButton .tooltiptext {
+    text-align: left;
+}
+
+.helpButton {
+    left: -20px;
+    background: url("https://laurentiuandrei.com/enf/extension/help-web-button.png") no-repeat center/100%;
+}
+
 #copyButtonID {
-	right: -25px;
+	right: -20px;
 
     background: url("https://laurentiuandrei.com/enf/extension/copy-icon.png") no-repeat center/100%;
 }

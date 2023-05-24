@@ -190,9 +190,9 @@ function removeUnusedFields() {
 		"#basicNote > a"
 	];
 
-	for (let i = 0; i < elementsToRemove.length; i++) {
-		if (elementsToRemove[i]) {
-			document.querySelector(elementsToRemove[i]).remove();
+    for(let element of elementsToRemove) {
+		if (element) {
+			document.querySelector(element).remove();
 		}
 	}
 }
@@ -200,7 +200,7 @@ function removeUnusedFields() {
 function addCopyToClipboardButtons() {
 	const companyInputs = saveForm.querySelectorAll("input.input-text");
 	const copyButton = document.createElement("div");
-	const toolTip = document.createElement("span");
+	const toolTip = document.createElement("div");
 
 	copyButton.setAttribute("id", "copyButtonID");
 
@@ -214,6 +214,31 @@ function addCopyToClipboardButtons() {
         copyButton.setAttribute("copy-from", inputField.getAttribute("id"));
 		inputField.insertAdjacentElement("afterend", copyButton.cloneNode(true));
 	}
+}
+
+addHelpButtons();
+
+function addHelpButtons() {
+    const helpButton = document.createElement("div");
+    const toolTip = document.createElement("div");
+
+    toolTip.classList.add("tooltiptext");
+    toolTip.innerHTML = "[COUNTRY]<br>Format: [FORMAT]";
+
+    helpButton.classList.add("helpButton");
+    helpButton.setAttribute("help-for", postCode.getAttribute("id"));
+    helpButton.appendChild(toolTip);
+
+    postCode.parentNode.insertBefore(helpButton, postCode.parentNode.firstElementChild);
+}
+
+function updateHelpButtons(e, data) {
+    const countryName = getCountryName();
+	let countryPostCode = data[countryName];
+
+    if(countryPostCode == 'none') countryPostCode = 'not using post codes';
+
+    e.innerHTML = `<strong>Country:</strong> ${countryName}<br><strong>Fomat:</strong> ${countryPostCode}`;
 }
 
 addGoogleSearchButton();
@@ -393,13 +418,27 @@ function matchesPattern(str) {
 }
 
 // Phone formatting
-var countries;
+var countryPhoneCodes;
 
-fetch(chrome.runtime.getURL("resources/countries.json"))
-	.then((response) => response.json())
+Promise.all([
+	fetch(chrome.runtime.getURL("data/phone_formats.json")),
+	fetch(chrome.runtime.getURL("data/post_code_formats.json"))
+])
+	.then((responses) => {
+		return Promise.all(responses.map((response) => response.json()));
+	})
 	.then((data) => {
-		countries = data;
-		formatPhoneNumber();
+		let phone_Formats = data[0];
+		let postCodes = data[1];
+
+        countryPhoneCodes = phone_Formats;
+        formatPhoneNumber();
+
+        const postHelpTooltip = postCode.parentNode.querySelector(".tooltiptext");
+        updateHelpButtons(postHelpTooltip, postCodes);
+	})
+	.catch((error) => {
+		console.error(error);
 	});
 
 // Format the phone number every time we click out of the phone num field
@@ -424,7 +463,7 @@ function formatPhoneNumber() {
 	if (!phone) return;
 
 	const countryName = getCountryName();
-	const countryCode = countries[countryName];
+	const countryCode = countryPhoneCodes[countryName];
 
 	// remove all non numerical characters
 	phone = phone.replace(/\D/g, "");
@@ -436,7 +475,7 @@ function formatPhoneNumber() {
 
 	// deconstruct the digits/format based on phone.length
 	const { digits, format } =
-		phoneFormats.find((phoneA) => phoneA.digits === phone.length) || {};
+        phoneFormats.find((phoneA) => phoneA.digits === phone.length) || {};
 
 	// check if the digits/format were found, if not, return
 	if (!digits || !format) {
@@ -452,8 +491,8 @@ function formatPhoneNumber() {
 	phoneNumber.value = phone;
 }
 
+// Returns country name as a string
 function getCountryName() {
-	// Returns country name as a string
 	return document.querySelector("a.chosen-single span").textContent;
 }
 
@@ -461,6 +500,7 @@ function isBetween(number, lowerBound, upperBound) {
 	return number >= lowerBound && number <= upperBound;
 }
 
+// removes the ? "tooltip" default boxes
 function removeInfoBoxes () {
     const boxes = document.querySelectorAll(".infom");
     for(box of boxes) box.remove();
