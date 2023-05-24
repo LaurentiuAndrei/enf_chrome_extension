@@ -87,7 +87,7 @@
     background: white !important;
 	border-bottom: 1px solid #eee !important;
     font-size: 20px !important;
-	color: #000 !important;
+	color: rgb(33, 35, 44) !important;
 }
 
 .page_title button {
@@ -287,7 +287,7 @@ form fieldset input[type="text"],
 form fieldset input[type="number"], 
 form fieldset textarea:not(.stick textarea) {
 	border: 1px solid rgba(33, 35, 44, 0.24) !important;
-	border-radius: 4px !important;
+	border-radius: 0px !important;
 	box-shadow: rgba(33, 35, 44, 0.08) 0px 1px 2px 0px inset !important;
 
 	box-sizing: content-box !important;
@@ -300,6 +300,8 @@ form fieldset textarea:not(.stick textarea) {
     width: 300px !important;
     margin: 0px 0px 5px 0px !important;
     float: none !important;
+
+    color: rgb(33, 35, 44) !important;
 }
 
 /* targets the input fields / textarea
@@ -335,3 +337,15 @@ form fieldset input.input-text {
     width: 100% !important;
 }
 /* country field */
+
+#postCodeStatus {
+        color: rgb(255 255 255);
+        margin-bottom: 15px;
+        display: block;
+        padding-left: 8px;
+        font-size: 10px;
+}
+
+#postcode {
+    margin-bottom: 0 !important;
+}

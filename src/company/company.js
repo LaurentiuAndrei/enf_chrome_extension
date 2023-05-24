@@ -62,6 +62,9 @@ removeCompanyFields();
 // remove the info boxes with ? near some inputs
 removeInfoBoxes ();
 
+// Insert the save button after the view button
+reorderViewSaveButtons();
+
 // Move Address to the bottom of contact
 document
 	.querySelector("#email")
@@ -96,13 +99,11 @@ newAddress.textContent = address.value;
 address.after(newAddress);
 address.style.display = "none";
 
+insertPostCodeStatusLabel();
+
 newAddress.addEventListener("blur", function (e) {
 	address.value = newAddress.value;
 	findPostCodeFromAddress(newAddress.value);
-
-    // if(!postCode.value) {
-    //     styleInputText(postCode, "normal");
-    // }
 });
 
 // Move the postcode under the address
@@ -320,33 +321,51 @@ function findPostCodeFromAddress(str) {
 
 	if (countOfOnlyDigits == 0) styleInputText(postCode, "missing");
 	else if (countOfOnlyDigits == 1) styleInputText(postCode, "success");
-	
-    // if(!postCode.value) styleInputText(postCode, "normal");
 	else styleInputText(postCode, "conflict");
 }
 
 function styleInputText(element, status) {
-	let borderStyle, backgroundStyle;
+	let borderStyle, backgroundStyle, borderColor;
+    let message = "";
+
 	switch (status) {
 		case "conflict":
-			borderStyle = "1px solid #ff8600";
+            borderColor = '#ff8600';
+			borderStyle = `1px solid ${borderColor}`;
 			backgroundStyle = "#ffe9da";
+            message = "More than 1 post code has been detected."
 			break;
 		case "success":
-			borderStyle = "1px solid #008805";
+			borderColor = '#008805';
+			borderStyle = `1px solid ${borderColor}`;
 			backgroundStyle = "#e2ffda";
+            message = "Post code has been detected."
 			break;
 		case "missing":
-			borderStyle = "1px solid #b70000";
+			borderColor = '#b70000';
+			borderStyle = `1px solid ${borderColor}`;
 			backgroundStyle = "#ffdada";
-			break;
-		case "normal":
-			borderStyle = "1px solid rgba(33, 35, 44, 0.24)";
-			backgroundStyle = "#fff";
+            message = "No post code detected."
 			break;
 	}
     element.style.setProperty("border", borderStyle, "important");
     element.style.setProperty("background", backgroundStyle, "important");
+
+    updatePostCodeStatus(message, borderColor);
+}
+
+function updatePostCodeStatus(message, color) {
+    let postCodeStatus = document.querySelector("#postCodeStatus");
+
+    postCodeStatus.innerHTML = message;
+    postCodeStatus.style.setProperty("background-color", color, "important");
+}
+
+function insertPostCodeStatusLabel() {
+    const postCodeStatus = document.createElement("span");
+
+    postCodeStatus.setAttribute("id", "postCodeStatus");
+    postCode.parentNode.appendChild(postCodeStatus);
 }
 
 // Checks if a string contains only digits
@@ -446,8 +465,6 @@ function removeInfoBoxes () {
     const boxes = document.querySelectorAll(".infom");
     for(box of boxes) box.remove();
 }
-
-reorderViewSaveButtons();
 
 // Insert the save button after the view button
 function reorderViewSaveButtons() {
