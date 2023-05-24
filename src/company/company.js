@@ -17,7 +17,9 @@ saveForm.addEventListener("click", function (e) {
 	let elementID = e.target.getAttribute("id");
 
 	if (elementID == "copyButtonID") {
-		navigator.clipboard.writeText(e.target.previousElementSibling.value);
+        let input = document.querySelector('#' + e.target.getAttribute("copy-from"));
+
+		navigator.clipboard.writeText(input.value);
 		e.target.firstElementChild.innerHTML = "Copied";
 	}
     else if (elementID == "googleSearch") {
@@ -94,6 +96,10 @@ address.style.display = "none";
 newAddress.addEventListener("blur", function (e) {
 	address.value = newAddress.value;
 	findPostCodeFromAddress(newAddress.value);
+
+    // if(!postCode.value) {
+    //     styleInputText(postCode, "normal");
+    // }
 });
 
 // Move the postcode under the address
@@ -204,6 +210,7 @@ function addCopyToClipboardButtons() {
 
 	for (inputField of companyInputs) {
 		// Add a copy button for every input text field
+        copyButton.setAttribute("copy-from", inputField.getAttribute("id"));
 		inputField.insertAdjacentElement("afterend", copyButton.cloneNode(true));
 	}
 }
@@ -227,7 +234,7 @@ function addGoogleSearchButton() {
 const legalName = document.querySelector("#name");
 
 if (legalName.previousElementSibling.textContent == "Name") {
-	legalName.previousElementSibling.textContent = "Legal Name test";
+	legalName.previousElementSibling.textContent = "Legal Name";
 }
 
 // Create "Other" section
@@ -312,33 +319,37 @@ function findPostCodeFromAddress(str) {
 			postCode.value = trimmed;
 			countOfOnlyDigits++;
 		}
-		// else {
-		//     if(!countOfOnlyDigits) {
-		//         postCode.value = "";
-		//     }
-		// }
 	}
 
 	if (countOfOnlyDigits == 0) styleInputText(postCode, "missing");
 	else if (countOfOnlyDigits == 1) styleInputText(postCode, "success");
+	
+    // if(!postCode.value) styleInputText(postCode, "normal");
 	else styleInputText(postCode, "conflict");
 }
 
 function styleInputText(element, status) {
+	let borderStyle, backgroundStyle;
 	switch (status) {
 		case "conflict":
-			element.style.border = "1px solid #ff8600";
-			element.style.background = "#ffe9da";
+			borderStyle = "1px solid #ff8600";
+			backgroundStyle = "#ffe9da";
 			break;
 		case "success":
-			element.style.border = "1px solid #008805";
-			element.style.background = "#e2ffda";
+			borderStyle = "1px solid #008805";
+			backgroundStyle = "#e2ffda";
 			break;
 		case "missing":
-			element.style.border = "1px solid #b70000";
-			element.style.background = "#ffdada";
+			borderStyle = "1px solid #b70000";
+			backgroundStyle = "#ffdada";
+			break;
+		case "normal":
+			borderStyle = "1px solid rgba(33, 35, 44, 0.24)";
+			backgroundStyle = "#fff";
 			break;
 	}
+    element.style.setProperty("border", borderStyle, "important");
+    element.style.setProperty("background", backgroundStyle, "important");
 }
 
 // Checks if a string contains only digits
