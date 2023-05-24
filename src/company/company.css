@@ -170,10 +170,12 @@
 
 /* Start logo content */
 .con_right {
+    display: flex !important;
+    align-items: end !important;
+
 	float: none !important;
-	display: block !important;
 	width: 500px !important;
-	margin: auto !important;
+	margin: 0 auto 10px auto !important;
 }
 
 /* End logo content */
@@ -218,7 +220,12 @@
 }
 
 .img_holder {
-	max-height: 100px;
+	max-height: 100px !important;
+    margin: 0 !important;
+}
+
+#changephoto {
+    margin: 0 15px !important
 }
 
 /* START of ICONS */
