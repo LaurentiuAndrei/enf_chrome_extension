@@ -1,11 +1,11 @@
 /* Start COPY-BTT */
 #copyButtonID {
-	width: 20px !important;
-	height: 20px !important;
-	position: absolute !important;
-	right: -50px !important;
-	margin-top: 5px !important;
-	z-index: 2 !important;
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	right: -50px;
+	margin-top: 5px;
+	z-index: 2;
     background: url("https://laurentiuandrei.com/enf/extension/copy-icon.png") no-repeat;
     background-size: 20px;
 }
@@ -15,10 +15,6 @@
 }
 
 /* End COPY-BTT */
-
-.enf_hideElement {
-	display: none !important;
-}
 
 #mainview {
 	margin-left: initial !important;
@@ -194,7 +190,6 @@
 }
 
 /* Start Tooltip */
-
 #copyButtonID .tooltiptext {
 	visibility: hidden;
 	width: 140px;
