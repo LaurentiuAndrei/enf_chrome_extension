@@ -173,8 +173,9 @@
 /* End section content */
 
 #newAddress {
-	height: 50px !important;
-	background: #ffffff !important;
+	min-height: 55px;
+	background: #ffffff;
+    overflow: hidden;
 }
 
 /* Start logo content */
@@ -305,7 +306,7 @@ input.input-text {
 } */
 
 /* No-flexbox for inputs*/
-fieldset label {
+form fieldset label {
 	color: rgb(101, 104, 111) !important;
 
 	font-family: Inter, sans-serif !important;
@@ -314,10 +315,11 @@ fieldset label {
 	line-height: 21px !important;
 }
 
-input[type="text"],
-input[type="number"], textarea {
-	/* height: 32px !important; */
-
+/* targets the input fields / textarea
+excludes the textarea from the notes section */
+form fieldset input[type="text"],
+form fieldset input[type="number"], 
+form fieldset textarea:not(.stick textarea) {
 	border: 1px solid rgba(33, 35, 44, 0.24) !important;
 	border-radius: 4px !important;
 	box-shadow: rgba(33, 35, 44, 0.08) 0px 1px 2px 0px inset !important;
@@ -331,8 +333,10 @@ input[type="number"], textarea {
 	font-weight: 450 !important;
 }
 
+/* targets the input fields / textarea
+excludes the textarea from the notes section */
 form fieldset input[type="text"]:focus,
-form fieldset textarea:focus {
+form fieldset textarea:not(.stick textarea):focus {
 	border: 1px solid #2b74da !important;
 	outline: none !important;
     padding: 4px 8px !important;
