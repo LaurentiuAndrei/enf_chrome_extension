@@ -59,6 +59,9 @@ saveForm.append(noteSection);
 // Remove fields based on label names
 removeCompanyFields();
 
+// remove the info boxes with ? near some inputs
+removeInfoBoxes ();
+
 // Move Address to the bottom of contact
 document
 	.querySelector("#email")
@@ -183,7 +186,7 @@ function removeUnusedFields() {
 		"#navbar-container > div",
 		"#navbar-content-title",
 		"#basicPage > h2 > span:nth-child(2)",
-		"#basicNote > a",
+		"#basicNote > a"
 	];
 
 	for (let i = 0; i < elementsToRemove.length; i++) {
@@ -201,7 +204,6 @@ function addCopyToClipboardButtons() {
 	copyButton.setAttribute("id", "copyButtonID");
 
 	toolTip.classList.add("tooltiptext");
-	toolTip.setAttribute("id", "myTooltip");
 	toolTip.innerHTML = "Copy to clipboard";
 
 	copyButton.appendChild(toolTip.cloneNode(true));
@@ -438,4 +440,9 @@ function getCountryName() {
 
 function isBetween(number, lowerBound, upperBound) {
 	return number >= lowerBound && number <= upperBound;
+}
+
+function removeInfoBoxes () {
+    const boxes = document.querySelectorAll(".infom");
+    for(box of boxes) box.remove();
 }

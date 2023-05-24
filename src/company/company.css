@@ -1,20 +1,7 @@
-/* Start COPY-BTT */
-#copyButtonID {
-	width: 20px;
-	height: 20px;
-	position: absolute;
-	right: -50px;
-	margin-top: 5px;
-	z-index: 2;
-    background: url("https://laurentiuandrei.com/enf/extension/copy-icon.png") no-repeat;
-    background-size: 20px;
+:root {
+    --icon-top: 25px;
+    --icon-size: 20px;
 }
-
-#copyButtonID:hover {
-	cursor: pointer;
-}
-
-/* End COPY-BTT */
 
 #mainview {
 	margin-left: initial !important;
@@ -26,12 +13,19 @@
 
 /* Start NAV-BAR */
 #navbar-container {
-	position: relative !important;
+	position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+
 	height: 40px !important;
-	width: initial !important;
+	width: 100% !important;
 	background: none !important;
 	background-color: #313131 !important;
 	display: block !important;
+}
+
+.ad-plan {
+    padding-top: 71px !important;
 }
 
 #nav {
@@ -81,11 +75,12 @@
 	font-size: 20px !important;
 	color: #000 !important;
 
-	width: initial !important;
+	width: 100% !important;
 	background: white !important;
 
-	position: relative !important;
-	top: initial !important;
+	position: fixed !important;
+	top: 30px !important;
+    left: 0 !important;
 
 	margin-top: initial !important;
 
@@ -162,8 +157,9 @@
 }
 
 .mid_sec .row {
-	width: 500px !important;
-	margin: auto !important;
+	/* width: 500px !important; */
+	/* margin: auto !important; */
+    margin: 0;
 }
 
 /* End section content */
@@ -227,87 +223,57 @@
 	max-height: 100px;
 }
 
-#googleSearch {
-	width: 20px;
+/* START of ICONS */
+#googleSearch, #copyButtonID {
+    width: 20px;
 	height: 20px;
+
 	position: absolute;
-	right: 5px;
-	margin-top: 5px;
-	z-index: 2;
-    background: url("https://laurentiuandrei.com/enf/extension/google-search-icon.png") no-repeat;
-    background-size: 20px;
-    border: none;
+    top: var(--icon-top);
+    z-index: 2;
 }
 
-#googleSearch:hover {
+#googleSearch:hover,
+#copyButtonID:hover {
 	cursor: pointer;
 }
 
-/* End TOOLTIP */
+#copyButtonID {
+	right: -25px;
 
-/* Using Flex Box for the inputs*/
-/* fieldset {
+    background: url("https://laurentiuandrei.com/enf/extension/copy-icon.png") no-repeat center/100%;
+}
+
+#googleSearch {
+    right: 5px;
+    background: url("https://laurentiuandrei.com/enf/extension/google-search-icon.png") no-repeat center/100%;
+}
+/* END of ICONS */
+
+.rrow {
+    padding: 0 !important;
+    margin-right: 0 !important;
+}
+
+fieldset {
 	display: flex !important;
 	flex-direction: column !important;
 	align-items: center !important;
 }
 
-fieldset label {
-	display: block !important;
-	color: rgb(101, 104, 111) !important;
-
-	font-family: Inter, sans-serif !important;
-	font-size: 14px !important;
-	font-weight: 450 !important;
-	line-height: 21px !important;
-
-	float: none !important;
+form fieldset label {
+    display: block !important;
+    float: none !important;
 	right: initial !important;
 	position: relative !important;
-}
 
-input[type="text"],
-input[type="number"] {
-	width: 300px !important;
-	height: 32px !important;
-
-	border: 1px solid rgba(33, 35, 44, 0.24) !important;
-	border-radius: 4px !important;
-	box-shadow: rgba(33, 35, 44, 0.08) 0px 1px 2px 0px inset !important;
-
-	box-sizing: border-box !important;
-
-	margin: 0px 0px 5px 0px !important;
-
-	padding-bottom: 4px !important;
-	padding-left: 8px !important;
-	padding-right: 8px !important;
-	padding-top: 4px !important;
-
-	font-family: Inter, sans-serif !important;
-	font-size: 14px !important;
-	font-weight: 450 !important;
-
-	float: none !important;
-}
-
-input[type="text"]:focus {
-	border: 1px solid #2b74da !important;
-	outline: none !important;
-}
-
-input.input-text {
-	background: white !important;
-} */
-
-/* No-flexbox for inputs*/
-form fieldset label {
 	color: rgb(101, 104, 111) !important;
-
 	font-family: Inter, sans-serif !important;
 	font-size: 12px !important;
 	font-weight: 450 !important;
 	line-height: 21px !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
 /* targets the input fields / textarea
@@ -321,22 +287,46 @@ form fieldset textarea:not(.stick textarea) {
 
 	box-sizing: content-box !important;
 
-    padding: 4px 8px !important;
-
-	font-family: Inter, sans-serif !important;
-	font-size: 14px !important;
+	/* font-family: Inter, sans-serif !important; */
+	font-size: 12px !important;
 	font-weight: 450 !important;
+
+    padding: 2px 8px !important;
+    width: 300px !important;
+    margin: 0px 0px 5px 0px !important;
+    float: none !important;
 }
 
 /* targets the input fields / textarea
 excludes the textarea from the notes section */
 form fieldset input[type="text"]:focus,
+form fieldset input[type="number"]:focus,
 form fieldset textarea:not(.stick textarea):focus {
 	border: 1px solid #2b74da !important;
 	outline: none !important;
-    padding: 4px 8px !important;
+    padding: 2px 8px !important;
 }
 
 form fieldset input.input-text {
 	background: white !important;
 }
+
+/* country field */
+.chosen-container-single .chosen-single {
+    background: #fff !important;
+    border: 1px solid rgba(33, 35, 44, 0.24) !important;
+}
+
+.row .rrow {
+    margin-bottom: 5px !important;
+}
+
+.chosen-container-single .chosen-search input[type="text"] {
+    width: 290px !important;
+    height: 20px !important;
+}
+
+#country_chosen {
+    width: 100% !important;
+}
+/* country field */
