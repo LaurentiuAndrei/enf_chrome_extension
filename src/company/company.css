@@ -25,7 +25,7 @@
 }
 
 .ad-plan {
-    padding-top: 71px !important;
+    margin-top: 118px !important;
 }
 
 #nav {
@@ -72,24 +72,22 @@
 
 /* Start Page Title */
 .page_title {
-	font-size: 20px !important;
-	color: #000 !important;
-
-	width: 100% !important;
-	background: white !important;
+    display: flex !important;
+    align-items: center !important;
 
 	position: fixed !important;
-	top: 30px !important;
+	top: 40px !important;
     left: 0 !important;
 
-	margin-top: initial !important;
-
 	padding: 20px !important;
-
+    width: 100% !important;
 	height: initial !important;
-	text-shadow: white 0 1px -2px !important;
 
+	text-shadow: white 0 1px -2px !important;
+    background: white !important;
 	border-bottom: 1px solid #eee !important;
+    font-size: 20px !important;
+	color: #000 !important;
 }
 
 .page_title button {
@@ -100,11 +98,11 @@
 
 .page_title .green_btn {
 	display: inline !important;
-	margin: 0px 0px 0px 20px !important;
+	margin: 0px 50px 0px 20px !important;
 }
 
 .page_title .bmenu {
-	float: right !important;
+	margin-left: auto !important;
 }
 
 .page_title .blue_btn {

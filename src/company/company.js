@@ -446,3 +446,11 @@ function removeInfoBoxes () {
     const boxes = document.querySelectorAll(".infom");
     for(box of boxes) box.remove();
 }
+
+reorderViewSaveButtons();
+
+// Insert the save button after the view button
+function reorderViewSaveButtons() {
+    const saveButton = document.querySelector("#savebas_btn");
+    saveButton.nextElementSibling.insertAdjacentElement("afterend", saveButton);
+}
