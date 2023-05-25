@@ -25,7 +25,38 @@
 }
 
 .ad-plan {
-    margin-top: 118px !important;
+    display: flex !important;
+    margin-left: 10px !important;
+    align-items: center !important;
+}
+
+.ad-plan span {
+    float: none !important;
+}
+
+.page_title .ui_menu {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    top: 120% !important;
+    white-space: nowrap !important;
+    margin-left: 0px !important;
+    margin-top: 0px !important;
+    position: absolute !important;
+}
+
+.page_title .ui_menu::after {
+	content: "";
+	position: absolute;
+	bottom: 100%;
+	left: 50%;
+	margin-left: -5px;
+	border-width: 5px;
+	border-style: solid;
+	border-color: transparent transparent #000 transparent;
+}
+
+.arrow {
+    visibility: hidden;
 }
 
 #nav {
@@ -74,6 +105,8 @@
 .page_title {
     display: flex !important;
     align-items: center !important;
+    justify-content: center;
+    box-sizing: border-box !important;
 
 	position: fixed !important;
 	top: 40px !important;
@@ -81,7 +114,6 @@
 
 	padding: 20px !important;
     width: 100% !important;
-	height: initial !important;
 
 	text-shadow: white 0 1px -2px !important;
     background: white !important;
@@ -90,19 +122,13 @@
 	color: rgb(33, 35, 44) !important;
 }
 
-.page_title button {
-	float: right !important;
-	margin-left: initial !important;
-	padding: 0 !important;
-}
-
 .page_title .green_btn {
 	display: inline !important;
-	margin: 0px 50px 0px 20px !important;
+	margin: 0 0 0 20px !important;
 }
 
 .page_title .bmenu {
-	margin-left: auto !important;
+	margin-left: 200px !important;
 }
 
 .page_title .blue_btn {
@@ -112,7 +138,7 @@
 
 /* Start Page content */
 .displaytable {
-	margin-top: initial !important;
+	margin-top: 124px !important;
 }
 /* End page content */
 
@@ -155,8 +181,6 @@
 }
 
 .mid_sec .row {
-	/* width: 500px !important; */
-	/* margin: auto !important; */
     margin: 0;
 }
 
@@ -188,7 +212,6 @@
 /* Start Tooltip */
 .tooltiptext {
 	visibility: hidden;
-	/* width: 140px; */
 	background-color: #555;
 	color: #fff;
 	text-align: center;
@@ -365,4 +388,8 @@ form fieldset input.input-text {
 
 #postcode {
     margin-bottom: 0 !important;
+}
+
+#serviceBtn {
+    margin-left: 20px !important;
 }

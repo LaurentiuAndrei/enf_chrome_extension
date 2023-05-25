@@ -1,0 +1,1412 @@
+[
+    {
+        "country": "Afghanistan",
+        "phone_code": "93",
+        "post_code": "1234",
+        "post_code_pattern": "^[0-9]{4}$"
+    },
+    {
+        "country": "Åland Islands",
+        "phone_code": "358",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Albania",
+        "phone_code": "355",
+        "post_code": "1234",
+        "post_code_pattern": "^[0-9]{4}$"
+    },
+    {
+        "country": "Algeria",
+        "phone_code": "213",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Andorra",
+        "phone_code": "376",
+        "post_code": "AA123",
+        "post_code_pattern": "^[A-Z]{2}[0-9]{3}$"
+    },
+    {
+        "country": "Angola",
+        "phone_code": "244",
+        "post_code": "none",
+        "post_code_pattern": ""
+    },
+    {
+        "country": "Anguilla",
+        "phone_code": "1-264",
+        "post_code": "AA-1234",
+        "post_code_pattern": "^[A-Z]{2}-[0-9]{4}$"
+    },
+    {
+        "country": "Antigua and Barbuda",
+        "phone_code": "1-268",
+        "post_code": "none",
+        "post_code_pattern": ""
+    },
+    {
+        "country": "Argentina",
+        "phone_code": "54",
+        "post_code": "A1234",
+        "post_code_pattern": "^[A-Z][0-9]{4}$"
+    },
+    {
+        "country": "Armenia",
+        "phone_code": "374",
+        "post_code": "1234",
+        "post_code_pattern": "^[0-9]{4}$"
+    },
+    {
+        "country": "Aruba",
+        "phone_code": "297",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "Australia",
+        "phone_code": "61",
+        "post_code": "1234",
+        "post_code_pattern": "^[0-9]{4}$"
+    },
+    {
+        "country": "Austria",
+        "phone_code": "43",
+        "post_code": "1234",
+        "post_code_pattern": "^[0-9]{4}$"
+    },
+    {
+        "country": "Azerbaijan",
+        "phone_code": "994",
+        "post_code": "1234",
+        "post_code_pattern": "^[0-9]{4}$"
+    },
+    {
+        "country": "Bahamas",
+        "phone_code": "1-242",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "Bahrain",
+        "phone_code": "973",
+        "post_code": "1234",
+        "post_code_pattern": "^[0-9]{4}$"
+    },
+    {
+        "country": "Bangladesh",
+        "phone_code": "880",
+        "post_code": "1234",
+        "post_code_pattern": "^[0-9]{4}$"
+    },
+    {
+        "country": "Barbados",
+        "phone_code": "1-246",
+        "post_code": "AA12345",
+        "post_code_pattern": "^[A-Z]{2}[0-9]{5}$"
+    },
+    {
+        "country": "Belarus",
+        "phone_code": "375",
+        "post_code": "123456",
+        "post_code_pattern": "^[0-9]{6}$"
+    },
+    {
+        "country": "Belgium",
+        "phone_code": "32",
+        "post_code": "1234",
+        "post_code_pattern": "^[0-9]{4}$"
+    },
+    {
+        "country": "Belize",
+        "phone_code": "501",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "Benin",
+        "phone_code": "229",
+        "post_code": "123456",
+        "post_code_pattern": "^[0-9]{6}$"
+    },
+    {
+        "country": "Bermuda",
+        "phone_code": "1-441",
+        "post_code": "AA 12",
+        "post_code_pattern": "^[A-Z]{2} [0-9]{2}$"
+    },
+    {
+        "country": "Bhutan",
+        "phone_code": "975",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Bolivia",
+        "phone_code": "591",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "Bosnia and Herzegovina",
+        "phone_code": "387",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Botswana",
+        "phone_code": "267",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "Brazil",
+        "phone_code": "55",
+        "post_code": "12345-678",
+        "post_code_pattern": "^[0-9]{5}-[0-9]{3}$"
+    },
+    {
+        "country": "British Virgin Islands",
+        "phone_code": "1-284",
+        "post_code": "AA1234",
+        "post_code_pattern": "^[A-Z]{2}[0-9]{4}$"
+    },
+    {
+        "country": "Brunei Darussalam",
+        "phone_code": "673",
+        "post_code": "AA1234",
+        "post_code_pattern": "^[A-Z]{2}[0-9]{4}$"
+    },
+    {
+        "country": "Bulgaria",
+        "phone_code": "359",
+        "post_code": "1234",
+        "post_code_pattern": "^[0-9]{4}$"
+    },
+    {
+        "country": "Burkina Faso",
+        "phone_code": "226",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "Burundi",
+        "phone_code": "257",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "Cambodia",
+        "phone_code": "855",
+        "post_code": "123456",
+        "post_code_pattern": "^[0-9]{6}$"
+    },
+    {
+        "country": "Cameroon",
+        "phone_code": "237",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "Canada",
+        "phone_code": "1",
+        "post_code": "A1A 2A3",
+        "post_code_pattern": "^[A-Z][0-9][A-Z] [0-9][A-Z][0-9]$"
+    },
+    {
+        "country": "Cape Verde",
+        "phone_code": "238",
+        "post_code": "1234",
+        "post_code_pattern": "^[0-9]{4}$"
+    },
+    {
+        "country": "Caribbean Netherlands",
+        "phone_code": "599",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "Cayman Islands",
+        "phone_code": "1-345",
+        "post_code": "AA1-2340",
+        "post_code_pattern": "^[A-Z]{2}[0-9]-[0-9]{4}$"
+    },
+    {
+        "country": "Central African Republic",
+        "phone_code": "236",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "Chad",
+        "phone_code": "235",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "Chile",
+        "phone_code": "56",
+        "post_code": "1234567",
+        "post_code_pattern": "^[0-9]{7}$"
+    },
+    {
+        "country": "China",
+        "phone_code": "86",
+        "post_code": "123456",
+        "post_code_pattern": "^[0-9]{6}$"
+    },
+    {
+        "country": "Christmas Island",
+        "phone_code": "61",
+        "post_code": "1234",
+        "post_code_pattern": "^[0-9]{4}$"
+    },
+    {
+        "country": "Colombia",
+        "phone_code": "57",
+        "post_code": "123456",
+        "post_code_pattern": "^[0-9]{6}$"
+    },
+    {
+        "country": "Comoros",
+        "phone_code": "269",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "Cook Islands",
+        "phone_code": "682",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "Costa Rica",
+        "phone_code": "506",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Côte d'Ivoire",
+        "phone_code": "225",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "Croatia",
+        "phone_code": "385",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Cuba",
+        "phone_code": "53",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "Curaçao",
+        "phone_code": "599",
+        "post_code": "1234 AA",
+        "post_code_pattern": "^[0-9]{4} [A-Z]{2}$"
+    },
+    {
+        "country": "Cyprus",
+        "phone_code": "357",
+        "post_code": "1234",
+        "post_code_pattern": "^[0-9]{4}$"
+    },
+    {
+        "country": "Czech Republic",
+        "phone_code": "420",
+        "post_code": "123 45",
+        "post_code_pattern": "^[0-9]{3} [0-9]{2}$"
+    },
+    {
+        "country": "Democratic People's Republic of Korea",
+        "phone_code": "850",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "Denmark",
+        "phone_code": "45",
+        "post_code": "1234",
+        "post_code_pattern": "^[0-9]{4}$"
+    },
+    {
+        "country": "Djibouti",
+        "phone_code": "253",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "Dominica",
+        "phone_code": "1-767",
+        "post_code": "12345-6789",
+        "post_code_pattern": "^[0-9]{5}-[0-9]{4}$"
+    },
+    {
+        "country": "Dominican Republic",
+        "phone_code": "1-809",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "DR Congo",
+        "phone_code": "243",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "Ecuador",
+        "phone_code": "593",
+        "post_code": "123456",
+        "post_code_pattern": "^[0-9]{6}$"
+    },
+    {
+        "country": "Egypt",
+        "phone_code": "20",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "El Salvador",
+        "phone_code": "503",
+        "post_code": "1234",
+        "post_code_pattern": "^[0-9]{4}$"
+    },
+    {
+        "country": "Equatorial Guinea",
+        "phone_code": "240",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "Eritrea",
+        "phone_code": "291",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "Estonia",
+        "phone_code": "372",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Ethiopia",
+        "phone_code": "251",
+        "post_code": "1234",
+        "post_code_pattern": "^[0-9]{4}$"
+    },
+    {
+        "country": "Falkland Islands",
+        "phone_code": "500",
+        "post_code": "AAAA 1AA",
+        "post_code_pattern": "^[A-Z]{4} [0-9][A-Z]{2}$"
+    },
+    {
+        "country": "Faroe Islands",
+        "phone_code": "298",
+        "post_code": "AA-1234",
+        "post_code_pattern": "^[A-Z]{2}-[0-9]{4}$"
+    },
+    {
+        "country": "Federated States of Micronesia",
+        "phone_code": "691",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Fiji",
+        "phone_code": "679",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "Finland",
+        "phone_code": "358",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "France",
+        "phone_code": "33",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "French Guiana",
+        "phone_code": "594",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Gabon",
+        "phone_code": "241",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "Gambia",
+        "phone_code": "220",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "Georgia",
+        "phone_code": "995",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Germany",
+        "phone_code": "49",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Ghana",
+        "phone_code": "233",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "Gibraltar",
+        "phone_code": "350",
+        "post_code": "AA12 3AA",
+        "post_code_pattern": "^[A-Z]{2}[0-9]{2} [0-9][A-Z]{2}$"
+    },
+    {
+        "country": "Greece",
+        "phone_code": "30",
+        "post_code": "123 45",
+        "post_code_pattern": "^[0-9]{3} [0-9]{2}$"
+    },
+    {
+        "country": "Greenland",
+        "phone_code": "299",
+        "post_code": "1234",
+        "post_code_pattern": "^[0-9]{4}$"
+    },
+    {
+        "country": "Grenada",
+        "phone_code": "1-473",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Guadeloupe",
+        "phone_code": "590",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Guam",
+        "phone_code": "1-671",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Guatemala",
+        "phone_code": "502",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Guernsey",
+        "phone_code": "44-1481",
+        "post_code": "AA1",
+        "post_code_pattern": "^[A-Z]{2}[0-9]$"
+    },
+    {
+        "country": "Guinea",
+        "phone_code": "224",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "Guinea-bissau",
+        "phone_code": "245",
+        "post_code": "1234",
+        "post_code_pattern": "^[0-9]{4}$"
+    },
+    {
+        "country": "Guyana",
+        "phone_code": "592",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "Haiti",
+        "phone_code": "509",
+        "post_code": "AA 1234",
+        "post_code_pattern": "^[A-Z]{2} [0-9]{4}$"
+    },
+    {
+        "country": "Honduras",
+        "phone_code": "504",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Hong Kong",
+        "phone_code": "852",
+        "post_code": "123456",
+        "post_code_pattern": "^[0-9]{6}$"
+    },
+    {
+        "country": "Hungary",
+        "phone_code": "36",
+        "post_code": "1234",
+        "post_code_pattern": "^[0-9]{4}$"
+    },
+    {
+        "country": "Iceland",
+        "phone_code": "354",
+        "post_code": "123",
+        "post_code_pattern": "^[0-9]{3}$"
+    },
+    {
+        "country": "India",
+        "phone_code": "91",
+        "post_code": "123456",
+        "post_code_pattern": "^[0-9]{6}$"
+    },
+    {
+        "country": "Indonesia",
+        "phone_code": "62",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Iran",
+        "phone_code": "98",
+        "post_code": "1234567890",
+        "post_code_pattern": "^[0-9]{10}$"
+    },
+    {
+        "country": "Iraq",
+        "phone_code": "964",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Ireland",
+        "phone_code": "353",
+        "post_code": "A12 A3A4",
+        "post_code_pattern": "^[A-Z][0-9]{2} [A-Z][0-9][A-Z][0-9]$"
+    },
+    {
+        "country": "Isle of Man",
+        "phone_code": "44-1624",
+        "post_code": "AA1",
+        "post_code_pattern": "^[A-Z]{2}[0-9]$"
+    },
+    {
+        "country": "Israel",
+        "phone_code": "972",
+        "post_code": "1234567",
+        "post_code_pattern": "^[0-9]{7}$"
+    },
+    {
+        "country": "Italy",
+        "phone_code": "39",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Jamaica",
+        "phone_code": "1-876",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "Japan",
+        "phone_code": "81",
+        "post_code": "123-4567",
+        "post_code_pattern": "^[0-9]{3}-[0-9]{4}$"
+    },
+    {
+        "country": "Jersey",
+        "phone_code": "44-1534",
+        "post_code": "AA1",
+        "post_code_pattern": "^[A-Z]{2}[0-9]$"
+    },
+    {
+        "country": "Jordan",
+        "phone_code": "962",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Kazakhstan",
+        "phone_code": "7",
+        "post_code": "123456",
+        "post_code_pattern": "^[0-9]{6}$"
+    },
+    {
+        "country": "Kenya",
+        "phone_code": "254",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Kiribati",
+        "phone_code": "686",
+        "post_code": "AA1234",
+        "post_code_pattern": "^[A-Z]{2}[0-9]{4}$"
+    },
+    {
+        "country": "Korea",
+        "phone_code": "82",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Kosovo",
+        "phone_code": "383",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Kuwait",
+        "phone_code": "965",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Kyrgyzstan",
+        "phone_code": "996",
+        "post_code": "123456",
+        "post_code_pattern": "^[0-9]{6}$"
+    },
+    {
+        "country": "Laos",
+        "phone_code": "856",
+        "post_code": "1234",
+        "post_code_pattern": "^[0-9]{4}$"
+    },
+    {
+        "country": "Latvia",
+        "phone_code": "371",
+        "post_code": "1234",
+        "post_code_pattern": "^[0-9]{4}$"
+    },
+    {
+        "country": "Lebanon",
+        "phone_code": "961",
+        "post_code": "1234",
+        "post_code_pattern": "^[0-9]{4}$"
+    },
+    {
+        "country": "Lesotho",
+        "phone_code": "266",
+        "post_code": "123",
+        "post_code_pattern": "^[0-9]{3}$"
+    },
+    {
+        "country": "Liberia",
+        "phone_code": "231",
+        "post_code": "1234",
+        "post_code_pattern": "^[0-9]{4}$"
+    },
+    {
+        "country": "Libya",
+        "phone_code": "218",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "Liechtenstein",
+        "phone_code": "423",
+        "post_code": "1234",
+        "post_code_pattern": "^[0-9]{4}$"
+    },
+    {
+        "country": "Lithuania",
+        "phone_code": "370",
+        "post_code": "AA-12345",
+        "post_code_pattern": "^[A-Z]{2}-[0-9]{5}$"
+    },
+    {
+        "country": "Luxembourg",
+        "phone_code": "352",
+        "post_code": "1234",
+        "post_code_pattern": "^[0-9]{4}$"
+    },
+    {
+        "country": "Macao",
+        "phone_code": "853",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "Madagascar",
+        "phone_code": "261",
+        "post_code": "123",
+        "post_code_pattern": "^[0-9]{3}$"
+    },
+    {
+        "country": "Malawi",
+        "phone_code": "265",
+        "post_code": "123456",
+        "post_code_pattern": "^[0-9]{6}$"
+    },
+    {
+        "country": "Malaysia",
+        "phone_code": "60",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Maldives",
+        "phone_code": "960",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Mali",
+        "phone_code": "223",
+        "post_code": "123456",
+        "post_code_pattern": "^[0-9]{6}$"
+    },
+    {
+        "country": "Malta",
+        "phone_code": "356",
+        "post_code": "AAA 1234",
+        "post_code_pattern": "^[A-Z]{3} [0-9]{4}$"
+    },
+    {
+        "country": "Martinique",
+        "phone_code": "596",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Mauritania",
+        "phone_code": "222",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "Mauritius",
+        "phone_code": "230",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Mayotte",
+        "phone_code": "262",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Mexico",
+        "phone_code": "52",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Moldova",
+        "phone_code": "373",
+        "post_code": "AA-1234",
+        "post_code_pattern": "^[A-Z]{2}-[0-9]{4}$"
+    },
+    {
+        "country": "Monaco",
+        "phone_code": "377",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Mongolia",
+        "phone_code": "976",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Montenegro",
+        "phone_code": "382",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Montserrat",
+        "phone_code": "1-664",
+        "post_code": "AAA1234",
+        "post_code_pattern": "^[A-Z]{3}[0-9]{4}$"
+    },
+    {
+        "country": "Morocco",
+        "phone_code": "212",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Mozambique",
+        "phone_code": "258",
+        "post_code": "1234",
+        "post_code_pattern": "^[0-9]{4}$"
+    },
+    {
+        "country": "Myanmar",
+        "phone_code": "95",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Namibia",
+        "phone_code": "264",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Nauru",
+        "phone_code": "674",
+        "post_code": "AAA12",
+        "post_code_pattern": "^[A-Z]{3}[0-9]{2}$"
+    },
+    {
+        "country": "Nepal",
+        "phone_code": "977",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Netherlands",
+        "phone_code": "31",
+        "post_code": "1234AA",
+        "post_code_pattern": "^[0-9]{4}[A-Z]{2}$"
+    },
+    {
+        "country": "New Caledonia",
+        "phone_code": "687",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "New Zealand",
+        "phone_code": "64",
+        "post_code": "1234",
+        "post_code_pattern": "^[0-9]{4}$"
+    },
+    {
+        "country": "Nicaragua",
+        "phone_code": "505",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Niger",
+        "phone_code": "227",
+        "post_code": "923101",
+        "post_code_pattern": "^[0-9]{6}$"
+    },
+    {
+        "country": "Nigeria",
+        "phone_code": "234",
+        "post_code": "123456",
+        "post_code_pattern": "^[0-9]{6}$"
+    },
+    {
+        "country": "Niue",
+        "phone_code": "683",
+        "post_code": "1234",
+        "post_code_pattern": "^[0-9]{4}$"
+    },
+    {
+        "country": "Norfolk Island",
+        "phone_code": "672",
+        "post_code": "1234",
+        "post_code_pattern": "^[0-9]{4}$"
+    },
+    {
+        "country": "North Macedonia",
+        "phone_code": "389",
+        "post_code": "1234",
+        "post_code_pattern": "^[0-9]{4}$"
+    },
+    {
+        "country": "Norway",
+        "phone_code": "47",
+        "post_code": "1234",
+        "post_code_pattern": "^[0-9]{4}$"
+    },
+    {
+        "country": "Oman",
+        "phone_code": "968",
+        "post_code": "123",
+        "post_code_pattern": "^[0-9]{3}$"
+    },
+    {
+        "country": "Pakistan",
+        "phone_code": "92",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Palau",
+        "phone_code": "680",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Palestine",
+        "phone_code": "970",
+        "post_code": "A123",
+        "post_code_pattern": "^[A-Z][0-9]{3}$"
+    },
+    {
+        "country": "Panama",
+        "phone_code": "507",
+        "post_code": "1234",
+        "post_code_pattern": "^[0-9]{4}$"
+    },
+    {
+        "country": "Papua New Guinea",
+        "phone_code": "675",
+        "post_code": "1234",
+        "post_code_pattern": "^[0-9]{4}$"
+    },
+    {
+        "country": "Paraguay",
+        "phone_code": "595",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Peru",
+        "phone_code": "51",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Philippines",
+        "phone_code": "63",
+        "post_code": "1234",
+        "post_code_pattern": "^[0-9]{4}$"
+    },
+    {
+        "country": "Pitcairn Islands",
+        "phone_code": "64",
+        "post_code": "AAAA 1AA",
+        "post_code_pattern": "^[A-Z]{4} [0-9][A-Z]{2}$"
+    },
+    {
+        "country": "Poland",
+        "phone_code": "48",
+        "post_code": "12-345",
+        "post_code_pattern": "^[0-9]{2}-[0-9]{3}$"
+    },
+    {
+        "country": "Portugal",
+        "phone_code": "351",
+        "post_code": "1234-567",
+        "post_code_pattern": "^[0-9]{4}-[0-9]{3}$"
+    },
+    {
+        "country": "Puerto Rico",
+        "phone_code": "1-787",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Qatar",
+        "phone_code": "974",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "Reunion",
+        "phone_code": "262",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Romania",
+        "phone_code": "40",
+        "post_code": "123456",
+        "post_code_pattern": "^[0-9]{6}$"
+    },
+    {
+        "country": "Russia",
+        "phone_code": "7",
+        "post_code": "123456",
+        "post_code_pattern": "^[0-9]{6}$"
+    },
+    {
+        "country": "Rwanda",
+        "phone_code": "250",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "Saint Barthélemy",
+        "phone_code": "590",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Saint Kitts and Nevis",
+        "phone_code": "1-869",
+        "post_code": "AA1234",
+        "post_code_pattern": "^[A-Z]{2}[0-9]{4}$"
+    },
+    {
+        "country": "Saint Lucia",
+        "phone_code": "1-758",
+        "post_code": "AA12 345",
+        "post_code_pattern": "^[A-Z]{2}[0-9]{2} [0-9]{3}$"
+    },
+    {
+        "country": "Saint Martin",
+        "phone_code": "590",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Saint Vincent and the Grenadines",
+        "phone_code": "1-784",
+        "post_code": "AA1234",
+        "post_code_pattern": "^[A-Z]{2}[0-9]{4}$"
+    },
+    {
+        "country": "Samoa",
+        "phone_code": "685",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "San Marino",
+        "phone_code": "378",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Sao Tome and Principe",
+        "phone_code": "239",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "Saudi Arabia",
+        "phone_code": "966",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Senegal",
+        "phone_code": "221",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Serbia",
+        "phone_code": "381",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Seychelles",
+        "phone_code": "248",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "Sierra Leone",
+        "phone_code": "232",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "Singapore",
+        "phone_code": "65",
+        "post_code": "123456",
+        "post_code_pattern": "^[0-9]{6}$"
+    },
+    {
+        "country": "Sint Maarten",
+        "phone_code": "721",
+        "post_code": "1234",
+        "post_code_pattern": "^[0-9]{4}$"
+    },
+    {
+        "country": "Slovakia",
+        "phone_code": "421",
+        "post_code": "123 45",
+        "post_code_pattern": "^[0-9]{3} [0-9]{2}$"
+    },
+    {
+        "country": "Slovenia",
+        "phone_code": "386",
+        "post_code": "1234",
+        "post_code_pattern": "^[0-9]{4}$"
+    },
+    {
+        "country": "Solomon Islands",
+        "phone_code": "677",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "Somalia",
+        "phone_code": "252",
+        "post_code": "123456",
+        "post_code_pattern": "^[0-9]{6}$"
+    },
+    {
+        "country": "South Africa",
+        "phone_code": "27",
+        "post_code": "1234-5678",
+        "post_code_pattern": "^[0-9]{4}-[0-9]{4}$"
+    },
+    {
+        "country": "South Sudan",
+        "phone_code": "211",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Spain",
+        "phone_code": "34",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Sri Lanka",
+        "phone_code": "94",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Sudan",
+        "phone_code": "249",
+        "post_code": "123456",
+        "post_code_pattern": "^[0-9]{6}$"
+    },
+    {
+        "country": "Suriname",
+        "phone_code": "597",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "Swaziland",
+        "phone_code": "268",
+        "post_code": "A123",
+        "post_code_pattern": "^[A-Z][0-9]{3}$"
+    },
+    {
+        "country": "Sweden",
+        "phone_code": "46",
+        "post_code": "123 45",
+        "post_code_pattern": "^[0-9]{3} [0-9]{2}$"
+    },
+    {
+        "country": "Switzerland",
+        "phone_code": "41",
+        "post_code": "1234",
+        "post_code_pattern": "^[0-9]{4}$"
+    },
+    {
+        "country": "Syrian Arab Republic",
+        "phone_code": "963",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "Tahiti",
+        "phone_code": "689",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Taiwan",
+        "phone_code": "886",
+        "post_code": "123456",
+        "post_code_pattern": "^[0-9]{6}$"
+    },
+    {
+        "country": "Tajikistan",
+        "phone_code": "992",
+        "post_code": "123456",
+        "post_code_pattern": "^[0-9]{6}$"
+    },
+    {
+        "country": "Tanzania",
+        "phone_code": "255",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Thailand",
+        "phone_code": "66",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "The Republic of Congo",
+        "phone_code": "242",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "Timor-Leste",
+        "phone_code": "670",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "Togo",
+        "phone_code": "228",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "Tokelau",
+        "phone_code": "690",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "Tonga",
+        "phone_code": "676",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "Trinidad and Tobago",
+        "phone_code": "1-868",
+        "post_code": "1234",
+        "post_code_pattern": "^[0-9]{4}$"
+    },
+    {
+        "country": "Tunisia",
+        "phone_code": "216",
+        "post_code": "1234",
+        "post_code_pattern": "^[0-9]{4}$"
+    },
+    {
+        "country": "Turkey",
+        "phone_code": "90",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Turkmenistan",
+        "phone_code": "993",
+        "post_code": "123456",
+        "post_code_pattern": "^[0-9]{6}$"
+    },
+    {
+        "country": "Turks and Caicos Islands",
+        "phone_code": "1-649",
+        "post_code": "AAAA 1AA",
+        "post_code_pattern": "^[A-Z]{4} [0-9][A-Z]{2}$"
+    },
+    {
+        "country": "Tuvalu",
+        "phone_code": "688",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "UAE",
+        "phone_code": "971",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "Uganda",
+        "phone_code": "256",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Ukraine",
+        "phone_code": "380",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "United Kingdom",
+        "phone_code": "44",
+        "post_code": "complicated...",
+        "post_code_pattern": "^(([A-Z][0-9]{1,2})|(([A-Z][A-HJ-Y][0-9]{1,2})|(([A-Z][0-9][A-Z])|([A-Z][A-HJ-Y][0-9]?[A-Z])))) [0-9][A-Z]{2}$"
+    },
+    {
+        "country": "United States",
+        "phone_code": "1",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "United States Virgin Islands",
+        "phone_code": "1-340",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Uruguay",
+        "phone_code": "598",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Uzbekistan",
+        "phone_code": "998",
+        "post_code": "123456",
+        "post_code_pattern": "^[0-9]{6}$"
+    },
+    {
+        "country": "Vanuatu",
+        "phone_code": "678",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "Venezuela",
+        "phone_code": "58",
+        "post_code": "1234",
+        "post_code_pattern": "^[0-9]{4}$"
+    },
+    {
+        "country": "Vietnam",
+        "phone_code": "84",
+        "post_code": "123456",
+        "post_code_pattern": "^[0-9]{6}$"
+    },
+    {
+        "country": "Wallis and Futuna",
+        "phone_code": "681",
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
+    },
+    {
+        "country": "Western Sahara",
+        "phone_code": "212",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "Yemen",
+        "phone_code": "967",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "Zambia",
+        "phone_code": "260",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    },
+    {
+        "country": "Zimbabwe",
+        "phone_code": "263",
+        "post_code": "none",
+        "post_code_pattern": "none"
+    }
+]

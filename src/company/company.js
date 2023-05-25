@@ -1,19 +1,21 @@
-const noteSection = document.querySelector("#basicNote");
-const saveForm = document.querySelector("#saveForm");
-const postCode = document.querySelector("#postcode");
-const phoneNumber = document.querySelector("#phone");
+const NOTE_SECTION = document.querySelector("#basicNote");
+const SAVE_FORM = document.querySelector("#saveForm");
+const POST_CODE = document.querySelector("#postcode");
+const PHONE_NUM = document.querySelector("#phone");
+const HEADERS = document.querySelectorAll("h3");
+var COUNTRY;
 
 // Remove "Clear coordinate" before adding copy buttons
-const clearCoordinate = document.querySelector("#address").nextElementSibling;
-if (clearCoordinate.nodeName == "A") {
-	clearCoordinate.remove();
-}
+removeClearCoordinate();
 
 // Adding the copy to clipboard buttons and their tooltips
 addCopyToClipboardButtons();
 
+// Rearrange the service/view/save buttons in the header
+handleHeaderButtons();
+
 // Add click events only to the copy buttons
-saveForm.addEventListener("click", function (e) {
+SAVE_FORM.addEventListener("click", function (e) {
 	let elementID = e.target.getAttribute("id");
 
 	if (elementID == "copyButtonID") {
@@ -27,12 +29,13 @@ saveForm.addEventListener("click", function (e) {
         const website = document.querySelector("#website").value;
 		const searchInfo = [website, companyName];
 
+        //Send the search data to the service worker so it can open a new tab
 		chrome.runtime.sendMessage({ type: "strings", data: searchInfo });
 	}
 });
 
 // Restore the contents of tooltip after exitig the copy button area
-saveForm.addEventListener("mouseout", function (e) {
+SAVE_FORM.addEventListener("mouseout", function (e) {
 	if (e.target.getAttribute("id") == "copyButtonID") {
 		e.target.firstElementChild.innerHTML = "Copy to clipboard";
 	}
@@ -47,14 +50,9 @@ tempRemoveInlineStyles();
 // Select and remove the notification section. Needs to happen before moving the notes
 removeNotificationSection();
 
-// Ad Plan
-const adPlan = document.querySelector("#basicNote > div");
-adPlan.classList.add("ad-plan");
-document.querySelector("div.displaytable").before(adPlan);
-
 // Notes Section
 // Move the notes as the last child of the main form
-saveForm.append(noteSection);
+SAVE_FORM.append(NOTE_SECTION);
 
 // Remove fields based on label names
 removeCompanyFields();
@@ -65,52 +63,46 @@ removeInfoBoxes ();
 // Insert the save button after the view button
 reorderViewSaveButtons();
 
+// Ad Plan
+positionAdPlan();
+
 // Move Address to the bottom of contact
 document
 	.querySelector("#email")
 	.parentNode.parentNode.append(document.querySelector("#address").parentNode);
 
-// Remove adjust location button
-const adjustLocation = document.querySelector("#adjust_location");
-if (adjustLocation) {
-	adjustLocation.remove();
-}
-
 // Remove enquiry email to special
 document.querySelector("#address").parentNode.previousElementSibling.remove();
 
 // Remove sections based on h3 names
-const headers = document.querySelectorAll("h3");
-const headersToRemove = ["URIs", "Social Icon", "Location"];
-
-for (let i = 0; i < headers.length; i++) {
-	if (headersToRemove.includes(headers[i].textContent)) {
-		headers[i].parentNode.remove();
-	}
-}
+removeSections();
 
 // Add textarea of address without removing the original one
-var address = document.querySelector("#address");
-var newAddress = document.createElement("textarea");
+var ADDRESS = document.querySelector("#address");
+var NEW_ADDRESS = document.createElement("textarea");
 
-newAddress.setAttribute("id", "newAddress");
-newAddress.textContent = address.value;
+NEW_ADDRESS.setAttribute("id", "newAddress");
+NEW_ADDRESS.textContent = ADDRESS.value;
 
-address.after(newAddress);
-address.style.display = "none";
+ADDRESS.after(NEW_ADDRESS);
+ADDRESS.style.display = "none";
 
 insertPostCodeStatusLabel();
 
-newAddress.addEventListener("blur", function (e) {
-	address.value = newAddress.value;
-	findPostCodeFromAddress(newAddress.value);
+NEW_ADDRESS.addEventListener("blur", function (e) {
+	ADDRESS.value = NEW_ADDRESS.value;
+	findPostCodeFromAddress(NEW_ADDRESS.value);
 });
 
 // Move the postcode under the address
-newAddress.parentNode.insertAdjacentElement("afterend", postcode.parentNode);
+NEW_ADDRESS.parentNode.insertAdjacentElement("afterend", postcode.parentNode);
 
-// Check if the post code can be found in the address
-findPostCodeFromAddress(newAddress.value);
+function removeClearCoordinate() {
+    const clearCoordinate = document.querySelector("#address").nextElementSibling;
+    if (clearCoordinate.nodeName == "A") {
+        clearCoordinate.remove();
+    }
+}
 
 function removeCompanyFields() {
 	const companyFieldsToRemove = [
@@ -132,15 +124,15 @@ function removeCompanyFields() {
 
 	const companyLabels = document.querySelectorAll("label");
 
-	for (let i = 0; i < companyLabels.length; i++) {
-		if (companyFieldsToRemove.includes(companyLabels[i].textContent)) {
-			companyLabels[i].parentNode.remove();
+    for(label of companyLabels) {
+		if (companyFieldsToRemove.includes(label.textContent)) {
+			label.parentNode.remove();
 		}
 	}
 }
 
 function removeNotificationSection() {
-	const notificationSection = saveForm.lastElementChild;
+	const notificationSection = SAVE_FORM.lastElementChild;
 	if (notificationSection) {
 		notificationSection.remove();
 	}
@@ -187,10 +179,11 @@ function removeUnusedFields() {
 		"#navbar-container > div",
 		"#navbar-content-title",
 		"#basicPage > h2 > span:nth-child(2)",
-		"#basicNote > a"
+		"#basicNote > a",
+        "#adjust_location"
 	];
 
-    for(let element of elementsToRemove) {
+    for(element of elementsToRemove) {
 		if (element) {
 			document.querySelector(element).remove();
 		}
@@ -198,7 +191,7 @@ function removeUnusedFields() {
 }
 
 function addCopyToClipboardButtons() {
-	const companyInputs = saveForm.querySelectorAll("input.input-text");
+	const companyInputs = SAVE_FORM.querySelectorAll("input.input-text");
 	const copyButton = document.createElement("div");
 	const toolTip = document.createElement("div");
 
@@ -226,19 +219,20 @@ function addHelpButtons() {
     toolTip.innerHTML = "[COUNTRY]<br>Format: [FORMAT]";
 
     helpButton.classList.add("helpButton");
-    helpButton.setAttribute("help-for", postCode.getAttribute("id"));
+    helpButton.setAttribute("help-for", POST_CODE.getAttribute("id"));
     helpButton.appendChild(toolTip);
 
-    postCode.parentNode.insertBefore(helpButton, postCode.parentNode.firstElementChild);
+    POST_CODE.parentNode.insertBefore(helpButton, POST_CODE.parentNode.firstElementChild);
 }
 
-function updateHelpButtons(e, data) {
-    const countryName = getCountryName();
-	let countryPostCode = data[countryName];
+function updateHelpButtons() {
+    let countryPostCode = COUNTRY.post_code;
 
     if(countryPostCode == 'none') countryPostCode = 'not using post codes';
 
-    e.innerHTML = `<strong>Country:</strong> ${countryName}<br><strong>Fomat:</strong> ${countryPostCode}`;
+    // Update post code help icon
+    const postHelpTooltip = POST_CODE.parentNode.querySelector(".tooltiptext");
+    postHelpTooltip.innerHTML = `<strong>Country:</strong> ${COUNTRY.country}<br><strong>Fomat:</strong> ${countryPostCode}`;
 }
 
 addGoogleSearchButton();
@@ -261,7 +255,7 @@ if (legalName.previousElementSibling.textContent == "Name") {
 }
 
 // Create "Other" section
-noteSection.insertAdjacentHTML(
+NOTE_SECTION.insertAdjacentHTML(
 	"afterend",
 	"<section id='others'><h3>Others</h3><span class='mid_sec'><fieldset></fieldset></span></section>"
 );
@@ -269,11 +263,11 @@ noteSection.insertAdjacentHTML(
 // Add IDs to sections
 const sectionIDs = ["Basic", "Contact", "Location"];
 
-for (let i = 0; i < headers.length; i++) {
-	if (sectionIDs.includes(headers[i].textContent)) {
-		headers[i].parentNode.setAttribute(
+for (let i = 0; i < HEADERS.length; i++) {
+	if (sectionIDs.includes(HEADERS[i].textContent)) {
+		HEADERS[i].parentNode.setAttribute(
 			"id",
-			headers[i].textContent.toLowerCase()
+			HEADERS[i].textContent.toLowerCase()
 		);
 	}
 }
@@ -305,12 +299,12 @@ const statusElements = document.querySelector(
 	"#contact > span.con_right"
 ).childNodes;
 
-for (let i = 0; i < statusElements.length; i++) {
+for(el of statusElements) {
 	if (
-		statusElements[i].nodeName == "#text" ||
-		statusElements[i].nodeName == "BR"
+		el.nodeName == "#text" ||
+		el.nodeName == "BR"
 	) {
-		statusElements[i].remove();
+		el.remove();
 	}
 }
 
@@ -326,27 +320,34 @@ for (let i = 0; i < statusElements.length; i++) {
 }
 
 // Add center class to #basicNote
-noteSection.classList.add("center-element");
+NOTE_SECTION.classList.add("center-element");
 
-// Finds the post code based on the address
-function findPostCodeFromAddress(str) {
-	const addressElements = str.split(",");
-	let countOfOnlyDigits = 0;
+// Detect post code from address and its format.
+function findPostCodeFromAddress() {
+    if(COUNTRY.post_code == 'none') {
+        styleInputText(POST_CODE, "none");
+        return;
+    }
+    
+    // Split the address into elements delimited by commas
+    const addressElements = NEW_ADDRESS.value.split(",");
+    const pattern = new RegExp(COUNTRY.post_code_pattern);
 
-	// Loop through the address to find the post code
-	for (let i = 0; i < addressElements.length; i++) {
-		let trimmed = addressElements[i].trim();
+    let valid = 0;
 
-		// Post code is valid if it contains only 4 digits or more
-		if (matchesPattern(trimmed) && trimmed.length >= 4) {
-			postCode.value = trimmed;
-			countOfOnlyDigits++;
-		}
+    for(elem of addressElements) {
+		let trimmed = elem.trim();
+		if(pattern.test(trimmed)) {
+            console.log("[PASS] =>" + trimmed);
+            console.log("[PATTERN] =>" + COUNTRY.post_code_pattern);
+			POST_CODE.value = trimmed;
+			valid++;
+		} else console.log("[FAIL] =>" + trimmed);
 	}
 
-	if (countOfOnlyDigits == 0) styleInputText(postCode, "missing");
-	else if (countOfOnlyDigits == 1) styleInputText(postCode, "success");
-	else styleInputText(postCode, "conflict");
+	if (valid == 0) styleInputText(POST_CODE, "missing");
+	else if (valid == 1) styleInputText(POST_CODE, "success");
+	else styleInputText(POST_CODE, "conflict");
 }
 
 function styleInputText(element, status) {
@@ -372,6 +373,11 @@ function styleInputText(element, status) {
 			backgroundStyle = "#ffdada";
             message = "No post code detected."
 			break;
+        case "none":
+            borderColor = '#0081c9';
+            element.removeAttribute("style");
+            message = "Country does not use post codes."
+            break;    
 	}
     element.style.setProperty("border", borderStyle, "important");
     element.style.setProperty("background", backgroundStyle, "important");
@@ -390,7 +396,7 @@ function insertPostCodeStatusLabel() {
     const postCodeStatus = document.createElement("span");
 
     postCodeStatus.setAttribute("id", "postCodeStatus");
-    postCode.parentNode.appendChild(postCodeStatus);
+    POST_CODE.parentNode.appendChild(postCodeStatus);
 }
 
 // Checks if a string contains only digits
@@ -420,29 +426,57 @@ function matchesPattern(str) {
 // Phone formatting
 var countryPhoneCodes;
 
-Promise.all([
-	fetch(chrome.runtime.getURL("data/phone_formats.json")),
-	fetch(chrome.runtime.getURL("data/post_code_formats.json"))
-])
-	.then((responses) => {
-		return Promise.all(responses.map((response) => response.json()));
-	})
-	.then((data) => {
-		let phone_Formats = data[0];
-		let postCodes = data[1];
+// Promise.all([
+// 	fetch(chrome.runtime.getURL("data/phone_formats.json")),
+// 	fetch(chrome.runtime.getURL("data/post_code_formats.json"))
+// ])
+// 	.then((responses) => {
+// 		return Promise.all(responses.map((response) => response.json()));
+// 	})
+// 	.then((data) => {
+// 		let phone_Formats = data[0];
+// 		let postCodes = data[1];
 
-        countryPhoneCodes = phone_Formats;
-        formatPhoneNumber();
+//         countryPhoneCodes = phone_Formats;
+//         formatPhoneNumber();
 
-        const postHelpTooltip = postCode.parentNode.querySelector(".tooltiptext");
-        updateHelpButtons(postHelpTooltip, postCodes);
-	})
-	.catch((error) => {
+//         const postHelpTooltip = postCode.parentNode.querySelector(".tooltiptext");
+//         updateHelpButtons(postHelpTooltip, postCodes);
+// 	})
+// 	.catch((error) => {
+// 		console.error(error);
+// 	});
+
+var countryData;
+
+// Fetch the country data file
+async function fetchData() {
+	try {
+		const response = await fetch(
+			chrome.runtime.getURL("data/country_info.json")
+		);
+		const data = await response.json();
+		countryData = data;
+		console.log("Country data has been loaded into the array");
+
+        updateFields();
+	} 
+    catch (error) {
 		console.error(error);
-	});
+	}
+}
+
+fetchData();
+
+function updateFields() {
+    getCountryInfo();
+    formatPhoneNumber();
+    updateHelpButtons();
+    findPostCodeFromAddress();
+}
 
 // Format the phone number every time we click out of the phone num field
-phoneNumber.addEventListener("blur", function () {
+PHONE_NUM.addEventListener("blur", function () {
 	formatPhoneNumber();
 });
 
@@ -457,13 +491,12 @@ const phoneFormats = [
 ];
 
 function formatPhoneNumber() {
-	var phone = phoneNumber.value;
+	var phone = PHONE_NUM.value;
 
 	// if phone field is empty, don't go any further
 	if (!phone) return;
 
-	const countryName = getCountryName();
-	const countryCode = countryPhoneCodes[countryName];
+    const countryCode = COUNTRY.phone_code;
 
 	// remove all non numerical characters
 	phone = phone.replace(/\D/g, "");
@@ -488,12 +521,7 @@ function formatPhoneNumber() {
 
 	// Add + before country code and an empty space after, lastly add the formatted phone number
 	phone = `+${countryCode} ${phone}`;
-	phoneNumber.value = phone;
-}
-
-// Returns country name as a string
-function getCountryName() {
-	return document.querySelector("a.chosen-single span").textContent;
+	PHONE_NUM.value = phone;
 }
 
 function isBetween(number, lowerBound, upperBound) {
@@ -509,5 +537,50 @@ function removeInfoBoxes () {
 // Insert the save button after the view button
 function reorderViewSaveButtons() {
     const saveButton = document.querySelector("#savebas_btn");
+
+    if(!saveButton.nextElementSibling) {
+        console.log("[LOG][ERROR] cannot find the next sibling of save button");
+        return;
+    }
+    
     saveButton.nextElementSibling.insertAdjacentElement("afterend", saveButton);
+}
+
+function getCountryInfo() {
+    let selectedCountry = document.querySelector("#country_chosen > a > span");
+
+	COUNTRY = countryData.find(function (obj) {
+		return obj.country === selectedCountry.textContent;
+	});
+}
+
+const COUNTRY_SELECTOR = document.querySelector(".chosen-container");
+
+COUNTRY_SELECTOR.addEventListener("click", function(e) {
+    if(e.target.classList.contains("active-result")) {
+        updateFields();
+    }
+});
+
+function removeSections() {
+    const headersToRemove = ["URIs", "Social Icon", "Location"];
+    
+    for (let i = 0; i < HEADERS.length; i++) {
+        if (headersToRemove.includes(HEADERS[i].textContent)) {
+            HEADERS[i].parentNode.remove();
+        }
+    }
+}
+
+function handleHeaderButtons() {
+    const elem = document.querySelector("h2.page_title").lastElementChild;
+
+    // If last child is the service button we add an ID to it
+    if(elem.nodeName == "A") elem.setAttribute("id", "serviceBtn");
+}
+
+function positionAdPlan() {
+    const adPlan = document.querySelector("span.label_level").parentNode;
+    adPlan.classList.add("ad-plan");
+    document.querySelector(".bmenu").before(adPlan);
 }
