@@ -3,6 +3,8 @@ const SAVE_FORM = document.querySelector("#saveForm");
 const POST_CODE = document.querySelector("#postcode");
 const PHONE_NUM = document.querySelector("#phone");
 const HEADERS = document.querySelectorAll("h3");
+const AD_PLAN = document.querySelector("span.label_level").parentNode;
+const PAGE_TITLE = document.querySelector("h2.page_title");
 var COUNTRY;
 
 // Remove "Clear coordinate" before adding copy buttons
@@ -59,9 +61,6 @@ removeCompanyFields();
 
 // remove the info boxes with ? near some inputs
 removeInfoBoxes ();
-
-// Insert the save button after the view button
-reorderViewSaveButtons();
 
 // Ad Plan
 positionAdPlan();
@@ -338,11 +337,9 @@ function findPostCodeFromAddress() {
     for(elem of addressElements) {
 		let trimmed = elem.trim();
 		if(pattern.test(trimmed)) {
-            console.log("[PASS] =>" + trimmed);
-            console.log("[PATTERN] =>" + COUNTRY.post_code_pattern);
 			POST_CODE.value = trimmed;
 			valid++;
-		} else console.log("[FAIL] =>" + trimmed);
+        }
 	}
 
 	if (valid == 0) styleInputText(POST_CODE, "missing");
@@ -534,18 +531,6 @@ function removeInfoBoxes () {
     for(box of boxes) box.remove();
 }
 
-// Insert the save button after the view button
-function reorderViewSaveButtons() {
-    const saveButton = document.querySelector("#savebas_btn");
-
-    if(!saveButton.nextElementSibling) {
-        console.log("[LOG][ERROR] cannot find the next sibling of save button");
-        return;
-    }
-    
-    saveButton.nextElementSibling.insertAdjacentElement("afterend", saveButton);
-}
-
 function getCountryInfo() {
     let selectedCountry = document.querySelector("#country_chosen > a > span");
 
@@ -565,22 +550,41 @@ COUNTRY_SELECTOR.addEventListener("click", function(e) {
 function removeSections() {
     const headersToRemove = ["URIs", "Social Icon", "Location"];
     
-    for (let i = 0; i < HEADERS.length; i++) {
-        if (headersToRemove.includes(HEADERS[i].textContent)) {
-            HEADERS[i].parentNode.remove();
+    for(header of HEADERS) {
+        if (headersToRemove.includes(header.textContent)) {
+            header.parentNode.remove();
         }
     }
 }
 
-function handleHeaderButtons() {
-    const elem = document.querySelector("h2.page_title").lastElementChild;
+function positionAdPlan() {
+    
+    const afterTitle = PAGE_TITLE.querySelector("img").nextElementSibling;
+    
+    AD_PLAN.classList.add("ad-plan");
 
-    // If last child is the service button we add an ID to it
-    if(elem.nodeName == "A") elem.setAttribute("id", "serviceBtn");
+    // document.querySelector(".bmenu").before(adPlan);
+    afterTitle.insertAdjacentElement("beforebegin", AD_PLAN);
 }
 
-function positionAdPlan() {
-    const adPlan = document.querySelector("span.label_level").parentNode;
-    adPlan.classList.add("ad-plan");
-    document.querySelector(".bmenu").before(adPlan);
+function handleHeaderButtons() {
+    const viewBtn = PAGE_TITLE.querySelector(".bmenu");
+    const saveBtn = PAGE_TITLE.querySelector("button.green_btn");
+
+    const links = PAGE_TITLE.querySelectorAll("a");
+    // Find the "Service" button based on the href of the anchor elements
+    for(elem of links) {
+        let link = elem.getAttribute("href");
+        
+        if(link.includes("service")) {
+            elem.setAttribute("id","serviceBtn");
+            PAGE_TITLE.appendChild(elem);
+        }
+    }
+
+    if(viewBtn) {
+        PAGE_TITLE.appendChild(viewBtn);
+    }
+    
+    PAGE_TITLE.appendChild(saveBtn);
 }
