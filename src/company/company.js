@@ -444,30 +444,7 @@ function matchesPattern(str) {
 }
 
 // Phone formatting
-var countryPhoneCodes;
-
-// Promise.all([
-// 	fetch(chrome.runtime.getURL("data/phone_formats.json")),
-// 	fetch(chrome.runtime.getURL("data/post_code_formats.json"))
-// ])
-// 	.then((responses) => {
-// 		return Promise.all(responses.map((response) => response.json()));
-// 	})
-// 	.then((data) => {
-// 		let phone_Formats = data[0];
-// 		let postCodes = data[1];
-
-//         countryPhoneCodes = phone_Formats;
-//         formatPhoneNumber();
-
-//         const postHelpTooltip = postCode.parentNode.querySelector(".tooltiptext");
-//         updateHelpButtons(postHelpTooltip, postCodes);
-// 	})
-// 	.catch((error) => {
-// 		console.error(error);
-// 	});
-
-var countryData;
+var COUNTRY_DATA;
 
 // Fetch the country data file
 async function fetchData() {
@@ -476,7 +453,7 @@ async function fetchData() {
 			chrome.runtime.getURL("data/country_info.json")
 		);
 		const data = await response.json();
-		countryData = data;
+		COUNTRY_DATA = data;
 		console.log("Country data has been loaded into the array");
 
         updateFields();
@@ -557,7 +534,7 @@ function removeInfoBoxes () {
 function getCountryInfo() {
     let selectedCountry = document.querySelector("#country_chosen > a > span");
 
-	COUNTRY = countryData.find(function (obj) {
+	COUNTRY = COUNTRY_DATA.find(function (obj) {
 		return obj.country === selectedCountry.textContent;
 	});
 }
