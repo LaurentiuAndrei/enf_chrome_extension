@@ -33,7 +33,7 @@
         "country": "Angola",
         "phone_code": "244",
         "post_code": "none",
-        "post_code_pattern": ""
+        "post_code_pattern": "none"
     },
     {
         "country": "Anguilla",
@@ -45,7 +45,7 @@
         "country": "Antigua and Barbuda",
         "phone_code": "1-268",
         "post_code": "none",
-        "post_code_pattern": ""
+        "post_code_pattern": "none"
     },
     {
         "country": "Argentina",
@@ -302,14 +302,14 @@
     {
         "country": "Cuba",
         "phone_code": "53",
-        "post_code": "none",
-        "post_code_pattern": "none"
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
     },
     {
         "country": "Curaçao",
         "phone_code": "599",
-        "post_code": "1234 AA",
-        "post_code_pattern": "^[0-9]{4} [A-Z]{2}$"
+        "post_code": "none",
+        "post_code_pattern": "none"
     },
     {
         "country": "Cyprus",
@@ -344,8 +344,8 @@
     {
         "country": "Dominica",
         "phone_code": "1-767",
-        "post_code": "12345-6789",
-        "post_code_pattern": "^[0-9]{5}-[0-9]{4}$"
+        "post_code": "none",
+        "post_code_pattern": "none"
     },
     {
         "country": "Dominican Republic",
@@ -410,8 +410,8 @@
     {
         "country": "Faroe Islands",
         "phone_code": "298",
-        "post_code": "AA-1234",
-        "post_code_pattern": "^[A-Z]{2}-[0-9]{4}$"
+        "post_code": "123",
+        "post_code_pattern": "^[0-9]{3}$"
     },
     {
         "country": "Federated States of Micronesia",
@@ -458,8 +458,8 @@
     {
         "country": "Georgia",
         "phone_code": "995",
-        "post_code": "12345",
-        "post_code_pattern": "^[0-9]{5}$"
+        "post_code": "1234",
+        "post_code_pattern": "^[0-9]{4}$"
     },
     {
         "country": "Germany",
@@ -470,8 +470,8 @@
     {
         "country": "Ghana",
         "phone_code": "233",
-        "post_code": "none",
-        "post_code_pattern": "none"
+        "post_code": "AA-123",
+        "post_code_pattern": "^[A-Z]{2}-[0-9]{3}$"
     },
     {
         "country": "Gibraltar",
@@ -494,8 +494,8 @@
     {
         "country": "Grenada",
         "phone_code": "1-473",
-        "post_code": "12345",
-        "post_code_pattern": "^[0-9]{5}$"
+        "post_code": "none",
+        "post_code_pattern": "none"
     },
     {
         "country": "Guadeloupe",
@@ -524,8 +524,8 @@
     {
         "country": "Guinea",
         "phone_code": "224",
-        "post_code": "none",
-        "post_code_pattern": "none"
+        "post_code": "123",
+        "post_code_pattern": "^[0-9]{3}$"
     },
     {
         "country": "Guinea-bissau",
@@ -542,8 +542,8 @@
     {
         "country": "Haiti",
         "phone_code": "509",
-        "post_code": "AA 1234",
-        "post_code_pattern": "^[A-Z]{2} [0-9]{4}$"
+        "post_code": "1234",
+        "post_code_pattern": "^[0-9]{4}$"
     },
     {
         "country": "Honduras",
@@ -602,8 +602,8 @@
     {
         "country": "Isle of Man",
         "phone_code": "44-1624",
-        "post_code": "AA1",
-        "post_code_pattern": "^[A-Z]{2}[0-9]$"
+        "post_code": "AA1 2AA", 
+        "post_code_pattern": "^[A-Z]{2} [0-9][A-Z]{2}$"
     },
     {
         "country": "Israel",
@@ -620,8 +620,8 @@
     {
         "country": "Jamaica",
         "phone_code": "1-876",
-        "post_code": "none",
-        "post_code_pattern": "none"
+        "post_code": "AAA12", 
+        "post_code_pattern": "^[A-Z]{3}[0-9]{2}$"
     },
     {
         "country": "Japan",
@@ -656,8 +656,8 @@
     {
         "country": "Kiribati",
         "phone_code": "686",
-        "post_code": "AA1234",
-        "post_code_pattern": "^[A-Z]{2}[0-9]{4}$"
+        "post_code": "1234",
+        "post_code_pattern": "^[0-9]{4}$"
     },
     {
         "country": "Korea",
@@ -686,8 +686,8 @@
     {
         "country": "Laos",
         "phone_code": "856",
-        "post_code": "1234",
-        "post_code_pattern": "^[0-9]{4}$"
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
     },
     {
         "country": "Latvia",
@@ -770,8 +770,8 @@
     {
         "country": "Mali",
         "phone_code": "223",
-        "post_code": "123456",
-        "post_code_pattern": "^[0-9]{6}$"
+        "post_code": "none",
+        "post_code_pattern": "none"
     },
     {
         "country": "Malta",
@@ -812,8 +812,8 @@
     {
         "country": "Moldova",
         "phone_code": "373",
-        "post_code": "AA-1234",
-        "post_code_pattern": "^[A-Z]{2}-[0-9]{4}$"
+        "post_code": "1234",
+        "post_code_pattern": "^[0-9]{4}$"
     },
     {
         "country": "Monaco",
@@ -836,8 +836,8 @@
     {
         "country": "Montserrat",
         "phone_code": "1-664",
-        "post_code": "AAA1234",
-        "post_code_pattern": "^[A-Z]{3}[0-9]{4}$"
+        "post_code": "1234",
+        "post_code_pattern": "^[0-9]{4}$"
     },
     {
         "country": "Morocco",
@@ -866,8 +866,8 @@
     {
         "country": "Nauru",
         "phone_code": "674",
-        "post_code": "AAA12",
-        "post_code_pattern": "^[A-Z]{3}[0-9]{2}$"
+        "post_code": "always NRU68",
+        "post_code_pattern": "^NRU68$"
     },
     {
         "country": "Nepal",
@@ -878,8 +878,8 @@
     {
         "country": "Netherlands",
         "phone_code": "31",
-        "post_code": "1234AA",
-        "post_code_pattern": "^[0-9]{4}[A-Z]{2}$"
+        "post_code": "1234 AA",
+        "post_code_pattern": "^[0-9]{4} [A-Z]{2}$"
     },
     {
         "country": "New Caledonia",
@@ -902,8 +902,8 @@
     {
         "country": "Niger",
         "phone_code": "227",
-        "post_code": "923101",
-        "post_code_pattern": "^[0-9]{6}$"
+        "post_code": "1234",
+        "post_code_pattern": "^[0-9]{4}$"
     },
     {
         "country": "Nigeria",
@@ -968,8 +968,8 @@
     {
         "country": "Papua New Guinea",
         "phone_code": "675",
-        "post_code": "1234",
-        "post_code_pattern": "^[0-9]{4}$"
+        "post_code": "123",
+        "post_code_pattern": "^[0-9]{3}$"
     },
     {
         "country": "Paraguay",
@@ -1076,8 +1076,8 @@
     {
         "country": "Samoa",
         "phone_code": "685",
-        "post_code": "12345",
-        "post_code_pattern": "^[0-9]{5}$"
+        "post_code": "1234",
+        "post_code_pattern": "^[0-9]{4}$"
     },
     {
         "country": "San Marino",
@@ -1154,14 +1154,14 @@
     {
         "country": "Somalia",
         "phone_code": "252",
-        "post_code": "123456",
-        "post_code_pattern": "^[0-9]{6}$"
+        "post_code": "AA 12345",
+        "post_code_pattern": "^[A-Z]{2} [0-9]{5}$"
     },
     {
         "country": "South Africa",
         "phone_code": "27",
-        "post_code": "1234-5678",
-        "post_code_pattern": "^[0-9]{4}-[0-9]{4}$"
+        "post_code": "1234",
+        "post_code_pattern": "^[0-9]{4}$"
     },
     {
         "country": "South Sudan",
@@ -1184,8 +1184,8 @@
     {
         "country": "Sudan",
         "phone_code": "249",
-        "post_code": "123456",
-        "post_code_pattern": "^[0-9]{6}$"
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
     },
     {
         "country": "Suriname",
@@ -1226,8 +1226,8 @@
     {
         "country": "Taiwan",
         "phone_code": "886",
-        "post_code": "123456",
-        "post_code_pattern": "^[0-9]{6}$"
+        "post_code": "123",
+        "post_code_pattern": "^[0-9]{3}$"
     },
     {
         "country": "Tajikistan",
@@ -1280,8 +1280,8 @@
     {
         "country": "Trinidad and Tobago",
         "phone_code": "1-868",
-        "post_code": "1234",
-        "post_code_pattern": "^[0-9]{4}$"
+        "post_code": "123456",
+        "post_code_pattern": "^[0-9]{6}$"
     },
     {
         "country": "Tunisia",
@@ -1322,8 +1322,8 @@
     {
         "country": "Uganda",
         "phone_code": "256",
-        "post_code": "12345",
-        "post_code_pattern": "^[0-9]{5}$"
+        "post_code": "none",
+        "post_code_pattern": "none"
     },
     {
         "country": "Ukraine",
@@ -1376,8 +1376,8 @@
     {
         "country": "Vietnam",
         "phone_code": "84",
-        "post_code": "123456",
-        "post_code_pattern": "^[0-9]{6}$"
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
     },
     {
         "country": "Wallis and Futuna",
@@ -1400,8 +1400,8 @@
     {
         "country": "Zambia",
         "phone_code": "260",
-        "post_code": "none",
-        "post_code_pattern": "none"
+        "post_code": "12345",
+        "post_code_pattern": "^[0-9]{5}$"
     },
     {
         "country": "Zimbabwe",

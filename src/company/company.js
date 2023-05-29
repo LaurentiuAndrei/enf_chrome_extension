@@ -29,7 +29,7 @@ SAVE_FORM.addEventListener("click", function (e) {
     else if (elementID == "googleSearch") {
         const companyName = e.target.previousElementSibling.value;
         const website = document.querySelector("#website").value;
-		const searchInfo = [website, companyName];
+		const searchInfo = [website, companyName, ];
 
         //Send the search data to the service worker so it can open a new tab
 		chrome.runtime.sendMessage({ type: "strings", data: searchInfo });
@@ -498,9 +498,10 @@ function formatPhoneNumber() {
 	// remove all non numerical characters
 	phone = phone.replace(/\D/g, "");
 
-	// remove the country code if found
-	if (phone.startsWith(countryCode)) {
-		phone = phone.replace(new RegExp(countryCode), "");
+    // Remove phone code if found
+    let strippedCountryCode = countryCode.replace(/\D/g, "");
+	if (phone.startsWith(strippedCountryCode)) {
+		phone = phone.replace(new RegExp(strippedCountryCode), "");
 	}
 
 	// deconstruct the digits/format based on phone.length
