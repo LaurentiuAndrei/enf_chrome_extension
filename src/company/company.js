@@ -294,32 +294,40 @@ const logoSection = document.querySelector("#basic > span.con_right");
 document.querySelector("#basic > span.mid_sec").before(logoSection);
 
 // Remove the QC area
-const statusElements = document.querySelector(
-	"#contact > span.con_right"
-).childNodes;
-
-for(el of statusElements) {
-	if (
-		el.nodeName == "#text" ||
-		el.nodeName == "BR"
-	) {
-		el.remove();
-	}
-}
-
-// Find the element with type="hidden" then remove element from next position until the array shortens to the position of the next element
-for (let i = 0; i < statusElements.length; i++) {
-	if (statusElements[i].type == "hidden") {
-		for (i++; i < statusElements.length; ) {
-			statusElements[i].remove();
-		}
-
-		break;
-	}
-}
+removeQC();
 
 // Add center class to #basicNote
 NOTE_SECTION.classList.add("center-element");
+
+function removeQC() {
+    const conRight = document.querySelector("#contact > span.con_right");
+    const statusElements = conRight.childNodes;
+
+    let sendEmailContainer = document.createElement("div");
+    conRight.parentNode.appendChild(sendEmailContainer);
+    sendEmailContainer.setAttribute("id", "sendEmailContainer");
+
+    for(let i = 0; i < statusElements.length; i++) {
+        if(statusElements[i].nodeName === "INPUT" && statusElements[i].getAttribute("name") === "sendemail") {
+            sendEmailContainer.appendChild(statusElements[i]);
+            sendEmailContainer.appendChild(statusElements[i++]);
+        }
+        else if(statusElements[i].nodeName === "BR") {
+            statusElements[i].remove();
+        }
+    }
+
+    // Find the element with type="hidden" then remove element from next position until the array shortens to the position of the next element
+    for (let i = 0; i < statusElements.length; i++) {
+        if (statusElements[i].type == "hidden") {
+            for (i++; i < statusElements.length;) {
+                statusElements[i].remove();
+            }
+
+            break;
+        }
+    }
+}
 
 // Detect post code from address and its format.
 function findPostCodeFromAddress() {

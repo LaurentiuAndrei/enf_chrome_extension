@@ -189,17 +189,15 @@
     overflow: hidden;
 }
 
-/* Start logo content */
+
 .con_right {
     display: flex !important;
-    align-items: end !important;
+    justify-content: center;
 
 	float: none !important;
 	width: 500px !important;
 	margin: 0 auto 10px auto !important;
 }
-
-/* End logo content */
 
 .center-element {
 	display: flex;
@@ -387,4 +385,14 @@ form fieldset input.input-text {
 
 #postcode {
     margin-bottom: 0 !important;
+}
+
+#sendEmailContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#sendEmailContainer input {
+    margin: 0 5px 0 20px !important;
 }
