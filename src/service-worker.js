@@ -22,7 +22,12 @@ chrome.webNavigation.onDOMContentLoaded.addListener(function (tab) {
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 	if (request.type === "strings") {
-        const [website, companyName] = request.data;
+        let [website, companyName] = request.data;
+
+        // Add strict search by using double quotes on the search query
+        companyName = `"${companyName}"`;
+
+        // Prepare the URL
         const encodedSearchInfo = encodeURIComponent(companyName);
 
         chrome.tabs.create({ url: `https://www.google.com/search?q=site:${website} ${encodedSearchInfo}`});

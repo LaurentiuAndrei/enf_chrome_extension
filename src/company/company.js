@@ -246,12 +246,8 @@ function addGoogleSearchButton() {
 	document.querySelector("#shortName").insertAdjacentElement("afterend", googleSearch.cloneNode());
 }
 
-// Rename name label to legal name
-const legalName = document.querySelector("#name");
-
-if (legalName.previousElementSibling.textContent == "Name") {
-	legalName.previousElementSibling.textContent = "Legal Name";
-}
+// Rename labels
+renameLabels();
 
 // Create "Other" section
 NOTE_SECTION.insertAdjacentHTML(
@@ -298,6 +294,25 @@ removeQC();
 
 // Add center class to #basicNote
 NOTE_SECTION.classList.add("center-element");
+
+function renameLabels() {
+    const labelsToRename = {
+        "Name": "Legal Name",
+        "Parent": "Parent Company"
+    };
+
+    const labels = document.querySelectorAll("label");
+
+    labels.forEach(label => {
+        const originalLabel = label.textContent.trim();
+        const renamedLabel = Object.keys(labelsToRename).find(
+            label => label === originalLabel
+        );
+        if (renamedLabel) {
+            label.textContent = labelsToRename[renamedLabel];
+        }
+    });
+}
 
 function removeQC() {
     const conRight = document.querySelector("#contact > span.con_right");
@@ -595,4 +610,18 @@ function handleHeaderButtons() {
     }
     
     PAGE_TITLE.appendChild(saveBtn);
+}
+
+splitSections();
+
+function splitSections() {
+    const sectionContainer = document.createElement("div");
+    const basic = SAVE_FORM.querySelector("#basic");
+    const contact = SAVE_FORM.querySelector("#contact");
+
+    sectionContainer.setAttribute("id", "sectionContainer");
+
+    SAVE_FORM.insertAdjacentElement('afterbegin', sectionContainer);
+    sectionContainer.insertAdjacentElement('afterbegin', contact);
+    sectionContainer.insertAdjacentElement('afterbegin', basic);
 }
