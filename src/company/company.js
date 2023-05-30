@@ -90,7 +90,7 @@ insertPostCodeStatusLabel();
 
 NEW_ADDRESS.addEventListener("blur", function (e) {
 	ADDRESS.value = NEW_ADDRESS.value;
-	findPostCodeFromAddress(NEW_ADDRESS.value);
+	findPostCodeFromAddress();
 });
 
 // Move the postcode under the address
@@ -105,7 +105,6 @@ function removeClearCoordinate() {
 
 function removeCompanyFields() {
 	const companyFieldsToRemove = [
-		"Enquiry Suspension：",
 		"E-mail (Solar System Enquiries)：",
 		"E-mail (Panel Enquiries)：",
 		"E-mail (Inverter Enquiries)：",
@@ -345,28 +344,52 @@ function removeQC() {
 }
 
 // Detect post code from address and its format.
+// function findPostCodeFromAddress() {
+//     if(COUNTRY.post_code == 'none') {
+//         styleInputText(POST_CODE, "none");
+//         return;
+//     }
+    
+//     // Split the address into elements delimited by commas
+//     const addressElements = NEW_ADDRESS.value.split(",");
+//     const pattern = new RegExp(COUNTRY.post_code_pattern);
+
+//     let valid = 0;
+
+//     for(elem of addressElements) {
+// 		let trimmed = elem.trim();
+// 		if(pattern.test(trimmed)) {
+
+// 			POST_CODE.value = trimmed;
+// 			valid++;
+//         }
+// 	}
+
+// 	if (valid == 0) styleInputText(POST_CODE, "missing");
+// 	else if (valid == 1) styleInputText(POST_CODE, "success");
+// 	else styleInputText(POST_CODE, "conflict");
+// }
+
 function findPostCodeFromAddress() {
     if(COUNTRY.post_code == 'none') {
         styleInputText(POST_CODE, "none");
         return;
     }
-    
-    // Split the address into elements delimited by commas
-    const addressElements = NEW_ADDRESS.value.split(",");
-    const pattern = new RegExp(COUNTRY.post_code_pattern);
 
-    let valid = 0;
+    const address = NEW_ADDRESS.value;
+    const pattern = new RegExp(COUNTRY.post_code_pattern, 'g');
 
-    for(elem of addressElements) {
-		let trimmed = elem.trim();
-		if(pattern.test(trimmed)) {
-			POST_CODE.value = trimmed;
-			valid++;
-        }
-	}
+    let matches = address.match(pattern);
 
-	if (valid == 0) styleInputText(POST_CODE, "missing");
-	else if (valid == 1) styleInputText(POST_CODE, "success");
+    if(!matches) {
+        styleInputText(POST_CODE, "missing");
+        return;
+    }
+
+    // Update the post_code with the last matched pattern
+    POST_CODE.value = matches[matches.length - 1];
+
+	if (matches.length == 1) styleInputText(POST_CODE, "success");
 	else styleInputText(POST_CODE, "conflict");
 }
 
