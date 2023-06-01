@@ -29,7 +29,12 @@ SAVE_FORM.addEventListener("click", function (e) {
     else if (elementID == "googleSearch") {
         const companyName = e.target.previousElementSibling.value;
         const website = document.querySelector("#website").value;
-		const searchInfo = [website, companyName, ];
+        const label = e.target.parentNode.querySelector("label").textContent;
+		const searchInfo = [
+            website,
+            companyName,
+            label === "Short Name" ? "normal" : "strict"
+        ];
 
         //Send the search data to the service worker so it can open a new tab
 		chrome.runtime.sendMessage({ type: "strings", data: searchInfo });
@@ -342,33 +347,6 @@ function removeQC() {
         }
     }
 }
-
-// Detect post code from address and its format.
-// function findPostCodeFromAddress() {
-//     if(COUNTRY.post_code == 'none') {
-//         styleInputText(POST_CODE, "none");
-//         return;
-//     }
-    
-//     // Split the address into elements delimited by commas
-//     const addressElements = NEW_ADDRESS.value.split(",");
-//     const pattern = new RegExp(COUNTRY.post_code_pattern);
-
-//     let valid = 0;
-
-//     for(elem of addressElements) {
-// 		let trimmed = elem.trim();
-// 		if(pattern.test(trimmed)) {
-
-// 			POST_CODE.value = trimmed;
-// 			valid++;
-//         }
-// 	}
-
-// 	if (valid == 0) styleInputText(POST_CODE, "missing");
-// 	else if (valid == 1) styleInputText(POST_CODE, "success");
-// 	else styleInputText(POST_CODE, "conflict");
-// }
 
 function findPostCodeFromAddress() {
     if(COUNTRY.post_code == 'none') {

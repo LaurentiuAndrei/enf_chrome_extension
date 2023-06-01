@@ -22,10 +22,15 @@ chrome.webNavigation.onDOMContentLoaded.addListener(function (tab) {
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 	if (request.type === "strings") {
-        let [website, companyName] = request.data;
+        let [website, companyName, mode] = request.data;
 
-        // Add strict search by using double quotes on the search query
-        companyName = `"${companyName}"`;
+        // strict => adds " " around the search query
+        switch(mode) {
+            case "normal" :
+                break;
+            case "strict":
+                companyName = `"${companyName}"`;
+        }
 
         // Prepare the URL
         const encodedSearchInfo = encodeURIComponent(companyName);
