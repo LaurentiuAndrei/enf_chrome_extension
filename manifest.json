@@ -9,7 +9,11 @@
 		"service_worker": "src/service-worker.js"
 	},
 
-	"permissions": ["scripting", "activeTab", "webNavigation", "tabs"],
+	"permissions": [
+        "scripting",
+        "activeTab",
+        "webNavigation",
+        "tabs"],
 	"host_permissions": ["https://admin.enf.me/*"],
 	"web_accessible_resources": [
 		{

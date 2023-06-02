@@ -16,25 +16,31 @@ chrome.webNavigation.onDOMContentLoaded.addListener(function (tab) {
 			files: ["src/company/company.css"],
 		});
 	} else if (url.includes("admin.enf.me/solar/ID/classification")) {
-        // classification page
-	} 
+		// classification page
+	}
 }, urlFilter);
 
-chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+chrome.runtime.onMessage.addListener(function (request) {
 	if (request.type === "strings") {
-        let [website, companyName, mode] = request.data;
+		let [website, companyName, label] = request.data;
 
-        // strict => adds " " around the search query
-        switch(mode) {
-            case "normal" :
-                break;
-            case "strict":
-                companyName = `"${companyName}"`;
-        }
+		// add strict operator to Legal Name
+		console.log(companyName);
+		console.log(label);
+		companyName = label === "Legal Name" ? `"${companyName}"` : companyName;
+		console.log(companyName);
 
-        // Prepare the URL
-        const encodedSearchInfo = encodeURIComponent(companyName);
+		// Prepare the URL
+		const encodedSearchInfo = encodeURIComponent(companyName);
 
-        chrome.tabs.create({ url: `https://www.google.com/search?q=site:${website} ${encodedSearchInfo}`});
+		chrome.tabs.create({
+			url: `https://www.google.com/search?q=site:${website} ${encodedSearchInfo}`,
+		});
 	}
+});
+
+chrome.runtime.onUpdateAvailable.addListener(function (details) {
+	let message = `Update available! Current Version: ${details.previousVersion}. New Version: ${details.version}`;
+	console.log(message);
+    console.log(new Date());
 });

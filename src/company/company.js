@@ -5,7 +5,7 @@ const PHONE_NUM = document.querySelector("#phone");
 const HEADERS = document.querySelectorAll("h3");
 const AD_PLAN = document.querySelector("span.label_level").parentNode;
 const PAGE_TITLE = document.querySelector("h2.page_title");
-var COUNTRY;
+let COUNTRY;
 
 // Remove "Clear coordinate" before adding copy buttons
 removeClearCoordinate();
@@ -16,7 +16,7 @@ addCopyToClipboardButtons();
 // Rearrange the service/view/save buttons in the header
 handleHeaderButtons();
 
-// Add click events only to the copy buttons
+// Check for clicks on google search icon and copy button
 SAVE_FORM.addEventListener("click", function (e) {
 	let elementID = e.target.getAttribute("id");
 
@@ -27,13 +27,14 @@ SAVE_FORM.addEventListener("click", function (e) {
 		e.target.firstElementChild.innerHTML = "Copied";
 	}
     else if (elementID == "googleSearch") {
-        const companyName = e.target.previousElementSibling.value;
-        const website = document.querySelector("#website").value;
-        const label = e.target.parentNode.querySelector("label").textContent;
+        const website = document.querySelector("#website");
+        const companyName = document.querySelector(`#${e.target.getAttribute('for')}`);
+        const label = e.target.parentNode.querySelector("label");
+
 		const searchInfo = [
-            website,
-            companyName,
-            label === "Short Name" ? "normal" : "strict"
+            website.value,
+            companyName.value,
+            label.textContent
         ];
 
         //Send the search data to the service worker so it can open a new tab
@@ -82,8 +83,8 @@ document.querySelector("#address").parentNode.previousElementSibling.remove();
 removeSections();
 
 // Add textarea of address without removing the original one
-var ADDRESS = document.querySelector("#address");
-var NEW_ADDRESS = document.createElement("textarea");
+let ADDRESS = document.querySelector("#address");
+let NEW_ADDRESS = document.createElement("textarea");
 
 NEW_ADDRESS.setAttribute("id", "newAddress");
 NEW_ADDRESS.textContent = ADDRESS.value;
@@ -243,11 +244,14 @@ addGoogleSearchButton();
 // Add the google search button
 function addGoogleSearchButton() {
 	const googleSearch = document.createElement("div");
+    const fieldIDs = ['name', 'shortName'];
 
 	googleSearch.setAttribute("id", "googleSearch");
 
-	document.querySelector("#name").insertAdjacentElement("afterend", googleSearch);
-	document.querySelector("#shortName").insertAdjacentElement("afterend", googleSearch.cloneNode());
+    for(field of fieldIDs) {
+        googleSearch.setAttribute('for', field);
+        document.querySelector(`#${field}`).insertAdjacentElement("afterend", googleSearch.cloneNode());
+    }
 }
 
 // Rename labels
@@ -445,7 +449,7 @@ function matchesPattern(str) {
 }
 
 // Phone formatting
-var COUNTRY_DATA;
+let COUNTRY_DATA;
 
 // Fetch the country data file
 async function fetchData() {
@@ -489,7 +493,7 @@ const phoneFormats = [
 ];
 
 function formatPhoneNumber() {
-	var phone = PHONE_NUM.value;
+	let phone = PHONE_NUM.value;
 
 	// if phone field is empty, don't go any further
 	if (!phone) return;
