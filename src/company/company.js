@@ -5,9 +5,8 @@ const PHONE_NUM = document.querySelector("#phone");
 const HEADERS = document.querySelectorAll("h3");
 const AD_PLAN = document.querySelector("span.label_level").parentNode;
 const PAGE_TITLE = document.querySelector("h2.page_title");
-var COUNTRY;
-var isFirstAddress = true;
 let COUNTRY;
+let isFirstAddress = true;
 
 // Remove "Clear coordinate" before adding copy buttons
 removeClearCoordinate();

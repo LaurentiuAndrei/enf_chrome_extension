@@ -38,9 +38,3 @@ chrome.runtime.onMessage.addListener(function (request) {
 		});
 	}
 });
-
-chrome.runtime.onUpdateAvailable.addListener(function (details) {
-	let message = `Update available! Current Version: ${details.previousVersion}. New Version: ${details.version}`;
-	console.log(message);
-    console.log(new Date());
-});
