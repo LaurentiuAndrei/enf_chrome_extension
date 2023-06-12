@@ -6,6 +6,7 @@ const HEADERS = document.querySelectorAll("h3");
 const AD_PLAN = document.querySelector("span.label_level").parentNode;
 const PAGE_TITLE = document.querySelector("h2.page_title");
 var COUNTRY;
+var isFirstAddress = true;
 
 // Remove "Clear coordinate" before adding copy buttons
 removeClearCoordinate();
@@ -362,6 +363,13 @@ function findPostCodeFromAddress() {
     if(!matches) {
         styleInputText(POST_CODE, "missing");
         return;
+    }
+
+    if(isFirstAddress) {
+        let post_code = POST_CODE.value;
+        isFirstAddress = false;
+
+        if(!matches.includes(post_code)) return;
     }
 
     // Update the post_code with the last matched pattern
