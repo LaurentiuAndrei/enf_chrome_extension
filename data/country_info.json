@@ -1194,7 +1194,7 @@
         "post_code_pattern": "none"
     },
     {
-        "country": "Swaziland",
+        "country": "Eswatini",
         "phone_code": "268",
         "post_code": "A123",
         "post_code_pattern": "[A-Z][0-9]{3}"
