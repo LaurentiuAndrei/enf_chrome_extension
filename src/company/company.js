@@ -483,11 +483,13 @@ function updateFields() {
     formatPhoneNumber();
     updateHelpButtons();
     findPostCodeFromAddress();
+    console.log('updateFields triggered');
 }
 
 // Format the phone number every time we click out of the phone num field
 PHONE_NUM.addEventListener("blur", function () {
 	formatPhoneNumber();
+    console.log('blur on phone triggered');
 });
 
 const phoneFormats = [
@@ -499,6 +501,7 @@ const phoneFormats = [
 	{ digits: 7, format: /(\d{4})(\d{3})/g },
 	{ digits: 6, format: /(\d{3})(\d{3})/g },
 ];
+
 
 function formatPhoneNumber() {
 	let phone = PHONE_NUM.value;
@@ -557,7 +560,9 @@ const COUNTRY_SELECTOR = document.querySelector(".chosen-container");
 
 COUNTRY_SELECTOR.addEventListener("click", function(e) {
     if(e.target.classList.contains("active-result")) {
-        updateFields();
+        getCountryInfo();
+        updateHelpButtons();
+        findPostCodeFromAddress();
     }
 });
 
