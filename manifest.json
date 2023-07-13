@@ -8,12 +8,12 @@
 	"background": {
 		"service_worker": "src/service-worker.js"
 	},
-
 	"permissions": [
         "scripting",
         "activeTab",
         "webNavigation",
-        "tabs"],
+        "tabs"
+    ],
 	"host_permissions": ["https://admin.enf.me/*"],
 	"web_accessible_resources": [
 		{

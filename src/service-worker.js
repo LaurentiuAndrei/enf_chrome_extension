@@ -2,22 +2,36 @@ var urlFilter = {
 	url: [{ hostEquals: "admin.enf.me" }],
 };
 
+const urlData = [
+	{
+		url: "admin.enf.me/solar/ID/edit",
+		jsFile: "src/company/company.js",
+		cssFile: "src/company/company.css",
+	},
+	{
+		url: "admin.enf.me/solar/ID/new",
+		jsFile: "src/new_company/new_company.js",
+		cssFile: "src/new_company/new_company.css",
+	},
+];
+
 chrome.webNavigation.onDOMContentLoaded.addListener(function (tab) {
 	var tabId = tab.tabId;
 	var url = tab.url;
 
-	if (url.includes("admin.enf.me/solar/ID/edit")) {
-		chrome.scripting.executeScript({
-			target: { tabId: tabId },
-			files: ["src/company/company.js"],
-		});
-		chrome.scripting.insertCSS({
-			target: { tabId: tabId },
-			files: ["src/company/company.css"],
-		});
-	} else if (url.includes("admin.enf.me/solar/ID/classification")) {
-		// classification page
-	}
+	urlData.forEach((data) => {
+		if (url.includes(data.url)) {
+			chrome.scripting.executeScript({
+				target: { tabId: tabId },
+				files: [data.jsFile],
+			});
+
+			chrome.scripting.insertCSS({
+				target: { tabId: tabId },
+				files: [data.cssFile],
+			});
+		}
+	});
 }, urlFilter);
 
 chrome.runtime.onMessage.addListener(function (request) {

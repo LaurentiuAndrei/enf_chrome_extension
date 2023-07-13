@@ -3,7 +3,6 @@ const SAVE_FORM = document.querySelector("#saveForm");
 const POST_CODE = document.querySelector("#postcode");
 const PHONE_NUM = document.querySelector("#phone");
 const HEADERS = document.querySelectorAll("h3");
-const AD_PLAN = document.querySelector("span.label_level").parentNode;
 const PAGE_TITLE = document.querySelector("h2.page_title");
 let COUNTRY;
 let isFirstAddress = true;
@@ -68,9 +67,6 @@ removeCompanyFields();
 
 // remove the info boxes with ? near some inputs
 removeInfoBoxes ();
-
-// Ad Plan
-positionAdPlan();
 
 // Move Address to the bottom of contact
 document
@@ -160,22 +156,6 @@ function tempRemoveInlineStyles() {
 			target.removeAttribute("style");
 		}
 	}
-
-	// Remove inline style for the notes
-	// const theNotes = noteSection.querySelectorAll("fieldset > ul > li");
-
-	// for (let i = 0; i < theNotes.length; i++) {
-	// 	if(theNotes[i]) {
-	// 		theNotes[i].removeAttribute("style");
-	// 	}
-	// }
-
-	// Remove ALL inline styles from the page
-	// const allElements = document.querySelectorAll("*");
-
-	// for (let i = 0; i < allElements.length; i++) {
-	//     allElements[i].removeAttribute("style");
-	// }
 }
 
 function removeUnusedFields() {
@@ -183,17 +163,17 @@ function removeUnusedFields() {
 		"body > div > div.top_line",
 		"#navbar-container > div",
 		"#navbar-content-title",
-		"#basicPage > h2 > span:nth-child(2)",
-		"#basicNote > a",
-        "#adjust_location"
+		"#basicPage > h2 > span:nth-child(2)"
 	];
 
     for(element of elementsToRemove) {
-        try {
-            document.querySelector(element).remove();
-        } catch (error) {
-            console.error(`An error occured:${error}`);
-        }
+		if (element) {
+            try {
+                document.querySelector(element).remove();
+            } catch (error) {
+                console.error(`An error occured:${error}`);
+            }
+		}
 	}
 }
 
@@ -574,16 +554,6 @@ function removeSections() {
             header.parentNode.remove();
         }
     }
-}
-
-function positionAdPlan() {
-    
-    const afterTitle = PAGE_TITLE.querySelector("img").nextElementSibling;
-    
-    AD_PLAN.classList.add("ad-plan");
-
-    // document.querySelector(".bmenu").before(adPlan);
-    afterTitle.insertAdjacentElement("beforebegin", AD_PLAN);
 }
 
 function handleHeaderButtons() {
