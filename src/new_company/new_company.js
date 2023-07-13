@@ -167,13 +167,11 @@ function removeUnusedFields() {
 	];
 
     for(element of elementsToRemove) {
-		if (element) {
-            try {
-                document.querySelector(element).remove();
-            } catch (error) {
-                console.error(`An error occured:${error}`);
-            }
-		}
+        try {
+            document.querySelector(element).remove();
+        } catch (error) {
+            console.error(`An error occured:${error}`);
+        }
 	}
 }
 
