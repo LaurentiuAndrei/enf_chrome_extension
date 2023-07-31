@@ -145,14 +145,19 @@
 }
 
 .mid_sec .row {
-    margin: 0 !important;
-    width: calc(50% - 10px) !important;
+    margin: 10px 0 0 0 !important;
+    width: 100% !important;
 }
 
 .mid_sec .row .rrow {
     margin: 0 0 5px 0 !important;
     float: none !important;
-    width: 100% !important;
+    width: 400px !important;
+    display: inline-block !important;
+}
+
+.rrow > span {
+    float: none !important;
 }
 
 fieldset {
@@ -160,25 +165,24 @@ fieldset {
     flex-direction: column !important;
     flex-wrap: wrap !important;
     column-gap: 20px !important;
-
-    /* display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
-    grid-auto-flow: dense !important;
-    grid-column-gap: 20px !important; */
 }
 
 fieldset label {
-    display: block !important;
+    display: inline-block !important;
     float: none !important;
 	right: initial !important;
 	position: relative !important;
+    width: 300px !important;
+
+    text-align: right !important;
+    vertical-align: top !important;
 
 	color: rgb(101, 104, 111) !important;
 	font-family: Inter, sans-serif !important;
 	font-size: 12px !important;
 	font-weight: 450 !important;
 	line-height: 21px !important;
-    padding: 0 !important;
+    padding: 0 10px 0 0 !important;
     margin: 0 !important;
 }
 
@@ -195,7 +199,6 @@ fieldset textarea {
 	font-weight: 450 !important;
 
     padding: 2px 8px !important;
-    width: 100% !important;
     margin: 0px 0px 5px 0px !important;
     float: none !important;
 
@@ -214,8 +217,4 @@ fieldset textarea:focus {
 
 fieldset input.input-text {
 	background: white !important;
-}
-
-.chosen-container-single, .chosen-container-multi {
-    width: 100% !important;
 }
