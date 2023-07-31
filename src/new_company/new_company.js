@@ -7,9 +7,6 @@ const PAGE_TITLE = document.querySelector("h2.page_title");
 let COUNTRY;
 let isFirstAddress = true;
 
-// Remove "Clear coordinate" before adding copy buttons
-removeClearCoordinate();
-
 // Adding the copy to clipboard buttons and their tooltips
 addCopyToClipboardButtons();
 
@@ -98,13 +95,6 @@ NEW_ADDRESS.addEventListener("blur", function (e) {
 
 // Move the postcode under the address
 NEW_ADDRESS.parentNode.insertAdjacentElement("afterend", postcode.parentNode);
-
-function removeClearCoordinate() {
-    const clearCoordinate = document.querySelector("#address").nextElementSibling;
-    if (clearCoordinate.nodeName == "A") {
-        clearCoordinate.remove();
-    }
-}
 
 function removeCompanyFields() {
 	const companyFieldsToRemove = [

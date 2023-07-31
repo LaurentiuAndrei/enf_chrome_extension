@@ -13,6 +13,11 @@ const urlData = [
 		jsFile: "src/new_company/new_company.js",
 		cssFile: "src/new_company/new_company.css",
 	},
+	{
+		url: "admin.enf.me/solar/ID/classification",
+		jsFile: "src/classification/classification.js",
+		cssFile: "src/classification/classification.css",
+	},
 ];
 
 chrome.webNavigation.onDOMContentLoaded.addListener(function (tab) {

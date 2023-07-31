@@ -51,7 +51,7 @@ SAVE_FORM.addEventListener("mouseout", function (e) {
 });
 
 // An array with elements to be removed
-removeUnusedFields();
+remove_unused_elements();
 
 // Temporarely remove Inline style
 tempRemoveInlineStyles();
@@ -178,7 +178,7 @@ function tempRemoveInlineStyles() {
 	// }
 }
 
-function removeUnusedFields() {
+function remove_unused_elements() {
 	const elementsToRemove = [
 		"body > div > div.top_line",
 		"#navbar-container > div",
@@ -189,11 +189,9 @@ function removeUnusedFields() {
 	];
 
     for(element of elementsToRemove) {
-        try {
-            document.querySelector(element).remove();
-        } catch (error) {
-            console.error(`An error occured:${error}`);
-        }
+		if (element) {
+			document.querySelector(element).remove();
+		}
 	}
 }
 
