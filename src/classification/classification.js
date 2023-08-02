@@ -115,6 +115,6 @@ function click_first_category() {
 	if (HEADERS[0]) {
 		HEADERS[0].click();
 	} else {
-		console.warn("The 'section h3' element was not found.");
+		console.log("[LOG] The 'section h3' element was not found.");
 	}
 }
