@@ -554,15 +554,22 @@ function getCountryInfo() {
 	});
 }
 
-const COUNTRY_SELECTOR = document.querySelector(".chosen-container");
+// Observe the current country and when we detect a change we update it
+let selectElement = document.querySelector(".chosen-single > span");
+const config = { attributes:  false, childList: true, subtree: false };
 
-COUNTRY_SELECTOR.addEventListener("click", function(e) {
-    if(e.target.classList.contains("active-result")) {
-        getCountryInfo();
-        updateHelpButtons();
-        findPostCodeFromAddress();
-    }
+let observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+        // If the textContent of the span changes, then it means the selected country changed
+        if (mutation.type === 'childList') {
+            getCountryInfo();
+            updateHelpButtons();
+            findPostCodeFromAddress();
+        }
+    });
 });
+
+observer.observe(selectElement, config);
 
 function removeSections() {
     const headersToRemove = ["URIs", "Social Icon", "Location"];
