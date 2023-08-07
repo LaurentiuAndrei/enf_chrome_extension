@@ -49,27 +49,46 @@ function create_columns(container) {
     container.style.height = height / 2 + 'px';
 }
 
+// Summary: rename label, remove a checkbox, edit the 'context' of the remaining checkbox
 function modify_on_off_grid(category, label) {
     const labels = label.querySelectorAll('.row > label');
     
     if(category.textContent.includes('Solar System Installers')) {
-        labels.forEach(label => {
+        for(let label of labels) {
+            // Exit if we have the wrong field
+            if(label.textContent != 'On/Off Grid:') {
+                continue;
+            }
+            
             // Rename label
-            if(label.textContent == 'On/Off Grid:') {
-                label.textContent = 'Battery Storage';
-            }
-            // Remove unused 'On-Grid'
-            const on_grid = label.parentElement.querySelector('.rrow > input[value="g"]');
+            label.textContent = 'Battery Storage';
 
-            if(on_grid) {
-                const rrow = on_grid.parentElement;
-                on_grid.remove();
-                // Replacing the "label" of the on-grid with nothing ""
-                rrow.innerHTML = rrow.innerHTML.replace(/On-grid&nbsp;&nbsp;/g, "");
-                // Rename "Off-grid" to "Yes"
-                rrow.innerHTML = rrow.innerHTML.replace("Off-grid", "Yes");
-            }
-        });
+            // Select the 'off-grid' / battery storage checkbox
+            let batteryStorageCheckbox = label.parentElement.querySelector('input[type="checkbox"][name="grid"][value="o"]');
+            let is_battery_storage = batteryStorageCheckbox.checked;
+
+            // Remove unused 'On-Grid'
+            const onGridCheckbox = label.parentElement.querySelector('input[type="checkbox"][name="grid"][value="g"]');
+            const checkboxParent = onGridCheckbox.parentElement;
+
+            // Remove the "on-grid" input checkbox
+            if(onGridCheckbox)
+                onGridCheckbox.remove();
+
+            // Scan the children of the parent of the inputs to remove all TEXT_NODES
+            Array.from(checkboxParent.childNodes).forEach((node) => {
+                if (node.nodeType === Node.TEXT_NODE) {
+                    checkboxParent.removeChild(node);
+                }
+            });
+
+            // Reassign the initial value of the battery storage
+            is_battery_storage ? batteryStorageCheckbox.setAttribute('checked', 'checked') : batteryStorageCheckbox.removeAttribute('checked');
+            
+            // Add context for the remaining input checkbox
+            checkboxParent.innerHTML += "Yes"; 
+            break;
+        };
     }
 }
 
