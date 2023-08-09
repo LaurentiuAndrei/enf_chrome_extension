@@ -1,5 +1,8 @@
 var urlFilter = {
-	url: [{ hostEquals: "admin.enf.me" }],
+	url: [
+        { hostEquals: "admin.enf.me" },
+        { hostEquals: "bd.enfsolar.com" }
+    ]
 };
 
 const urlData = [
@@ -18,9 +21,14 @@ const urlData = [
 		jsFile: "src/classification/classification.js",
 		cssFile: "src/classification/classification.css",
 	},
+	{
+		url: "bd.enfsolar.com/member/products/management/#/",
+		jsFile: "src/products/products.js",
+		cssFile: "src/products/products.css",
+	}
 ];
 
-chrome.webNavigation.onDOMContentLoaded.addListener(function (tab) {
+chrome.webNavigation.onDOMContentLoaded.addListener(function(tab) {
 	var tabId = tab.tabId;
 	var url = tab.url;
 

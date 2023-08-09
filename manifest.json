@@ -1,7 +1,7 @@
 {
 	"name": "ENF Backend Improvements DEVELOPMENT BUILD",
 	"description": "Adding new features to the website.",
-	"version": "0.2.30",
+	"version": "0.2.31",
 	"manifest_version": 3,
 	"author": "Laurentiu Andrei",
 
@@ -14,7 +14,10 @@
         "webNavigation",
         "tabs"
     ],
-	"host_permissions": ["https://admin.enf.me/*"],
+	"host_permissions": [
+        "https://admin.enf.me/*",
+        "https://bd.enfsolar.com/*"
+    ],
 	"web_accessible_resources": [
 		{
 			"resources": ["data/country_info.json"],

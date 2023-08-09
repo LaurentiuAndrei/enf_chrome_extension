@@ -1,0 +1,62 @@
+.span12 {
+    /* Remove the scrolling behavior of the main table */
+    height: initial !important;
+}
+
+form {
+    display: flex !important;
+}
+
+/* sidebar */
+form > div:nth-child(2) {
+    flex: 0 0 220px !important;
+    position: initial !important;
+    order: 1;
+    min-width: 220px !important;
+}
+
+/* main content */
+#main_content {
+    flex: 1 !important;
+    order: 2;
+}
+
+/* navbar */
+#main_content > div:nth-child(1) {
+    height: initial !important;
+    position: fixed !important;
+    z-index: 20 !important;
+}
+
+/* navbar container */
+#main_content > div:nth-child(1) > .enf-ams-fromenf-editbar {
+    position: relative !important;
+    float: none !important;
+}
+
+/* content */
+#main_content > div:nth-child(2) {
+    margin-top: 60px !important;
+}
+
+/* table from content of main_content */
+.enf-ams-fromenf-edit-table {
+    margin-top: 0px !important;
+}
+
+/* Reset the widths */
+body, .ams-page {
+    min-width: initial !important;
+}
+
+.enf-ams-products {
+    margin-left: 0px !important;
+}
+
+/* toggle sidebar button */
+#toggle_sidebar {
+    margin-left: 5px !important;
+    color: #fff;
+    background-color: #292929;
+    border-color: #000000
+}
