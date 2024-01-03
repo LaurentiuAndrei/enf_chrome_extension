@@ -60,3 +60,8 @@ body, .ams-page {
     background-color: #292929;
     border-color: #000000
 }
+
+/* Paste inputs */
+.paste_ready_input {
+    border: 2px solid black !important;
+}

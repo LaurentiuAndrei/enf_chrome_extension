@@ -37,6 +37,9 @@ function create_container() {
 
     // create the side bar button
     create_sidebar_toggle_button(sidebar, navbar);
+
+    // add the new paste functionality
+    add_new_paste();
 }
 
 function create_sidebar_toggle_button(sidebar, navbar) {
@@ -59,4 +62,69 @@ function create_sidebar_toggle_button(sidebar, navbar) {
             btn.innerHTML = "⚙️ Show Sidebar";
         }
     });
+}
+
+function add_new_paste() {
+    let parentTable = document.querySelector('table');
+    var inputs = Array.from(parentTable.querySelectorAll('input[ng-class="modelInputClass"]'));
+    
+    // Find the max amount of columns
+    var maxColumns = get_max_cols();
+    
+    // Add a class to all of these elements to make them stand out
+    inputs.forEach(function(input) {
+        input.classList.add('paste_ready_input');
+    });
+    
+    parentTable.addEventListener('paste', function (e) {
+        if(e.target.matches('input[ng-class="modelInputClass"]')) {
+            // find the index of the current input
+            var startIndex = inputs.indexOf(e.target);
+
+            // if(startIndex != 0 || startIndex % maxColumns != 0) {
+            //     console.log("not allowed to paste there");
+            //     alert("not allowed to paste there");
+            //     return;
+            // }
+            // prevent default paste action
+            e.preventDefault();
+
+            // get pasted data
+            var clipboardData = e.clipboardData || window.clipboardData;
+            var pastedText = clipboardData.getData('text');
+
+            // replace all a-Z characters with ""
+            pastedText = pastedText.replace(/[^0-9. ]/g, "");
+            
+            // trim and split by space
+            var splitText = pastedText.trim().split(/\s+/);
+
+            if(splitText.length > maxColumns) {
+                alert(`You are trying to paste ${splitText.length} values, but you only have ${maxColumns} columns`);
+                return;
+            }
+
+            // Replace the following maxColumn input field values
+            for (var i = startIndex; i < startIndex + maxColumns; i++) {
+                if (i < inputs.length) {
+                    inputs[i].value = splitText[i - startIndex];
+                }
+            }
+        }
+    });
+
+    function get_max_cols() {
+        let cols = 0;
+
+        for (var i = 0; i < parentTable.rows.length; i++) {
+            // Get the current row
+            var row = parentTable.rows[i];
+
+            // If this row has more columns than the current maximum, update the maximum
+            if (row.cells.length > cols) {
+                cols = row.cells.length - 1;
+            }
+        }
+        return cols;
+    }
 }
