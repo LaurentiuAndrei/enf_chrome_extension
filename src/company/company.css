@@ -275,18 +275,18 @@
 
 .helpButton {
     left: -20px;
-    background: url("https://laurentiuandrei.com/enf/extension/help-web-button.png") no-repeat center/100%;
+    background: url("https://i.imgur.com/Y8mMuMu.png") no-repeat center/100%;
 }
 
 #copyButtonID {
 	right: -20px;
 
-    background: url("https://laurentiuandrei.com/enf/extension/copy-icon.png") no-repeat center/100%;
+    background: url("https://i.imgur.com/ZZc5YgE.png") no-repeat center/100%;
 }
 
 #googleSearch {
     right: 5px;
-    background: url("https://laurentiuandrei.com/enf/extension/google-search-icon.png") no-repeat center/100%;
+    background: url("https://i.imgur.com/IHz7RV4.png") no-repeat center/100%;
 }
 /* END of ICONS */
 
