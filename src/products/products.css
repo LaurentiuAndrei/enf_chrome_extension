@@ -8,7 +8,7 @@ form {
 }
 
 /* sidebar */
-form > div:nth-child(2) {
+#enf-ams-fromenf-sidebar {
     flex: 0 0 220px !important;
     position: initial !important;
     order: 1;

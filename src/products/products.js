@@ -1,39 +1,70 @@
 // Delete empty div from the form
 let checkCount = 0;
-const maxCheck = 5;
-const checkInterval = 1000; // in milliseconds
+const maxCheck = 10;
+const checkInterval = 500; // in milliseconds
 
-const intervalId = setInterval(() => {
-  const element = document.querySelector("form > div:nth-child(2)");
-  
-  if (element) {
-    element.remove();
-    clearInterval(intervalId); // stop checking once the element is found and removed
-    create_container();
-  } else {
-    checkCount++;
-    if (checkCount >= maxCheck) {
-      clearInterval(intervalId); // stop checking after 5 times
-    }
-  }
-}, checkInterval);
+trigger_interval_check();
+
+function trigger_interval_check() {
+    const intervalId = setInterval(() => {
+        const sidebar = document.querySelector("#enf-ams-fromenf-sidebar");
+        
+        // Only proceed if the sidebar is new aka loaded with AJAX
+        if (!sidebar.classList.contains('loaded')) {
+            const element = document.querySelector("form > div:nth-child(2)");
+            element.remove();
+
+            clearInterval(intervalId); // stop checking once the element is found and removed
+            add_ul_click_handler();
+            create_container();
+        }
+        else {
+            checkCount++;
+            if (checkCount >= maxCheck) {
+                clearInterval(intervalId); // stop checking after 5 times
+                alert('sidebar did not load within 5 seconds, please refresh');
+            }
+        }
+    }, checkInterval);
+}
+
+function add_ul_click_handler() {
+    console.log('adding ul handler');
+    // Select the sidebar ul
+    let ulElement = document.querySelector('#enf-ams-fromenf-sidebar > ul');
+
+    // Add event listener to the 'ul' element
+    // Fix the page when a new item is selected as it redraws and contents change
+    ulElement.addEventListener('click', function(event) {
+        console.log('clicked on ul');
+        // Check if the clicked element is an 'li'
+        if (event.target.tagName.toLowerCase() === 'a') {
+            // trigger the interval check again
+            console.log('clicked on anchor');
+            trigger_interval_check();
+        }
+    });
+}
 
 function create_container() {
     // Get the elements
     var navbar = document.querySelector('form > div:nth-child(1)');
     var sidebar = document.querySelector('form > div:nth-child(2)');
     var content = document.querySelector('form > div:nth-child(3)');
+
+    // Add class 'loaded' so we can differenciate it between processed and new
+    sidebar.classList.add('loaded');
     
     // Create a new div
     var newDiv = document.createElement('div');
     newDiv.id = 'main_content';
-    
-    // Append sidebar and content to the new div
-    newDiv.appendChild(navbar);
-    newDiv.appendChild(content);
-    
+
     // Insert the new div after the navbar in the form
     sidebar.parentNode.insertBefore(newDiv, sidebar);
+    
+    // Append navbar and content to the new div
+    newDiv.appendChild(navbar);
+    newDiv.appendChild(content);
 
     // create the side bar button
     create_sidebar_toggle_button(sidebar, navbar);
