@@ -66,7 +66,7 @@ function create_sidebar_toggle_button(sidebar, navbar) {
 
 function add_new_paste() {
     let parentTable = document.querySelector('table');
-    var inputs = Array.from(parentTable.querySelectorAll('input[ng-class="modelInputClass"]'));
+    var inputs = Array.from(parentTable.querySelectorAll('input[ng-class="modelInputClass"]:not([ng-model="model.model_no"])'));
     
     // Find the max amount of columns
     var maxColumns = get_max_cols();
@@ -77,15 +77,11 @@ function add_new_paste() {
     });
     
     parentTable.addEventListener('paste', function (e) {
-        if(e.target.matches('input[ng-class="modelInputClass"]')) {
+        // if(e.target.matches('input[ng-class="modelInputClass"]')) {
+        if(inputs.includes(e.target)) {
             // find the index of the current input
             var startIndex = inputs.indexOf(e.target);
 
-            // if(startIndex != 0 || startIndex % maxColumns != 0) {
-            //     console.log("not allowed to paste there");
-            //     alert("not allowed to paste there");
-            //     return;
-            // }
             // prevent default paste action
             e.preventDefault();
 
@@ -104,8 +100,17 @@ function add_new_paste() {
                 return;
             }
 
+            // Calculate the row number of the selected field given the max number of cols in that row
+            rowNumber = 1
+            while(startIndex >= maxColumns * rowNumber) {
+                rowNumber++;
+            }
+            
+            // Pick the smallest number
+            maxIndex = Math.min(rowNumber * maxColumns, startIndex + splitText.length)
+
             // Replace the following maxColumn input field values
-            for (var i = startIndex; i < startIndex + maxColumns; i++) {
+            for (var i = startIndex; i < maxIndex; i++) {
                 if (i < inputs.length) {
                     inputs[i].value = splitText[i - startIndex];
                 }
