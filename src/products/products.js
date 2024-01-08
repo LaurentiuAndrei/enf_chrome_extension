@@ -10,11 +10,12 @@ function trigger_interval_check() {
         const sidebar = document.querySelector("#enf-ams-fromenf-sidebar");
         
         // Only proceed if the sidebar is new aka loaded with AJAX
-        if (!sidebar.classList.contains('loaded')) {
+        if (sidebar && !sidebar.classList.contains('loaded')) {
+            clearInterval(intervalId);
+
             const element = document.querySelector("form > div:nth-child(2)");
             element.remove();
 
-            clearInterval(intervalId); // stop checking once the element is found and removed
             add_ul_click_handler();
             create_container();
         }
@@ -96,71 +97,93 @@ function create_sidebar_toggle_button(sidebar, navbar) {
 }
 
 function add_new_paste() {
-    let parentTable = document.querySelector('table');
-    var inputs = Array.from(parentTable.querySelectorAll('input[ng-class="modelInputClass"]:not([ng-model="model.model_no"])'));
-    
-    // Find the max amount of columns
-    var maxColumns = get_max_cols();
-    
-    // Add a class to all of these elements to make them stand out
-    inputs.forEach(function(input) {
-        input.classList.add('paste_ready_input');
-    });
-    
-    parentTable.addEventListener('paste', function (e) {
-        // if(e.target.matches('input[ng-class="modelInputClass"]')) {
-        if(inputs.includes(e.target)) {
-            // find the index of the current input
-            var startIndex = inputs.indexOf(e.target);
+    checkCount = 0;
+    let parentTable;
+    let inputs;
 
-            // prevent default paste action
-            e.preventDefault();
+    // We need to make sure the table and fields have been filled out before adding the paste functionality
+    const paste_intervalId = setInterval(find_table_and_fields, 500);
 
-            // get pasted data
-            var clipboardData = e.clipboardData || window.clipboardData;
-            var pastedText = clipboardData.getData('text');
-
-            // replace all a-Z characters with ""
-            pastedText = pastedText.replace(/[^0-9. ]/g, "");
-            
-            // trim and split by space
-            var splitText = pastedText.trim().split(/\s+/);
-
-            if(splitText.length > maxColumns) {
-                alert(`You are trying to paste ${splitText.length} values, but you only have ${maxColumns} columns`);
-                return;
+    function find_table_and_fields() {
+        parentTable = document.querySelector('table');
+        inputs = Array.from(parentTable.querySelectorAll('input[ng-class="modelInputClass"]:not([ng-model="model.model_no"])'));
+        
+        if (parentTable && inputs.length > 0) {
+            clearInterval(paste_intervalId);
+            add_paste_functionality();
+        }
+        else {
+            checkCount++;
+            if (checkCount >= 10) {
+                clearInterval(paste_intervalId);
             }
+        }
+    }
 
-            // Calculate the row number of the selected field given the max number of cols in that row
-            rowNumber = 1
-            while(startIndex >= maxColumns * rowNumber) {
-                rowNumber++;
-            }
-            
-            // Pick the smallest number
-            maxIndex = Math.min(rowNumber * maxColumns, startIndex + splitText.length)
+    function add_paste_functionality() {
+        // Find the max amount of columns
+        var maxColumns = get_max_cols();
+        
+        // Add a class to all of these elements to make them stand out
+        inputs.forEach(function(input) {
+            input.classList.add('paste_ready_input');
+        });
+        
+        parentTable.addEventListener('paste', function (e) {
+            // if(e.target.matches('input[ng-class="modelInputClass"]')) {
+            if(inputs.includes(e.target)) {
+                // find the index of the current input
+                var startIndex = inputs.indexOf(e.target);
 
-            // Replace the following maxColumn input field values
-            for (var i = startIndex; i < maxIndex; i++) {
-                if (i < inputs.length) {
-                    inputs[i].value = splitText[i - startIndex];
+                // prevent default paste action
+                e.preventDefault();
+
+                // get pasted data
+                var clipboardData = e.clipboardData || window.clipboardData;
+                var pastedText = clipboardData.getData('text');
+
+                // replace all a-Z characters with ""
+                pastedText = pastedText.replace(/[^0-9. ]/g, "");
+                
+                // trim and split by space
+                var splitText = pastedText.trim().split(/\s+/);
+
+                if(splitText.length > maxColumns) {
+                    alert(`You are trying to paste ${splitText.length} values, but you only have ${maxColumns} columns`);
+                    return;
+                }
+
+                // Calculate the row number of the selected field given the max number of cols in that row
+                rowNumber = 1
+                while(startIndex >= maxColumns * rowNumber) {
+                    rowNumber++;
+                }
+                
+                // Pick the smallest number
+                maxIndex = Math.min(rowNumber * maxColumns, startIndex + splitText.length)
+
+                // Replace the following maxColumn input field values
+                for (var i = startIndex; i < maxIndex; i++) {
+                    if (i < inputs.length) {
+                        inputs[i].value = splitText[i - startIndex];
+                    }
                 }
             }
-        }
-    });
+        });
 
-    function get_max_cols() {
-        let cols = 0;
+        function get_max_cols() {
+            let cols = 0;
 
-        for (var i = 0; i < parentTable.rows.length; i++) {
-            // Get the current row
-            var row = parentTable.rows[i];
+            for (var i = 0; i < parentTable.rows.length; i++) {
+                // Get the current row
+                var row = parentTable.rows[i];
 
-            // If this row has more columns than the current maximum, update the maximum
-            if (row.cells.length > cols) {
-                cols = row.cells.length - 1;
+                // If this row has more columns than the current maximum, update the maximum
+                if (row.cells.length > cols) {
+                    cols = row.cells.length - 1;
+                }
             }
+            return cols;
         }
-        return cols;
     }
 }
