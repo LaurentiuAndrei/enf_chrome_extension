@@ -1227,7 +1227,7 @@
         "country": "Taiwan",
         "phone_code": "886",
         "post_code": "123",
-        "post_code_pattern": "[0-9]{3}"
+        "post_code_pattern": "[0-9]{3}|[0-9]{5}|[0-9]{6}"
     },
     {
         "country": "Tajikistan",
