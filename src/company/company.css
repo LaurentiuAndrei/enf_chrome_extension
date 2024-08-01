@@ -143,21 +143,22 @@
 #basicNote {
 	border-bottom: 1px solid #eee !important;
 }
-.notes li {
-	float: none !important;
-	margin: 20px !important;
-	display: inline-block !important;
-}
 
 .stick {
 	width: 300px !important;
-}
+} 
 
-.stick textarea {
-	height: 200px !important;
-	width: 280px !important;
+/* the textarea from where the user can add a new note */
+textarea[name="new_idnote"] {
+	min-height: 50px !important;
 	overflow-x: hidden !important;
     resize: vertical !important;
+    background-color: #cbe5f8 !important;
+    box-shadow: none !important;
+}
+
+#basicNote h2 {
+    color: black !important;
 }
 
 /* End notes content */
@@ -320,7 +321,7 @@ form fieldset label {
 excludes the textarea from the notes section */
 form fieldset input[type="text"],
 form fieldset input[type="number"], 
-form fieldset textarea:not(.stick textarea) {
+form fieldset textarea:not(.stick) {
 	border: 1px solid rgba(33, 35, 44, 0.24) !important;
 	border-radius: 0px !important;
 	box-shadow: rgba(33, 35, 44, 0.08) 0px 1px 2px 0px inset !important;
@@ -345,7 +346,7 @@ form fieldset textarea:not(.stick textarea) {
 excludes the textarea from the notes section */
 form fieldset input[type="text"]:focus,
 form fieldset input[type="number"]:focus,
-form fieldset textarea:not(.stick textarea):focus {
+form fieldset textarea:not(.stick):focus {
 	border: 1px solid #2b74da !important;
 	outline: none !important;
     padding: 2px 8px !important;
