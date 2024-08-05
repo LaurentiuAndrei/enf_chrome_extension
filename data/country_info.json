@@ -603,7 +603,7 @@
         "country": "Isle of Man",
         "phone_code": "44-1624",
         "post_code": "AA1 2AA", 
-        "post_code_pattern": "[A-Z]{2} [0-9][A-Z]{2}"
+        "post_code_pattern": "[A-Z]{2}[0-9] [0-9][A-Z]{2}"
     },
     {
         "country": "Israel",
