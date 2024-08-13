@@ -728,8 +728,8 @@
     {
         "country": "Lithuania",
         "phone_code": "370",
-        "post_code": "AA-12345",
-        "post_code_pattern": "[A-Z]{2}-[0-9]{5}"
+        "post_code": "12345",
+        "post_code_pattern": "[0-9]{5}"
     },
     {
         "country": "Luxembourg",
