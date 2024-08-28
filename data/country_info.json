@@ -632,8 +632,8 @@
     {
         "country": "Jersey",
         "phone_code": "44-1534",
-        "post_code": "AA1",
-        "post_code_pattern": "[A-Z]{2}[0-9]"
+        "post_code": "JE1 2AA",
+        "post_code_pattern": "JE[0-9] [0-9][A-Z]{2}"
     },
     {
         "country": "Jordan",
