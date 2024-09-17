@@ -1340,8 +1340,8 @@
     {
         "country": "United States",
         "phone_code": "1",
-        "post_code": "12345",
-        "post_code_pattern": "[0-9]{5}"
+        "post_code": "12345 or 12345-6789",
+        "post_code_pattern": "\\d{5}(?:-\\d{4})?"
     },
     {
         "country": "United States Virgin Islands",
