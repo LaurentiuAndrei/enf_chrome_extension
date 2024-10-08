@@ -3,8 +3,8 @@ const SAVE_FORM = document.querySelector("#saveForm");
 const POST_CODE = document.querySelector("#postcode");
 const PHONE_NUM = document.querySelector("#phone");
 const HEADERS = document.querySelectorAll("h3");
-const AD_PLAN = document.querySelector("span.label_level").parentNode;
 const PAGE_TITLE = document.querySelector("h2.page_title");
+const AD_PLAN = PAGE_TITLE.querySelector("span.label_level");
 let COUNTRY;
 let isFirstAddress = true;
 
@@ -183,7 +183,7 @@ function remove_unused_elements() {
 		"body > div > div.top_line",
 		"#navbar-container > div",
 		"#navbar-content-title",
-		"#basicPage > h2 > span:nth-child(2)",
+		"#basicPage > h2 > span:nth-child(3)",
 		"#basicNote > a",
         "#adjust_location"
 	];
@@ -582,13 +582,12 @@ function removeSections() {
 }
 
 function positionAdPlan() {
-    
-    const afterTitle = PAGE_TITLE.querySelector("img").nextElementSibling;
+    // const afterTitle = PAGE_TITLE.querySelector("img").nextElementSibling;
     
     AD_PLAN.classList.add("ad-plan");
 
     // document.querySelector(".bmenu").before(adPlan);
-    afterTitle.insertAdjacentElement("beforebegin", AD_PLAN);
+    // afterTitle.insertAdjacentElement("beforebegin", AD_PLAN);
 }
 
 function handleHeaderButtons() {
