@@ -8,11 +8,6 @@ const AD_PLAN = PAGE_TITLE.querySelector("span.label_level");
 const VIEW_BUTTON = PAGE_TITLE.querySelector(".bmenu");
 let COUNTRY;
 let isFirstAddress = true;
-const IS_INSTALLER = isInstaller()
-
-if (IS_INSTALLER) {
-    alert("This company is an installer!");
-}
 
 // Remove "Clear coordinate" before adding copy buttons
 removeClearCoordinate();
@@ -70,7 +65,7 @@ removeNotificationSection();
 SAVE_FORM.append(NOTE_SECTION);
 
 // Remove fields based on label names
-removeCompanyFields();
+// removeCompanyFields();
 
 // remove the info boxes with ? near some inputs
 removeInfoBoxes ();
@@ -117,7 +112,7 @@ function removeClearCoordinate() {
 }
 
 function removeCompanyFields() {
-	const companyFieldsToRemove = [
+	var companyFieldsToRemove = [
 		"E-mail (Solar System Enquiries)：",
 		"E-mail (Panel Enquiries)：",
 		"E-mail (Inverter Enquiries)：",
@@ -132,6 +127,18 @@ function removeCompanyFields() {
 		"Area2",
 		"Area3",
 	];
+
+    let isUpdated = company_updated()
+    let isInstaller = is_company_installer()
+
+    if (isUpdated && isInstaller) {
+        var fields = [
+            "No.Staff：",
+            "Parent Company"
+        ]
+
+        companyFieldsToRemove = companyFieldsToRemove.concat(fields)
+    }
 
 	const companyLabels = document.querySelectorAll("label");
 
@@ -631,7 +638,7 @@ function splitSections() {
     sectionContainer.insertAdjacentElement('afterbegin', basic);
 }
 
-function isInstaller() {
+function is_company_installer() {
     // The VIEW button shows a list on hover
     // Each li element redirects towards the directory of that company
     // If the directory url ends in installer, then this company is an installer
@@ -649,7 +656,7 @@ function isInstaller() {
 }
 
 
-function hasBeenUpdated() {
+function company_updated() {
     const others_section = document.querySelector("#others");
     let fields = others_section.querySelectorAll("div.row");
 
@@ -666,7 +673,4 @@ function hasBeenUpdated() {
     return false
 }
 
-const HAS_BEEN_UPDATED = hasBeenUpdated()
-if (HAS_BEEN_UPDATED) {
-    alert("This company has been updated!");
-}
+removeCompanyFields();
