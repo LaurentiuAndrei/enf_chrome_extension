@@ -134,7 +134,8 @@ function removeCompanyFields() {
     if (isUpdated && isInstaller) {
         var fields = [
             "No.Staff：",
-            "Parent Company"
+            "Parent Company",
+            "E-mail (Other Components Enquiries)："
         ]
 
         companyFieldsToRemove = companyFieldsToRemove.concat(fields)
@@ -642,13 +643,15 @@ function is_company_installer() {
     // The VIEW button shows a list on hover
     // Each li element redirects towards the directory of that company
     // If the directory url ends in installer, then this company is an installer
-    const a_tags = VIEW_BUTTON.querySelectorAll("a");
+    if(VIEW_BUTTON) {
+        const a_tags = VIEW_BUTTON.querySelectorAll("a");
     
-    for(elem of a_tags) {
-        let url = elem.getAttribute("href");
-        
-        if(url.endsWith("installer")) {
-            return true;
+        for(elem of a_tags) {
+            let url = elem.getAttribute("href");
+            
+            if(url.endsWith("installer")) {
+                return true;
+            }
         }
     }
 
