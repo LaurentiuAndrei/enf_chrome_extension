@@ -5,8 +5,14 @@ const PHONE_NUM = document.querySelector("#phone");
 const HEADERS = document.querySelectorAll("h3");
 const PAGE_TITLE = document.querySelector("h2.page_title");
 const AD_PLAN = PAGE_TITLE.querySelector("span.label_level");
+const VIEW_BUTTON = PAGE_TITLE.querySelector(".bmenu");
 let COUNTRY;
 let isFirstAddress = true;
+const IS_INSTALLER = isInstaller()
+
+if (IS_INSTALLER) {
+    alert("This company is an installer!");
+}
 
 // Remove "Clear coordinate" before adding copy buttons
 removeClearCoordinate();
@@ -591,7 +597,6 @@ function positionAdPlan() {
 }
 
 function handleHeaderButtons() {
-    const viewBtn = PAGE_TITLE.querySelector(".bmenu");
     const saveBtn = PAGE_TITLE.querySelector("button.green_btn");
 
     const links = PAGE_TITLE.querySelectorAll("a");
@@ -605,8 +610,8 @@ function handleHeaderButtons() {
         }
     }
 
-    if(viewBtn) {
-        PAGE_TITLE.appendChild(viewBtn);
+    if(VIEW_BUTTON) {
+        PAGE_TITLE.appendChild(VIEW_BUTTON);
     }
     
     PAGE_TITLE.appendChild(saveBtn);
@@ -624,4 +629,44 @@ function splitSections() {
     SAVE_FORM.insertAdjacentElement('afterbegin', sectionContainer);
     sectionContainer.insertAdjacentElement('afterbegin', contact);
     sectionContainer.insertAdjacentElement('afterbegin', basic);
+}
+
+function isInstaller() {
+    // The VIEW button shows a list on hover
+    // Each li element redirects towards the directory of that company
+    // If the directory url ends in installer, then this company is an installer
+    const a_tags = VIEW_BUTTON.querySelectorAll("a");
+    
+    for(elem of a_tags) {
+        let url = elem.getAttribute("href");
+        
+        if(url.endsWith("installer")) {
+            return true;
+        }
+    }
+
+    return false
+}
+
+
+function hasBeenUpdated() {
+    const others_section = document.querySelector("#others");
+    let fields = others_section.querySelectorAll("div.row");
+
+    for (let field of fields) {
+        let firstLabel = field.querySelector("label")
+
+        if (firstLabel) {
+            if (firstLabel.textContent == "Updated By") {
+                return true
+            }
+        }
+    }
+
+    return false
+}
+
+const HAS_BEEN_UPDATED = hasBeenUpdated()
+if (HAS_BEEN_UPDATED) {
+    alert("This company has been updated!");
 }
