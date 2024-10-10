@@ -218,3 +218,7 @@ fieldset textarea:focus {
 fieldset input.input-text {
 	background: white !important;
 }
+
+.hidden {
+    display: none !important;
+}

@@ -42,56 +42,21 @@ function add_click_listener_section_h3() {
     });
 }
 
-// Summary: rename label, remove a checkbox, edit the 'context' of the remaining checkbox
+
 function update_installer_fields(label) {
-    const labels = label.querySelectorAll('.row > label');
-    
-    for(let label of labels) {
-        // Exit if we have the wrong field
-        if(label.textContent != 'On/Off Grid:') {
-            continue;
-        }
-        
-        // Rename label
-        label.textContent = 'Battery Storage';
-
-        // Select the 'off-grid' / battery storage checkbox
-        let batteryStorageCheckbox = label.parentElement.querySelector('input[type="checkbox"][name="grid"][value="o"]');
-        let is_battery_storage = batteryStorageCheckbox.checked;
-
-        // Remove unused 'On-Grid'
-        const onGridCheckbox = label.parentElement.querySelector('input[type="checkbox"][name="grid"][value="g"]');
-        const checkboxParent = onGridCheckbox.parentElement;
-
-        // Remove the "on-grid" input checkbox
-        if(onGridCheckbox)
-            onGridCheckbox.remove();
-
-        // Scan the children of the parent of the inputs to remove all TEXT_NODES
-        Array.from(checkboxParent.childNodes).forEach((node) => {
-            if (node.nodeType === Node.TEXT_NODE) {
-                checkboxParent.removeChild(node);
-            }
-        });
-
-        // Reassign the initial value of the battery storage
-        is_battery_storage ? batteryStorageCheckbox.setAttribute('checked', 'checked') : batteryStorageCheckbox.removeAttribute('checked');
-        
-        // Add context for the remaining input checkbox
-        checkboxParent.innerHTML += "Yes"; 
-        break;
-    }
-
     if (company_updated()) {
         const fields_to_remove = [
             "Installation Starting Date:",
             "Countries Operating In:",
-            "Region / Continent Operating In:",
+            "Region / Continent Operating In:"
+        ]
+        const fields_to_hide = [
             "S_M:",
             "Battery Storage:"
         ]
     
         remove_unused_fields(fields_to_remove)
+        hide_unused_fields(fields_to_hide)
     }
 }
 
@@ -165,4 +130,15 @@ function company_updated() {
     }
 
     return false
+}
+
+
+function hide_unused_fields(array) {
+	const labels = document.querySelectorAll(".row > label");
+
+	labels.forEach((label) => {
+		if (array.includes(label.textContent)) {
+			label.parentElement.classList.add('hidden');
+		}
+	});
 }
