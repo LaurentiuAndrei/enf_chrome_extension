@@ -78,9 +78,6 @@ document
 	.querySelector("#email")
 	.parentNode.parentNode.append(document.querySelector("#address").parentNode);
 
-// Remove enquiry email to special
-document.querySelector("#address").parentNode.previousElementSibling.remove();
-
 // Remove sections based on h3 names
 removeSections();
 
@@ -113,15 +110,6 @@ function removeClearCoordinate() {
 
 function removeCompanyFields() {
 	var companyFieldsToRemove = [
-		"E-mail (Solar System Enquiries)：",
-		"E-mail (Panel Enquiries)：",
-		"E-mail (Inverter Enquiries)：",
-		"E-mail (Mounting System Enquiries)：",
-		"E-mail (Cell Enquiries)：",
-		"E-mail (EVA Enquiries)：",
-		"E-mail (Backsheet Enquiries)：",
-		"E-mail (Charge Controller Enquiries)：",
-		"E-mail (Storage System Enquiries)：",
 		"Regional Address",
 		"Area1",
 		"Area2",
@@ -135,7 +123,6 @@ function removeCompanyFields() {
         var fields = [
             "No.Staff：",
             "Parent Company",
-            "E-mail (Other Components Enquiries)："
         ]
 
         companyFieldsToRemove = companyFieldsToRemove.concat(fields)
@@ -174,22 +161,6 @@ function tempRemoveInlineStyles() {
 			target.removeAttribute("style");
 		}
 	}
-
-	// Remove inline style for the notes
-	// const theNotes = noteSection.querySelectorAll("fieldset > ul > li");
-
-	// for (let i = 0; i < theNotes.length; i++) {
-	// 	if(theNotes[i]) {
-	// 		theNotes[i].removeAttribute("style");
-	// 	}
-	// }
-
-	// Remove ALL inline styles from the page
-	// const allElements = document.querySelectorAll("*");
-
-	// for (let i = 0; i < allElements.length; i++) {
-	//     allElements[i].removeAttribute("style");
-	// }
 }
 
 function remove_unused_elements() {

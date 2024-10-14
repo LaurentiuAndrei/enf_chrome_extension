@@ -87,7 +87,7 @@ function remove_all_br_elements() {
     return count;
 }
 
-// not using this function at the moment, but keeping it
+
 function remove_unused_fields(array) {
 	const labels = document.querySelectorAll(".row > label");
 

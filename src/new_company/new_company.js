@@ -70,9 +70,6 @@ document
 	.querySelector("#email")
 	.parentNode.parentNode.append(document.querySelector("#address").parentNode);
 
-// Remove enquiry email to special
-document.querySelector("#address").parentNode.previousElementSibling.remove();
-
 // Remove sections based on h3 names
 removeSections();
 
@@ -98,15 +95,6 @@ NEW_ADDRESS.parentNode.insertAdjacentElement("afterend", postcode.parentNode);
 
 function removeCompanyFields() {
 	const companyFieldsToRemove = [
-		"E-mail (Solar System Enquiries)：",
-		"E-mail (Panel Enquiries)：",
-		"E-mail (Inverter Enquiries)：",
-		"E-mail (Mounting System Enquiries)：",
-		"E-mail (Cell Enquiries)：",
-		"E-mail (EVA Enquiries)：",
-		"E-mail (Backsheet Enquiries)：",
-		"E-mail (Charge Controller Enquiries)：",
-		"E-mail (Storage System Enquiries)：",
 		"Regional Address",
 		"Area1",
 		"Area2",
