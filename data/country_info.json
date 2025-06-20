@@ -518,8 +518,8 @@
     {
         "country": "Guernsey",
         "phone_code": "44-1481",
-        "post_code": "AA1",
-        "post_code_pattern": "[A-Z]{2}[0-9]"
+        "post_code": "GY1 2AB",
+        "post_code_pattern": "GY[1-9] [0-9][A-Z]{2}"
     },
     {
         "country": "Guinea",
