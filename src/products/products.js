@@ -166,6 +166,10 @@ function add_new_paste() {
                 for (var i = startIndex; i < maxIndex; i++) {
                     if (i < inputs.length) {
                         inputs[i].value = splitText[i - startIndex];
+
+                        // "Input" event makes Angular/React/Vue notice the change
+                        inputs[i].dispatchEvent(new Event('input', { bubbles: true }));
+                        // inputs[i].dispatchEvent(new Event('change', { bubbles: true }));
                     }
                 }
             }
