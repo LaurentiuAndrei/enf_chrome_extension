@@ -13,8 +13,6 @@ function trigger_interval_check() {
         // Only proceed if the sidebar is new aka loaded with AJAX
         if (sidebar && !sidebar.classList.contains('loaded')) {
             clearInterval(intervalId);
-            const element = document.querySelector("form > div:nth-child(2)");
-            element.remove();
             add_ul_click_handler();
             create_container();
         } else {
@@ -37,16 +35,24 @@ function add_ul_click_handler() {
 }
 
 function create_container() {
-    var navbar = document.querySelector('form > div:nth-child(1)');
-    var sidebar = document.querySelector('form > div:nth-child(2)');
-    var content = document.querySelector('form > div:nth-child(3)');
-    sidebar.classList.add('loaded');
+    // var navbar = document.querySelector('form > div:nth-child(1)');
+    // var sidebar = document.querySelector('form > div:nth-child(2)');
+    // var content = document.querySelector('form > div:nth-child(3)');
 
-    var newDiv = document.createElement('div');
-    newDiv.id = 'main_content';
-    sidebar.parentNode.insertBefore(newDiv, sidebar);
-    newDiv.appendChild(navbar);
-    newDiv.appendChild(content);
+    var navbar_div = document.querySelector('div.enf-ams-fromenf-editbar');
+    var navbar = navbar_div.parentNode;
+    var sidebar = document.querySelector('div#enf-ams-fromenf-sidebar');
+    var content = sidebar.nextElementSibling;
+
+    sidebar.classList.add('loaded');
+    sidebar.parentNode.classList.add('sidebar-parent-flex');
+
+    var main_content = document.createElement('div');
+    main_content.id = 'main_content';
+
+    sidebar.parentNode.insertBefore(main_content, sidebar);
+    main_content.appendChild(navbar);
+    main_content.appendChild(content);
     create_sidebar_toggle_button(sidebar, navbar);
     add_new_paste();
 }

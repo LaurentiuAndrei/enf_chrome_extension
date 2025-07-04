@@ -3,7 +3,7 @@
     height: initial !important;
 }
 
-form {
+.sidebar-parent-flex {
     display: flex !important;
 }
 
